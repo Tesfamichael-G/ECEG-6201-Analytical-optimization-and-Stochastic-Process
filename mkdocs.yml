@@ -48,4 +48,4 @@ nav:
   - Home: index.md
   - Syllabus & Schedule: syllabus.md
   - Lecture Notes:
-    - Chapter 1: Preliminaries: chapter_01.md
+    - Chapter 1: lectures/lecture_01.md
