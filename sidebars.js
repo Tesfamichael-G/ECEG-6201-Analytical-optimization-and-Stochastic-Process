@@ -8,7 +8,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Lecture Notes',
-      items: ['chapter_01', 'chapter_02'], // Add more chapters here as you create them
+      items: ['lecture_01'], //, 'chapter_02'], // Add more chapters here as you create them
     },
   ],
 };
