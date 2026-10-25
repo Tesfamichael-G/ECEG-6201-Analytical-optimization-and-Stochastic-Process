@@ -3,9 +3,7 @@
 **Weeks:** 1 - 3 | **Contact Hours:** 6 Lectures, 9 Tutorials
 
 ## 🎯 Learning Objectives
-
 By the end of this chapter, students will be able to:
-
 1. Formulate engineering problems as mathematical optimization models.
 2. Distinguish between local and global minima, and understand Pareto-optimality.
 3. Compute and interpret the Gradient and Hessian matrices for linear and quadratic functions.
@@ -19,7 +17,7 @@ By the end of this chapter, students will be able to:
 
 An optimization problem seeks to find the best element from a set of available alternatives. Mathematically, it is formulated as:
 
-$$\begin{aligned} \min_{\mathbf{x}} \quad & f(\mathbf{x}) \\ \text{subject to} \quad & \mathbf{x} \in \mathcal{X} \end{aligned}$$
+$$\begin{aligned} \min_{\mathbf{x}} \quad & f(\mathbf{x}) \\  \text{subject to} \quad & \mathbf{x} \in \mathcal{X} \end{aligned}$$
 
 where $\mathbf{x} \in \mathbb{R}^n$ is the decision variable vector, $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is the objective function, and $\mathcal{X}$ is the feasible set.
 
@@ -49,12 +47,12 @@ To find minima, we rely on differential calculus to measure the **slope** and **
 Understanding these two classes of functions is critical, as many optimization algorithms approximate complex functions using them.
 
 1. **Linear Functions:** $f(\mathbf{x}) = \mathbf{a}^T \mathbf{x} + b$
-   * Gradient: $\nabla f(\mathbf{x}) = \mathbf{a}$
-   * Hessian: $\nabla^2 f(\mathbf{x}) = \mathbf{0}$ (Zero curvature; no local minima).
+    * Gradient: $\nabla f(\mathbf{x}) = \mathbf{a}$
+    * Hessian: $\nabla^2 f(\mathbf{x}) = \mathbf{0}$ (Zero curvature; no local minima).
 2. **Quadratic Functions:** $f(\mathbf{x}) = \frac{1}{2}\mathbf{x}^T \mathbf{Q} \mathbf{x} + \mathbf{c}^T \mathbf{x} + d$ (where $\mathbf{Q}$ is symmetric).
-   * Gradient: $\nabla f(\mathbf{x}) = \mathbf{Q}\mathbf{x} + \mathbf{c}$
-   * Hessian: $\nabla^2 f(\mathbf{x}) = \mathbf{Q}$ (Constant curvature).
-   * *Note:* If $\mathbf{Q}$ is Positive Definite ($\mathbf{Q} \succ 0$), the function is strictly convex and has a unique global minimum.
+    * Gradient: $\nabla f(\mathbf{x}) = \mathbf{Q}\mathbf{x} + \mathbf{c}$
+    * Hessian: $\nabla^2 f(\mathbf{x}) = \mathbf{Q}$ (Constant curvature).
+    * *Note:* If $\mathbf{Q}$ is Positive Definite ($\mathbf{Q} \succ 0$), the function is strictly convex and has a unique global minimum.
 
 ---
 
@@ -64,6 +62,7 @@ Optimality conditions are mathematical equations/inequalities that a point must 
 
 ### 1.2.1 Unconstrained Optimization
 For $\min f(\mathbf{x})$ with no constraints:
+
 * **First-Order Necessary Condition (FONC):** If $\mathbf{x}^*$ is a local minimum, then $\nabla f(\mathbf{x}^*) = \mathbf{0}$. (These are called *stationary points*).
 * **Second-Order Necessary Condition (SONC):** If $\mathbf{x}^*$ is a local minimum, then $\nabla^2 f(\mathbf{x}^*) \succeq 0$ (Positive Semi-Definite).
 * **Second-Order Sufficient Condition (SOSC):** If $\nabla f(\mathbf{x}^*) = \mathbf{0}$ and $\nabla^2 f(\mathbf{x}^*) \succ 0$ (Positive Definite), then $\mathbf{x}^*$ is a strict local minimum.
@@ -72,22 +71,22 @@ For $\min f(\mathbf{x})$ with no constraints:
 When constraints are present, the gradient of the objective function does not have to be zero; it only needs to be zero *in the directions that remain feasible*.
 
 #### Linear Equality Constraints
-$\min f(\mathbf{x})$ subject to $\mathbf{A}\mathbf{x} = \mathbf{b}$.
-We introduce the **Lagrangian**:
+$\min f(\mathbf{x})$ subject to $\mathbf{A}\mathbf{x} = \mathbf{b}$. We introduce the **Lagrangian**:
+
 $$\mathcal{L}(\mathbf{x}, \boldsymbol{\lambda}) = f(\mathbf{x}) - \boldsymbol{\lambda}^T (\mathbf{A}\mathbf{x} - \mathbf{b})$$
+
 The necessary conditions are $\nabla_\mathbf{x} \mathcal{L} = \mathbf{0}$ and $\nabla_{\boldsymbol{\lambda}} \mathcal{L} = \mathbf{0}$.
 
 #### Nonlinearly Constrained Optimization (KKT Conditions)
-For $\min f(\mathbf{x})$ subject to $g_i(\mathbf{x}) \le 0$ and $h_j(\mathbf{x}) = 0$.
-The **Karush-Kuhn-Tucker (KKT)** conditions are the necessary conditions for a local minimum:
+For $\min f(\mathbf{x})$ subject to $g_i(\mathbf{x}) \le 0$ and $h_j(\mathbf{x}) = 0$. The **Karush-Kuhn-Tucker (KKT)** conditions are the necessary conditions for a local minimum:
 
 1. **Stationarity:**
    $$\nabla f(\mathbf{x}^*) + \sum \mu_i \nabla g_i(\mathbf{x}^*) + \sum \lambda_j \nabla h_j(\mathbf{x}^*) = \mathbf{0}$$
-2. **Primal Feasibility:** 
+2. **Primal Feasibility:**
    $$g_i(\mathbf{x}^*) \le 0, \quad h_j(\mathbf{x}^*) = 0$$
-3. **Dual Feasibility:** 
+3. **Dual Feasibility:**
    $$\mu_i \ge 0$$
-4. **Complementary Slackness:** 
+4. **Complementary Slackness:**
    $$\mu_i g_i(\mathbf{x}^*) = 0$$
 
 ---
@@ -95,7 +94,9 @@ The **Karush-Kuhn-Tucker (KKT)** conditions are the necessary conditions for a l
 ## 1.3 Linear Search Subproblem & Derivatives
 
 In iterative optimization (like Gradient Descent or Newton's method), we update our estimate as:
+
 $$\mathbf{x}_{k+1} = \mathbf{x}_k + \alpha_k \mathbf{d}_k$$
+
 where $\mathbf{d}_k$ is the search direction and $\alpha_k$ is the step size. Finding $\alpha_k$ is the **Linear Search** problem: $\min_{\alpha > 0} \phi(\alpha) = f(\mathbf{x}_k + \alpha \mathbf{d}_k)$.
 
 ### 1.3.1 Bracketing and Sectioning Phase
@@ -112,9 +113,6 @@ If the analytical derivative is too complex, we approximate it.
 
 **2. Analytically Derived Gradient & The Adjoint Variable Approach:**
 In communication systems (e.g., inverse scattering, channel estimation), the objective function often depends on a state variable $\mathbf{u}$ (like an electromagnetic field), which is governed by a physical constraint (like Maxwell's equations) $\mathbf{F}(\mathbf{u}, \mathbf{m}) = \mathbf{0}$, where $\mathbf{m}$ are the design parameters.
-
-* **Direct differentiation** requires solving a linear system for *every single parameter* in $\mathbf{m}$. If $\mathbf{m}$ has 10,000 variables, this is computationally impossible.
-* **The Adjoint Variable Approach:** By introducing an adjoint state variable $\boldsymbol{\lambda}$ (the Lagrange multiplier for the physical constraint), we can compute the exact analytical gradient with respect to $\mathbf{m}$ by solving only **one** adjoint equation, regardless of the number of parameters. This reduces the computational complexity from $O(N_{params})$ to $O(1)$.
 
 ---
 
