@@ -1,5 +1,4 @@
-site_name: ECEG-6201-Analytical-optimization-and-Stochastic-Process
-site_url: https://tesfamichael-g.github.io/ECEG-6201-Analytical-optimization-and-Stochastic-Process/
+site_name: ECEG-6201: Analytical Optimization & Stochastic Process
 
 theme:
   name: material
@@ -11,19 +10,6 @@ theme:
     - navigation.expand
     - search.suggest
     - content.code.copy
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -35,9 +21,13 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - tables
-  - toc:
-      permalink: true
 
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Syllabus & Schedule: syllabus.md
+  - Lecture Notes:
+    - Lecture 1: Preliminaries: lectures/lecture_01.md
