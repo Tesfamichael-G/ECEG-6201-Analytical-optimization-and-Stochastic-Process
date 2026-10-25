@@ -3,14 +3,12 @@ site_name: ECEG-6201-Analytical-optimization-and-Stochastic-Process
 theme:
   name: material
   palette:
-    # Light mode
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    # Dark mode
     - scheme: slate
       primary: indigo
       accent: indigo
