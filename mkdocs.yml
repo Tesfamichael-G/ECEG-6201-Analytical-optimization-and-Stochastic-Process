@@ -44,7 +44,7 @@ nav:
   - Home: index.md
   - Syllabus & Schedule: syllabus.md
   - Lecture Notes:
-    - Chapter 1: lectures/chapter_01.md  # Notice the "lectures/" added here
+    - Chapter 1: lectures/lecture_01.md  # Notice the "lectures/" added here
   #- Assignments:
   #  - Assignment 1: assignments/assignment_01.md
   #- Lecture Notes:
