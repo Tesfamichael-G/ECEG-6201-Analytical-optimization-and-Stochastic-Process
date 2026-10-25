@@ -5,6 +5,10 @@ on:
     branches:
       - main  # Triggers on pushes to the main branch
 
+# THIS IS THE CRUCIAL FIX FOR THE 403 ERROR
+permissions:
+  contents: write
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
