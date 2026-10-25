@@ -3,7 +3,9 @@
 **Weeks:** 1 - 3 | **Contact Hours:** 6 Lectures, 9 Tutorials
 
 ## 🎯 Learning Objectives
+
 By the end of this chapter, students will be able to:
+
 1. Formulate engineering problems as mathematical optimization models.
 2. Distinguish between local and global minima, and understand Pareto-optimality.
 3. Compute and interpret the Gradient and Hessian matrices for linear and quadratic functions.
