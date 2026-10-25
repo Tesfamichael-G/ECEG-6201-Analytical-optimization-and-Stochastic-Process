@@ -166,13 +166,9 @@ print("Analytical Grad:", gradient(x_test))
 print("Numerical Grad: ", numerical_gradient(objective, x_test))
 
 # 4. Solve the Constrained Problem
-# Constraint: x1 + x2 = 1  =>  x1 + x2 - 1 = 0
 cons = ({'type': 'eq', 'fun': lambda x: x[0] + x[1] - 1})
-
-# Initial guess
 x0 = np.array([0.0, 0.0])
 
-# Run Optimization (SLSQP handles equality constraints well)
 result = minimize(objective, x0, method='SLSQP', jac=gradient, constraints=cons)
 
 print("\nOptimization Result:")
