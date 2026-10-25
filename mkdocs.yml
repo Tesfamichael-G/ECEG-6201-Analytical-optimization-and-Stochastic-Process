@@ -1,19 +1,17 @@
 site_name: ECEG-6201-Analytical-optimization-and-Stochastic-Process
 site_url: https://tesfamichael-g.github.io/ECEG-6201-Analytical-optimization-and-Stochastic-Process/
-site_description: Master of Science in Communication Engineering
 
 theme:
   name: material
-  # ADD THIS FONT SECTION
   font:
-    text: Inter        # Clean, modern, and highly readable for main text
-    code: JetBrains Mono # Excellent, modern font for Python/MATLAB code blocks
-  
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.sections
     - navigation.expand
     - search.suggest
     - content.code.copy
+    - content.code.annotate
   palette:
     - scheme: default
       primary: indigo
@@ -29,32 +27,28 @@ theme:
         name: Switch to light mode
 
 markdown_extensions:
-  # Math rendering extensions
+  # 1. MATH RENDERING (Crucial for your course)
   - pymdownx.arithmatex:
       generic: true
-  # Code block highlighting
-  - pymdownx.superfences
+      
+  # 2. CODE BLOCK HIGHLIGHTING
   - pymdownx.highlight:
       anchor_linenums: true
-  # Admonitions (for notes, tips, warnings)
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  
+  # 3. LISTS, TABLES, AND FORMATTING
   - admonition
   - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
 
-# MathJax JavaScript (Required for rendering $ and $$ equations)
+# 4. MATHJAX JAVASCRIPT (Loads the math engine)
 extra_javascript:
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-extra_css:
-  - stylesheets/extra.css
-  
-nav:
-  - Home: index.md
-  - Syllabus & Schedule: syllabus.md
-  - Lecture Notes:
-    - Chapter 1: lectures/lecture_01.md  # Notice the "lectures/" added here
-  #- Assignments:
-  #  - Assignment 1: assignments/assignment_01.md
-  #- Lecture Notes:
-  #  - Chapter 1: Preliminaries: chapter_01.md
-    # Add future chapters here as you write them!
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
