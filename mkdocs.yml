@@ -1,0 +1,48 @@
+site_name: ECEG-6201: Analytical Optimization & Stochastic Process
+site_url: https://yourusername.github.io/eceg-6201-course/
+site_description: Master of Science in Communication Engineering
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  # Math rendering extensions
+  - pymdownx.arithmatex:
+      generic: true
+  # Code block highlighting
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  # Admonitions (for notes, tips, warnings)
+  - admonition
+  - pymdownx.details
+
+# MathJax JavaScript (Required for rendering $ and $$ equations)
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Syllabus & Schedule: syllabus.md
+  - Lecture Notes:
+    - Chapter 1: Preliminaries: chapter_01.md
+    # Add future chapters here as you write them!
