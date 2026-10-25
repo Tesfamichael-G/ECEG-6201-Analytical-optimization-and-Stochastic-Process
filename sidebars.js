@@ -3,7 +3,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Course Overview',
-      items: ['home', 'syllabus'],
+      items: ['home'], //, 'syllabus'],
     },
     {
       type: 'category',
