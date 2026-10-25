@@ -1,26 +1,35 @@
-name: Deploy MkDocs Site
+name: Deploy Docusaurus to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Triggers on pushes to the main branch
+      - main
 
-# THIS IS THE CRUCIAL FIX FOR THE 403 ERROR
 permissions:
   contents: write
-  
+
 jobs:
   deploy:
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: 3.x
-      
+          node-version: 20
+          cache: npm
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
-      
-      - name: Build and deploy site
-        run: mkdocs gh-deploy --force
+        run: npm ci
+
+      - name: Build website
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
