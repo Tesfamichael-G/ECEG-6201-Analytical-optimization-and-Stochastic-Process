@@ -11,7 +11,6 @@ theme:
     - navigation.expand
     - search.suggest
     - content.code.copy
-    - content.code.annotate
   palette:
     - scheme: default
       primary: indigo
@@ -27,28 +26,18 @@ theme:
         name: Switch to light mode
 
 markdown_extensions:
-  # 1. MATH RENDERING (Crucial for your course)
   - pymdownx.arithmatex:
       generic: true
-      
-  # 2. CODE BLOCK HIGHLIGHTING
   - pymdownx.highlight:
       anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.superfences
-  
-  # 3. LISTS, TABLES, AND FORMATTING
   - admonition
   - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
   - tables
   - toc:
       permalink: true
 
-# 4. MATHJAX JAVASCRIPT (Loads the math engine)
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
