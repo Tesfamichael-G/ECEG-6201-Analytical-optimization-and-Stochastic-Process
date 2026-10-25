@@ -178,3 +178,4 @@ result = minimize(objective, x0, method='SLSQP', jac=gradient, constraints=cons)
 print("\nOptimization Result:")
 print("Optimal x:", result.x)
 print("Minimum f(x):", result.fun)
+```
