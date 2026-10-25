@@ -18,10 +18,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          # cache: npm  <-- REMOVED THIS LINE TO FIX THE ERROR
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm cache clean --force
+          npm install --legacy-peer-deps
 
       - name: Build website
         run: npm run build
