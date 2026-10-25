@@ -82,13 +82,24 @@ The necessary conditions are $\nabla_\mathbf{x} \mathcal{L} = \mathbf{0}$ and $\
 
 #### Nonlinearly Constrained Optimization (KKT Conditions)
 For $\min f(\mathbf{x})$ subject to $g_i(\mathbf{x}) \le 0$ and $h_j(\mathbf{x}) = 0$.
-The **Karush-Kuhn-Tucker (KKT)** conditions are the necessary conditions for a local minimum (assuming constraint qualifications hold):
+The **Karush-Kuhn-Tucker (KKT)** conditions are the necessary conditions for a local minimum:
 
-1.  **Stationarity:** $\nabla f(\mathbf{x}^*) + \sum \mu_i \nabla g_i(\mathbf{x}^*) + \sum \lambda_j \nabla h_j(\mathbf{x}^*) = \mathbf{0}$
-2.  **Primal Feasibility:** $g_i(\mathbf{x}^*) \le 0, \quad h_j(\mathbf{x}^*) = 0$
-3.  **Dual Feasibility:** $\mu_i \ge 0$
-4.  **Complementary Slackness:** $\mu_i g_i(\mathbf{x}^*) = 0$ (If a constraint is not active, its multiplier is zero).
-
+1. **Stationarity:**
+   \[
+   \nabla f(\mathbf{x}^*) + \sum \mu_i \nabla g_i(\mathbf{x}^*) + \sum \lambda_j \nabla h_j(\mathbf{x}^*) = \mathbf{0}
+   \]
+2. **Primal Feasibility:** 
+   \[
+   g_i(\mathbf{x}^*) \le 0, \quad h_j(\mathbf{x}^*) = 0
+   \]
+3. **Dual Feasibility:** 
+   \[
+   \mu_i \ge 0
+   \]
+4. **Complementary Slackness:** 
+   \[
+   \mu_i g_i(\mathbf{x}^*) = 0
+   \]
 ---
 
 ## 1.3 Linear Search Subproblem & Derivatives
