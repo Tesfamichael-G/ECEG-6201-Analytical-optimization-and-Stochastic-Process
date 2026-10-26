@@ -1,53 +1,74 @@
-site_name: ECEG-6201-Analytical-optimization-and-Stochastic-Process
-site_url: https://tesfamichael-g.github.io/ECEG-6201-Analytical-optimization-and-Stochastic-Process/
+site_name: ECEG-6201 — Analytical Optimization and Stochastic Processes
+site_description: MSc in Communication Engineering · Year 1, Semester I
+site_author: Your Name
+site_url: https://<your-username>.github.io/eceg-6201/
+repo_url: https://github.com/<your-username>/eceg-6201
+repo_name: <your-username>/eceg-6201
 
 theme:
   name: material
-  font:
-    text: Roboto
-    code: Fira Code
+  language: en
   features:
+    - navigation.tabs
     - navigation.sections
-    - navigation.expand
-    - search.suggest
+    - navigation.top
+    - navigation.indexes
+    - navigation.tracking
     - content.code.copy
+    - search.suggest
+    - search.highlight
+    - toc.follow
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-night
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-sunny
         name: Switch to light mode
+  icon:
+    logo: material/chart-bell-curve-cumulative
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Syllabus: syllabus.md
+  - Schedule: schedule.md
+  - Chapters:
+      - 1. Optimization — Preliminaries: chapters/01-optimization-preliminaries.md
+      - 2. Unconstrained Optimization: chapters/02-unconstrained-optimization.md
+      - 3. Constrained Optimization: chapters/03-constrained-optimization.md
+      - 4. Stochastic Processes & Random Walks: chapters/04-stochastic-processes.md
+      - 5. Spectral Representation & Estimation: chapters/05-spectral-representation.md
+      - 6. Markov Chains: chapters/06-markov-chains.md
+      - 7. Introduction to Queuing Theory: chapters/07-queuing-theory.md
+  - Assessment: assessment.md
+  - Resources: resources.md
 
 markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.inlinehilite
-  - pymdownx.superfences
   - admonition
-  - pymdownx.details
+  - attr_list
+  - def_list
+  - footnotes
   - tables
   - toc:
       permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.arithmatex:
+      generic: true
 
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-
-nav:
-  - Home: index.md
-  - Syllabus & Schedule: syllabus.md
-  - Lecture Notes:
-    - Chapter 1: lectures/lecture_01.md
