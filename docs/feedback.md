@@ -51,25 +51,7 @@ For sensitive reports (e.g. a solution that reveals too much detail about an
 upcoming assessment), email **with subject line `[ECEG-6201 feedback]`**
 so it doesn't get lost:
 
-```
-To: <instructor email>
-Subject: [ECEG-6201 feedback] <short description>
-
-Page: chapters/03-constrained-optimization
-Section: Example 3.4
-Issue: In the augmented-Lagrangian iteration table, the value of λ_3 is
-       reported as -4.222 but I compute -4.111.
-Expected: -4.111
-Reasoning: λ_{k+1} = λ_k + ρ(x_k − 3); at k=2, x_2 = 2.111 and λ_2 = −3.333,
-           so λ_3 = −3.333 + (2.111 − 3) = −4.222. Hmm — actually I think
-           the table is right. Could you confirm the arithmetic?
-```
-
-*(This example shows the template — you can just paste it in and fill the
-fields.)*
-
 ---
-
 
 ## Response times
 
