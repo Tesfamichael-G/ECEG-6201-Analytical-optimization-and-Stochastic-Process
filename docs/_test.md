@@ -1,5 +1,5 @@
 Inline: \( x^2 + y^2 = 1 \)
-Inline dollar: $ x^2 + y^2 = 1 $
+Inline dollar: $x^2 + y^2 = 1$
 
 Block:
 \[
