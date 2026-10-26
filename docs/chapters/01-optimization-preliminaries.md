@@ -271,6 +271,7 @@ The condition number is \(\kappa(Q) = \frac{3+\sqrt2}{3-\sqrt2}\approx 1.97\) â€
     \[
       \nabla f(x^\star) = 0 .
     \]
+    
     If in addition \(f\in C^2\),
     
     \[
