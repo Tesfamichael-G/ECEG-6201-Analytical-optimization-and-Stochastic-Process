@@ -70,6 +70,7 @@ fields.)*
 
 ---
 
+
 ## Response times
 
 | Severity | Response target | Fix target |
