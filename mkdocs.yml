@@ -1,8 +1,8 @@
 site_name: ECEG-6201 — Analytical Optimization and Stochastic Processes
 site_description: MSc in Communication Engineering · Year 1, Semester I
-site_author: Your Name
-site_url: https://<your-username>.github.io/eceg-6201/
-repo_url: https://github.com/<your-username>/eceg-6201
+site_author: Dr. Tesfamichael Gebregziabher
+site_url: https://tesfamichael-g.github.io/ECEG-6201-Analytical-optimization-and-Stochastic-Process/
+#repo_url: https://github.com/<your-username>/eceg-6201
 repo_name: <your-username>/eceg-6201
 
 theme:
@@ -64,6 +64,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.arithmatex:
