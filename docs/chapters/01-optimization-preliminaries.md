@@ -235,6 +235,7 @@ f(x) = \tfrac12 x^\top Q x - c^\top x + d,
 Minimize \(f(x) = 2x_1^2 + x_2^2 + x_1 x_2 - 3 x_1 + 4 x_2\).
 
 Write it as \(\tfrac12 x^\top Q x - c^\top x\) with
+
 \[
 Q = \begin{bmatrix} 4 & 1 \\ 1 & 2\end{bmatrix},
 \qquad
@@ -244,12 +245,14 @@ c = \begin{bmatrix} 3 \\ -4 \end{bmatrix}.
 **Eigenvalues of \(Q\):** \(\det(Q-\lambda I) = (4-\lambda)(2-\lambda) - 1 = \lambda^2 - 6\lambda + 7 = 0 \Rightarrow \lambda = 3 \pm \sqrt{2}\), both positive â‡’ \(Q \succ 0\), so \(f\) has a **unique global minimum**.
 
 **Stationary point** solves \(Qx = c\):
+
 \[
 \begin{cases} 4x_1 + x_2 = 3 \\ x_1 + 2x_2 = -4 \end{cases}
 \ \Rightarrow\ x^\star = \Bigl(\tfrac{10}{7}, -\tfrac{19}{7}\Bigr).
 \]
 
 **Optimal value** (using \(f^\star = -\tfrac12 c^\top Q^{-1} c\)):
+
 \[
 f(x^\star) = -\tfrac{53}{7}\approx -7.571.
 \]
@@ -264,13 +267,16 @@ The condition number is \(\kappa(Q) = \frac{3+\sqrt2}{3-\sqrt2}\approx 1.97\) â€
 
 !!! abstract "First-order necessary condition (FONC)"
     If \(x^\star\) is a local minimizer of \(f\) and \(f\) is differentiable in a neighbourhood, then
+    
     \[
       \nabla f(x^\star) = 0 .
     \]
     If in addition \(f\in C^2\),
+    
     \[
       \nabla^2 f(x^\star) \succeq 0
     \]
+    
     (the Hessian is positive semi-definite) is **necessary**. The strict version
     \(\nabla^2 f(x^\star) \succ 0\) is **sufficient** for a strict local minimum.
 
@@ -297,6 +303,7 @@ Introduce a **Lagrange multiplier vector** \(\lambda\in\mathbb{R}^m\) and the La
 
 !!! abstract "Equality-constrained FONC"
     If \(x^\star\) is a local minimizer of \(f\) on \(\{x: Ax=b\}\), there exists \(\lambda^\star\) with
+    
     \[
       \nabla_x \mathcal L(x^\star,\lambda^\star) = \nabla f(x^\star) + A^\top \lambda^\star = 0,
       \qquad Ax^\star = b.
