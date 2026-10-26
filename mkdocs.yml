@@ -49,8 +49,18 @@ nav:
       - 5. Spectral Representation & Estimation: chapters/05-spectral-representation.md
       - 6. Markov Chains: chapters/06-markov-chains.md
       - 7. Introduction to Queuing Theory: chapters/07-queuing-theory.md
+  - Solutions:
+      - Overview: solutions/index.md
+      - Chapter 1 — Preliminaries: solutions/01-optimization-preliminaries.md
+      - Chapter 2 — Unconstrained: solutions/02-unconstrained-optimization.md
+      - Chapter 3 — Constrained: solutions/03-constrained-optimization.md
+      - Chapter 4 — Stochastic Processes: solutions/04-stochastic-processes.md
+      - Chapter 5 — Spectral Representation: solutions/05-spectral-representation.md
+      - Chapter 6 — Markov Chains: solutions/06-markov-chains.md
+      - Chapter 7 — Queuing Theory: solutions/07-queuing-theory.md
   - Assessment: assessment.md
   - Resources: resources.md
+  - Feedback: feedback.md
 
 markdown_extensions:
   - admonition
