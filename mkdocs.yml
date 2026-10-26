@@ -64,6 +64,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
+      inline_syntax: ['dollar', 'round']    # $…$  and  \(…\)
+      block_syntax:  ['dollar', 'square']   # $$…$$ and  \[…\]
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
