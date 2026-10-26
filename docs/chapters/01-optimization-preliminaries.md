@@ -44,17 +44,21 @@ A point that satisfies the necessary condition \(\nabla f(x^\star)=0\) is a **st
 Minimize \(f(x) = x^3 - 3x + 1\) over \(x \in \mathbb{R}\).
 
 1. **First-order condition.**
+
    \[
      f'(x) = 3x^2 - 3 = 3(x-1)(x+1) = 0 \;\Rightarrow\; x = \pm 1 .
    \]
-2. **Second-order condition.**
+   
+3. **Second-order condition.**
+
    \[
      f''(x) = 6x,\qquad f''(1) = 6>0,\qquad f''(-1)=-6<0.
    \]
-3. **Classification.**
+   
+5. **Classification.**
    - \(x = 1\): strict local minimum with \(f(1) = 1 - 3 + 1 = -1\).
    - \(x = -1\): strict local maximum with \(f(-1) = -1 + 3 + 1 = 3\).
-4. **Global behavior.** Because \(f(x) \to +\infty\) as \(x \to +\infty\) and \(f(x) \to -\infty\) as \(x \to -\infty\), neither a global minimum nor a global maximum exists on \(\mathbb{R}\).
+6. **Global behavior.** Because \(f(x) \to +\infty\) as \(x \to +\infty\) and \(f(x) \to -\infty\) as \(x \to -\infty\), neither a global minimum nor a global maximum exists on \(\mathbb{R}\).
 
 !!! tip "Takeaway"
     A stationary point is *not automatically* a minimum. The Hessian (here the scalar \(f''\))
@@ -116,9 +120,11 @@ When we minimize **several** objectives at once, there is rarely a single point 
 
 !!! note "Definitions"
     Let \(\mathbf f(x) = (f_1(x),\dots,f_m(x))\). A point \(x^\star\) **Pareto-dominates** \(y\) if
+    
     \[
       f_i(x^\star) \le f_i(y) \ \forall i,\qquad\text{and } f_j(x^\star) < f_j(y) \ \text{for some }j.
     \]
+    
     \(x^\star\) is **Pareto-optimal** if no feasible \(y\) dominates it.
     The set of objective vectors of all Pareto-optimal points is the **Pareto front**.
 
@@ -318,13 +324,17 @@ Minimize \(f(x_1, x_2) = x_1^2 + x_2^2\) subject to \(x_1 + x_2 = 2\).
 
 Lagrangian: \(\mathcal L = x_1^2 + x_2^2 + \lambda(x_1 + x_2 - 2)\).
 First-order conditions:
+
 \[
 2x_1 + \lambda = 0,\qquad 2x_2 + \lambda = 0,\qquad x_1 + x_2 = 2.
 \]
+
 The first two imply \(x_1 = x_2\); with the constraint \(x_1 = x_2 = 1\). Then \(\lambda = -2\), and
+
 \[
 f^\star = 1 + 1 = 2.
 \]
+
 Geometric check: \(-\nabla f(1,1) = (-2,-2) = 2\cdot(1,1)\) — the negative gradient is (up to scale) the constraint normal, as required.
 
 ### 1.8.3 Linearly constrained — inequality constraints
@@ -332,12 +342,14 @@ Geometric check: \(-\nabla f(1,1) = (-2,-2) = 2\cdot(1,1)\) — the negative gra
 Minimize \(f(x)\) subject to \(Ax \le b\).
 
 The **Karush–Kuhn–Tucker (KKT) conditions** for this case read
+
 \[
 \nabla f(x^\star) + A^\top \mu^\star = 0,\qquad
 \mu^\star \ge 0,\qquad
 \mu_i^\star\,[Ax^\star - b]_i = 0,\qquad
 Ax^\star \le b.
 \]
+
 The last column condition is **complementary slackness**: an active constraint carries a non-negative multiplier; an inactive one carries zero.
 
 ### Worked example 1.9 — a small inequality problem
@@ -346,9 +358,11 @@ Minimize \((x-2)^2 + 1\) subject to \(x \le 1\).
 
 - **Unconstrained solution:** \(x = 2\), but \(2 \le 1\) is false ⇒ infeasible.
 - **Active-constraint ansatz:** \(x^\star = 1\). Then \(f'(1) = 2(1-2) = -2\), and KKT with \(g(x)=x-1\le 0\), \(\nabla g = 1\):
+
   \[
   -2 + \mu \cdot 1 = 0 \Rightarrow \mu = 2 \ge 0. \;\checkmark
   \]
+  
   \(x^\star = 1\) satisfies all KKT conditions. **Optimal value:** \((1-2)^2+1 = 2\).
 
 ### 1.8.4 Nonlinearly constrained — full KKT
@@ -357,9 +371,11 @@ Minimize \(f(x)\) subject to \(g_i(x) \le 0\ (i=1,\dots,p)\) and \(h_j(x) = 0\ (
 
 !!! abstract "KKT conditions (necessary, under a constraint qualification)"
     There exist multipliers \(\mu^\star\in\mathbb{R}^p\) and \(\lambda^\star\in\mathbb{R}^q\) such that
+    
     \[
       \nabla f(x^\star) + \sum_i \mu_i^\star \nabla g_i(x^\star) + \sum_j \lambda_j^\star \nabla h_j(x^\star) = 0,
     \]
+    
     \[
       g_i(x^\star) \le 0,\ \ \mu_i^\star \ge 0,\ \ \mu_i^\star g_i(x^\star) = 0,
       \qquad
@@ -510,6 +526,7 @@ The forward pass produces \(x_0,\dots,x_N\); the backward pass produces \(\lambd
 ### Worked example 1.13 — adjoint derivation verified by hand
 
 Discrete problem with \(x_0 = 2\), \(x_{k+1} = x_k + u_k\) (\(k=0,1\)), and
+
 \[
 J(u_0,u_1) = x_2^2 + u_0^2 + u_1^2.
 \]
@@ -535,18 +552,22 @@ Setting both to zero: \(4 + 4u_0 + 2u_1 = 0\), \(4 + 2u_0 + 4u_1 = 0\); subtract
   Since \(L_0 = u_0^2\) and \(L_1 = u_1^2\) do not depend on \(x\), we get
   \(\lambda_1 = \lambda_2\) and \(\lambda_0 = \lambda_1 = \lambda_2\).
 - Gradients:
+
   \[
   \frac{\partial J}{\partial u_0} = 2u_0 + \lambda_1,\qquad
   \frac{\partial J}{\partial u_1} = 2u_1 + \lambda_2.
   \]
+  
 - At \(u_0 = u_1 = -2/3\): \(x_2 = 2/3\), \(\lambda_1=\lambda_2 = 4/3\), so
   \(\partial J/\partial u_0 = -4/3 + 4/3 = 0\) and \(\partial J/\partial u_1 = 0\) — matching the direct computation.
 
 !!! tip "Continuous-time version"
     For \(\dot x = F(x,u)\), \(J = \int_0^T L(x,u)\,dt + \Phi(x(T))\), the continuous adjoint is
+    
     \[
       -\dot\lambda = \nabla_x H,\quad \lambda(T) = \nabla \Phi(x(T)),\quad H(x,u,\lambda) = L + \lambda^\top F,
     \]
+    
     and \(\nabla_u J = \nabla_u H\). Use a forward ODE solve for \(x(t)\) and a backward ODE solve for \(\lambda(t)\).
 
 ---
