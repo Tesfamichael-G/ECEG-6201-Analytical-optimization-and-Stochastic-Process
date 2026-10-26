@@ -10,7 +10,6 @@ cleanly on github.com because the MkDocs extensions (MathJax, admonitions,
 Material icons, grid cards) are not understood by GitHub's markdown renderer.
 
 **Looking for a correction to file?**
-- Use the [feedback form](https://forms.gle/…) for anonymous or non-technical reports.
 - Open a [content-correction issue](issues/new?template=content-correction.yml) if you have a GitHub account.
 
 ## Repository layout
@@ -22,8 +21,4 @@ Material icons, grid cards) are not understood by GitHub's markdown renderer.
 | `.github/workflows/deploy.yml` | GitHub Actions workflow (builds + deploys to Pages) |
 | `requirements.txt` | Python dependencies for local build |
 
-## For maintainers
 
-```bash
-pip install -r requirements.txt
-mkdocs serve          # preview at http://127.0.0.1:8000
