@@ -46,13 +46,13 @@ Minimize \(f(x) = x^3 - 3x + 1\) over \(x \in \mathbb{R}\).
 1. **First-order condition.**
 
    \[
-     f'(x) = 3x^2 - 3 = 3(x-1)(x+1) = 0 \;\Rightarrow\; x = \pm 1 .
+     \f'(x) = 3x^2 - 3 = 3(x-1)(x+1) = 0 \;\Rightarrow\; x = \pm 1 .
    \]
    
 3. **Second-order condition.**
 
    \[
-     f''(x) = 6x,\qquad f''(1) = 6>0,\qquad f''(-1)=-6<0.
+     \f''(x) = 6x,\qquad f''(1) = 6>0,\qquad f''(-1)=-6<0.
    \]
    
 5. **Classification.**
