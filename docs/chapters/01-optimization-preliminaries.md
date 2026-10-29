@@ -48,6 +48,7 @@ Minimize \(f(x) = x^3 - 3x + 1\) over \(x \in \mathbb{R}\).
 **Second-order condition.** $f''(x) = 6x$, $f''(1) = 6>0$, $f''(-1)=-6<0$. 
 
 **Classification.**
+
    - \(x = 1\): strict local minimum with \(f(1) = 1 - 3 + 1 = -1\).
    - \(x = -1\): strict local maximum with \(f(-1) = -1 + 3 + 1 = 3\).
 
