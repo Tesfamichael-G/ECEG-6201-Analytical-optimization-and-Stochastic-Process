@@ -184,17 +184,6 @@ The eigenvalues of \(H\) are \(3\pm\sqrt{5}>0\), so \(H\succ 0\) there — usefu
 
 Here is a step-by-step breakdown of how each part of the example is computed and what it means.
 
----
-
-### 1. Given Function
-
-We are given the two-variable polynomial function:
-
-
-$$f(x_1, x_2) = x_1^2 x_2 + x_2^3 - 2 x_1$$
-
----
-
 ### Computing the Gradient Vector, $\nabla f(x_1, x_2)$
 
 The gradient is a column vector containing the first-order partial derivatives of $f$:
@@ -205,7 +194,6 @@ $$\nabla f(x_1, x_2) = \begin{bmatrix} \frac{\partial f}{\partial x_1} \\ \frac{
 
 $$\frac{\partial f}{\partial x_1} = \frac{\partial}{\partial x_1}(x_1^2 x_2) + 0 - \frac{\partial}{\partial x_1}(2 x_1) = 2x_1 x_2 - 2$$
 
-
 * **Partial derivative with respect to $x_2$** (treat $x_1$ as a constant):
 
 $$\frac{\partial f}{\partial x_2} = \frac{\partial}{\partial x_2}(x_1^2 x_2) + \frac{\partial}{\partial x_2}(x_2^3) - 0 = x_1^2 + 3x_2^2$$
@@ -213,8 +201,6 @@ $$\frac{\partial f}{\partial x_2} = \frac{\partial}{\partial x_2}(x_1^2 x_2) + \
 Putting them together gives the gradient vector:
 
 $$\nabla f(x_1,x_2) = \begin{bmatrix} 2x_1 x_2 - 2 \\ x_1^2 + 3x_2^2 \end{bmatrix}$$
-
----
 
 ### Computing the Hessian Matrix, $H(x_1, x_2)$
 
@@ -231,14 +217,11 @@ Putting these into the matrix format gives:
 
 $$H(x_1,x_2) = \begin{bmatrix} 2x_2 & 2x_1 \\ 2x_1 & 6x_2 \end{bmatrix}$$
 
----
-
 ### Evaluation at Point $(x_1, x_2) = (1, 2)$
 
 #### Gradient at $(1, 2)$:
 
 $$\nabla f(1, 2) = \begin{bmatrix} 2(1)(2) - 2 \\ (1)^2 + 3(2)^2 \end{bmatrix} = \begin{bmatrix} 4 - 2 \\ 1 + 12 \end{bmatrix} = \begin{bmatrix} 2 \\ 13 \end{bmatrix} = (2, 13)^\top$$
-
 
 *(The transpose symbol $\top$ turns the row representation back into a column vector).*
 
