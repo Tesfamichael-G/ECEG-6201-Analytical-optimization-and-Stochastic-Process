@@ -44,10 +44,13 @@ A point that satisfies the necessary condition \(\nabla f(x^\star)=0\) is a **st
 Minimize \(f(x) = x^3 - 3x + 1\) over \(x \in \mathbb{R}\).
 
 **First-order condition.** $f'(x) = 3x^2 - 3 = 3(x-1)(x+1) = 0 \Rightarrow x = \pm 1$.
+
 **Second-order condition.** $f''(x) = 6x$, $f''(1) = 6>0$, $f''(-1)=-6<0$. 
+
 **Classification.**
    - \(x = 1\): strict local minimum with \(f(1) = 1 - 3 + 1 = -1\).
    - \(x = -1\): strict local maximum with \(f(-1) = -1 + 3 + 1 = 3\).
+
 **Global behavior.** Because \(f(x) \to +\infty\) as \(x \to +\infty\) and \(f(x) \to -\infty\) as \(x \to -\infty\), neither a global minimum nor a global maximum exists on \(\mathbb{R}\).
 
 !!! tip "Takeaway"
