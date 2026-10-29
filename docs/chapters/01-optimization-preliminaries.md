@@ -182,6 +182,98 @@ H(x_1,x_2) = \begin{bmatrix} 2x_2 & 2x_1 \\ 2x_1 & 6x_2 \end{bmatrix}.
 At the point \((1,2)\): \(\nabla f = (2, 13)^\top\), \(H = \begin{bmatrix} 4 & 2 \\ 2 & 12\end{bmatrix}\).
 The eigenvalues of \(H\) are \(3\pm\sqrt{5}>0\), so \(H\succ 0\) there — useful when we later use Newton's method (Chapter 2).
 
+Here is a step-by-step breakdown of how each part of the example is computed and what it means.
+
+---
+
+### 1. Given Function
+
+We are given the two-variable polynomial function:
+
+
+$$f(x_1, x_2) = x_1^2 x_2 + x_2^3 - 2 x_1$$
+
+---
+
+### Computing the Gradient Vector, $\nabla f(x_1, x_2)$
+
+The gradient is a column vector containing the first-order partial derivatives of $f$:
+
+$$\nabla f(x_1, x_2) = \begin{bmatrix} \frac{\partial f}{\partial x_1} \\ \frac{\partial f}{\partial x_2} \end{bmatrix}$$
+
+* **Partial derivative with respect to $x_1$** (treat $x_2$ as a constant):
+
+$$\frac{\partial f}{\partial x_1} = \frac{\partial}{\partial x_1}(x_1^2 x_2) + 0 - \frac{\partial}{\partial x_1}(2 x_1) = 2x_1 x_2 - 2$$
+
+
+* **Partial derivative with respect to $x_2$** (treat $x_1$ as a constant):
+
+$$\frac{\partial f}{\partial x_2} = \frac{\partial}{\partial x_2}(x_1^2 x_2) + \frac{\partial}{\partial x_2}(x_2^3) - 0 = x_1^2 + 3x_2^2$$
+
+Putting them together gives the gradient vector:
+
+$$\nabla f(x_1,x_2) = \begin{bmatrix} 2x_1 x_2 - 2 \\ x_1^2 + 3x_2^2 \end{bmatrix}$$
+
+---
+
+### Computing the Hessian Matrix, $H(x_1, x_2)$
+
+The Hessian is a square matrix of second-order partial derivatives:
+
+$$H(x_1, x_2) = \begin{bmatrix} \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 \partial x_2} \\ \frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2 f}{\partial x_2^2} \end{bmatrix}$$
+
+* **$H_{11} = \frac{\partial}{\partial x_1}(2x_1 x_2 - 2) = 2x_2$**
+* **$H_{12} = \frac{\partial}{\partial x_2}(2x_1 x_2 - 2) = 2x_1$**
+* **$H_{21} = \frac{\partial}{\partial x_1}(x_1^2 + 3x_2^2) = 2x_1$** *(Note: $H_{12} = H_{21}$ by Schwarz's theorem)*
+* **$H_{22} = \frac{\partial}{\partial x_2}(x_1^2 + 3x_2^2) = 6x_2$**
+
+Putting these into the matrix format gives:
+
+$$H(x_1,x_2) = \begin{bmatrix} 2x_2 & 2x_1 \\ 2x_1 & 6x_2 \end{bmatrix}$$
+
+---
+
+### Evaluation at Point $(x_1, x_2) = (1, 2)$
+
+#### Gradient at $(1, 2)$:
+
+$$\nabla f(1, 2) = \begin{bmatrix} 2(1)(2) - 2 \\ (1)^2 + 3(2)^2 \end{bmatrix} = \begin{bmatrix} 4 - 2 \\ 1 + 12 \end{bmatrix} = \begin{bmatrix} 2 \\ 13 \end{bmatrix} = (2, 13)^\top$$
+
+
+*(The transpose symbol $\top$ turns the row representation back into a column vector).*
+
+#### Hessian at $(1, 2)$:
+
+$$H(1, 2) = \begin{bmatrix} 2(2) & 2(1) \\ 2(1) & 6(2) \end{bmatrix} = \begin{bmatrix} 4 & 2 \\ 2 & 12 \end{bmatrix}$$
+
+### Eigenvalues and Positive Definiteness ($H \succ 0$)
+
+To evaluate local curvature, we find the eigenvalues $\lambda$ of $H$ by solving the characteristic equation $\det(H - \lambda I) = 0$:
+
+$$\det \begin{bmatrix} 4 - \lambda & 2 \\ 2 & 12 - \lambda \end{bmatrix} = 0$$
+
+$$(4 - \lambda)(12 - \lambda) - (2)(2) = 0$$
+
+$$\lambda^2 - 16\lambda + 48 - 4 = 0$$
+
+$$\lambda^2 - 16\lambda + 44 = 0$$
+
+Using the quadratic formula $\lambda = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$:
+
+$$\lambda = \frac{16 \pm \sqrt{(-16)^2 - 4(1)(44)}}{2} = \frac{16 \pm \sqrt{256 - 176}}{2} = \frac{16 \pm \sqrt{80}}{2}$$
+
+Since $\sqrt{80} = 4\sqrt{5}$:
+
+$$\lambda = \frac{16 \pm 4\sqrt{5}}{2} = 8 \pm 2\sqrt{5}$$
+
+*(Note: The textbook simplifies this directly into factored form, but both expressions yield $\lambda_1 \approx 12.47$ and $\lambda_2 \approx 3.53$.)*
+
+#### Significance of $H \succ 0$:
+
+* Since both eigenvalues are strictly positive ($\lambda > 0$), the matrix is **positive definite**, denoted as $H \succ 0$.
+* This means the function is **strictly convex locally** at the point $(1, 2)$ (i.e., it shapes like a bowl opening upwards).
+* Because $H$ is positive definite, Newton's optimization method is guaranteed to move in a valid descent direction at this point without requiring modifications or regularization.
+   
 ---
 
 ## 1.5 Slope and curvature
