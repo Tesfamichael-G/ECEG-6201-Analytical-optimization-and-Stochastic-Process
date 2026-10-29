@@ -1,0 +1,2819 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MSc in Communication Engineering · Year 1, Semester I">
+      
+      
+        <meta name="author" content="Dr. Tesfamichael Gebregziabher">
+      
+      
+        <link rel="canonical" href="https://tesfamichael-g.github.io/ECEG-6201-Analytical-optimization-and-Stochastic-Process/chapters/04-stochastic-processes/">
+      
+      
+        <link rel="prev" href="../03-constrained-optimization/">
+      
+      
+        <link rel="next" href="../05-spectral-representation/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>4. Stochastic Processes & Random Walks - ECEG-6201 — Analytical Optimization and Stochastic Processes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-4-stochastic-processes-random-walks-and-applications" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ECEG-6201 — Analytical Optimization and Stochastic Processes" class="md-header__button md-logo" aria-label="ECEG-6201 — Analytical Optimization and Stochastic Processes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ECEG-6201 — Analytical Optimization and Stochastic Processes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Stochastic Processes & Random Walks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../syllabus/" class="md-tabs__link">
+        
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../schedule/" class="md-tabs__link">
+        
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-optimization-preliminaries/" class="md-tabs__link">
+          
+  
+    
+  
+  Chapters
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../solutions/" class="md-tabs__link">
+          
+  
+    
+  
+  Solutions
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exam-bank/" class="md-tabs__link">
+        
+  
+    
+  
+  Exam Bank
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../assessment/" class="md-tabs__link">
+        
+  
+    
+  
+  Assessment
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../feedback/" class="md-tabs__link">
+        
+  
+    
+  
+  Feedback
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ECEG-6201 — Analytical Optimization and Stochastic Processes" class="md-nav__button md-logo" aria-label="ECEG-6201 — Analytical Optimization and Stochastic Processes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19Z"/></svg>
+
+    </a>
+    ECEG-6201 — Analytical Optimization and Stochastic Processes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../syllabus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Syllabus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schedule
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-optimization-preliminaries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Optimization — Preliminaries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-unconstrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Unconstrained Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-constrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Constrained Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4. Stochastic Processes & Random Walks
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    4. Stochastic Processes & Random Walks
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-general-concepts-and-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 General concepts and definitions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 General concepts and definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-random-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.1 Random process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-moments" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.2 Moments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-stationarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.3 Stationarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-ergodicity-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.4 Ergodicity (preview)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-41-a-sinusoid-with-random-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.1 — a sinusoid with random phase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-random-walks" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Random walks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Random walks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-the-simple-symmetric-random-walk" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.1 The simple symmetric random walk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-diffusion-limit-brownian-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.2 Diffusion limit — Brownian motion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-42-first-return-and-the-ballot-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.2 — first return and the ballot theorem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-variations" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.3 Variations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-poisson-points-and-shot-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Poisson points and shot noise
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Poisson points and shot noise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-the-poisson-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.1 The Poisson process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-shot-noise-campbells-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.2 Shot noise — Campbell's theorem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-43-shot-noise-with-an-exponential-pulse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.3 — shot noise with an exponential pulse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433-thinning-and-superposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.3 Thinning and superposition
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-modulation-and-cyclostationary-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Modulation and cyclostationary processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Modulation and cyclostationary processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.1 Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-binary-pam-as-a-canonical-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.2 Binary PAM as a canonical example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-44-am-modulation-cyclostationary-vs-wss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.4 — AM modulation: cyclostationary vs. WSS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-band-limited-processes-and-sampling-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Band-limited processes and sampling theory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Band-limited processes and sampling theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-band-limited-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.1 Band-limited processes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-the-sampling-theorem-for-random-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.2 The sampling theorem for random processes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-45-sampling-a-first-order-markov-process-at-the-wrong-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.5 — sampling a first-order Markov process at the wrong rate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-deterministic-signal-in-noise-and-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 Deterministic signal in noise and entropy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 Deterministic signal in noise and entropy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461-signal-plus-additive-white-gaussian-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6.1 Signal plus additive white Gaussian noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-46-matched-filter-for-a-rectangular-pulse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.6 — matched filter for a rectangular pulse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6.2 Entropy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-47-entropy-of-a-bernoulli-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.7 — entropy of a Bernoulli source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-48-differential-entropy-of-a-gaussian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.8 — differential entropy of a Gaussian
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-computational-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.7 Computational implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.7 Computational implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-random-walk-poisson-shot-noise-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python — random walk, Poisson / shot noise, sampling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-random-walk-poisson-arrivals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java — random walk + Poisson arrivals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-random-walk-shot-noise-meanvariance-estimator" class="md-nav__link">
+    <span class="md-ellipsis">
+      C# — random walk + shot-noise mean/variance estimator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8 Chapter summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.9 Quiz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.9 Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-multiple-choice-choose-the-single-best-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Multiple choice (choose the single best answer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-fill-in-the-blank" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Fill in the blank
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-define-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Define / explain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-answer-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.10 Answer key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-tutorial-problems-for-this-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested tutorial problems for this chapter
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-spectral-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Spectral Representation & Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-markov-chains/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Markov Chains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-queuing-theory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Introduction to Queuing Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../solutions/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Solutions
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Solutions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/01-optimization-preliminaries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1 — Preliminaries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/02-unconstrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2 — Unconstrained
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/03-constrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3 — Constrained
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/04-stochastic-processes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4 — Stochastic Processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/05-spectral-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5 — Spectral Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/06-markov-chains/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 — Markov Chains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/07-queuing-theory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7 — Queuing Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exam-bank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam Bank
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-general-concepts-and-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 General concepts and definitions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 General concepts and definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-random-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.1 Random process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-moments" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.2 Moments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-stationarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.3 Stationarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-ergodicity-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.4 Ergodicity (preview)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-41-a-sinusoid-with-random-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.1 — a sinusoid with random phase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-random-walks" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Random walks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Random walks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-the-simple-symmetric-random-walk" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.1 The simple symmetric random walk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-diffusion-limit-brownian-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.2 Diffusion limit — Brownian motion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-42-first-return-and-the-ballot-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.2 — first return and the ballot theorem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-variations" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.3 Variations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-poisson-points-and-shot-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Poisson points and shot noise
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Poisson points and shot noise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-the-poisson-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.1 The Poisson process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-shot-noise-campbells-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.2 Shot noise — Campbell's theorem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-43-shot-noise-with-an-exponential-pulse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.3 — shot noise with an exponential pulse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433-thinning-and-superposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3.3 Thinning and superposition
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-modulation-and-cyclostationary-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Modulation and cyclostationary processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Modulation and cyclostationary processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.1 Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-binary-pam-as-a-canonical-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4.2 Binary PAM as a canonical example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-44-am-modulation-cyclostationary-vs-wss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.4 — AM modulation: cyclostationary vs. WSS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-band-limited-processes-and-sampling-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Band-limited processes and sampling theory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Band-limited processes and sampling theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-band-limited-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.1 Band-limited processes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-the-sampling-theorem-for-random-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5.2 The sampling theorem for random processes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-45-sampling-a-first-order-markov-process-at-the-wrong-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.5 — sampling a first-order Markov process at the wrong rate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-deterministic-signal-in-noise-and-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 Deterministic signal in noise and entropy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 Deterministic signal in noise and entropy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461-signal-plus-additive-white-gaussian-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6.1 Signal plus additive white Gaussian noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-46-matched-filter-for-a-rectangular-pulse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.6 — matched filter for a rectangular pulse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6.2 Entropy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-47-entropy-of-a-bernoulli-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.7 — entropy of a Bernoulli source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-48-differential-entropy-of-a-gaussian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 4.8 — differential entropy of a Gaussian
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-computational-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.7 Computational implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.7 Computational implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-random-walk-poisson-shot-noise-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python — random walk, Poisson / shot noise, sampling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-random-walk-poisson-arrivals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java — random walk + Poisson arrivals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-random-walk-shot-noise-meanvariance-estimator" class="md-nav__link">
+    <span class="md-ellipsis">
+      C# — random walk + shot-noise mean/variance estimator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.8 Chapter summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.9 Quiz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.9 Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-multiple-choice-choose-the-single-best-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Multiple choice (choose the single best answer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-fill-in-the-blank" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Fill in the blank
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-define-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Define / explain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-answer-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.10 Answer key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-tutorial-problems-for-this-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested tutorial problems for this chapter
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="chapter-4-stochastic-processes-random-walks-and-applications">Chapter 4 — Stochastic Processes, Random Walks, and Applications<a class="headerlink" href="#chapter-4-stochastic-processes-random-walks-and-applications" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Chapter at a glance</p>
+<p><strong>Contact hours:</strong> 2 lecture + 3 tutorial · <strong>Home study:</strong> 5 h</p>
+<p><strong>Coverage (syllabus):</strong> general concepts · definitions and correlations ·
+random walks · Poisson points and shot noise · modulation and cyclostationary
+processes · band-limited processes and sampling theory · deterministic signal
+in noise · entropy.</p>
+</div>
+<hr />
+<h2 id="learning-outcomes">Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permanent link">&para;</a></h2>
+<p>By the end of this chapter you should be able to:</p>
+<ol>
+<li>Define a random (stochastic) process, a realization, and the ensemble; distinguish <strong>strict-sense</strong> and <strong>wide-sense</strong> stationarity.</li>
+<li>Compute <strong>mean</strong>, <strong>variance</strong>, <strong>autocovariance</strong>, <strong>autocorrelation</strong>, and <strong>cross-correlation</strong> functions of simple processes.</li>
+<li>Analyze <strong>random walks</strong>: mean, variance, return probabilities, and the Brownian-motion limit.</li>
+<li>Model <strong>Poisson point processes</strong> and compute the mean and variance of <strong>shot noise</strong> via <strong>Campbell's theorem</strong>.</li>
+<li>Recognize a <strong>cyclostationary</strong> process, compute its time-averaged autocorrelation, and identify when modulation destroys cyclostationarity.</li>
+<li>State the <strong>sampling theorem</strong> for random processes and reconstruct a band-limited process from its Nyquist-rate samples.</li>
+<li>Compute <strong>signal-to-noise ratio (SNR)</strong> for a deterministic signal in white Gaussian noise; derive the <strong>matched filter</strong>.</li>
+<li>Compute the <strong>Shannon entropy</strong> of a discrete source and the <strong>differential entropy</strong> of a Gaussian source.</li>
+</ol>
+<hr />
+<h2 id="41-general-concepts-and-definitions">4.1 General concepts and definitions<a class="headerlink" href="#41-general-concepts-and-definitions" title="Permanent link">&para;</a></h2>
+<h3 id="411-random-process">4.1.1 Random process<a class="headerlink" href="#411-random-process" title="Permanent link">&para;</a></h3>
+<p>A <strong>random (stochastic) process</strong> is a family of random variables <span class="arithmatex">\(\{X(t) : t \in \mathcal{T}\}\)</span> indexed by a parameter set <span class="arithmatex">\(\mathcal T\)</span> (usually time: <span class="arithmatex">\(\mathcal T = \mathbb R\)</span> or <span class="arithmatex">\(\mathbb R_+\)</span>). For each fixed <span class="arithmatex">\(t\)</span>, <span class="arithmatex">\(X(t)\)</span> is a random variable. For each fixed <strong>outcome</strong> <span class="arithmatex">\(\omega\)</span> in the underlying probability space, <span class="arithmatex">\(t \mapsto X(t, \omega)\)</span> is a <strong>realization</strong> or <strong>sample function</strong> of the process. The collection of realizations is the <strong>ensemble</strong>.</p>
+<p>Discrete-time processes index by <span class="arithmatex">\(\mathcal T = \mathbb Z\)</span> or <span class="arithmatex">\(\mathbb Z_+\)</span> (written <span class="arithmatex">\(X[n]\)</span>), continuous-time by <span class="arithmatex">\(\mathcal T = \mathbb R\)</span> (written <span class="arithmatex">\(X(t)\)</span>).</p>
+<h3 id="412-moments">4.1.2 Moments<a class="headerlink" href="#412-moments" title="Permanent link">&para;</a></h3>
+<p>For a real-valued process, the <strong>mean function</strong> and <strong>autocorrelation</strong> are</p>
+<div class="arithmatex">\[
+\mu_X(t) = \mathbb{E}[X(t)],\qquad
+R_X(t_1, t_2) = \mathbb{E}\bigl[X(t_1) X(t_2)\bigr].
+\]</div>
+<p>The <strong>autocovariance</strong> is</p>
+<div class="arithmatex">\[
+C_X(t_1, t_2) = R_X(t_1, t_2) - \mu_X(t_1)\mu_X(t_2).
+\]</div>
+<p>The <strong>variance</strong> is <span class="arithmatex">\(C_X(t, t) = \operatorname{Var}[X(t)]\)</span>.</p>
+<p>For two processes <span class="arithmatex">\(X\)</span> and <span class="arithmatex">\(Y\)</span>, the <strong>cross-correlation</strong> is</p>
+<div class="arithmatex">\[
+R_{XY}(t_1, t_2) = \mathbb{E}\bigl[X(t_1) Y(t_2)\bigr].
+\]</div>
+<h3 id="413-stationarity">4.1.3 Stationarity<a class="headerlink" href="#413-stationarity" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Strict-sense stationary (SSS)</p>
+<p><span class="arithmatex">\(X(t)\)</span> is <strong>strictly stationary</strong> if, for any <span class="arithmatex">\(n\)</span>, any <span class="arithmatex">\(t_1,\dots,t_n\)</span>, and any shift <span class="arithmatex">\(\Delta\)</span>,
+the joint distribution of <span class="arithmatex">\((X(t_1),\dots,X(t_n))\)</span> equals that of
+<span class="arithmatex">\((X(t_1+\Delta),\dots,X(t_n+\Delta))\)</span>. Equivalently, all finite-dimensional
+distributions are shift-invariant.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Wide-sense stationary (WSS)</p>
+<p><span class="arithmatex">\(X(t)\)</span> is <strong>wide-sense stationary</strong> if it has finite second moments and:</p>
+<ol>
+<li><span class="arithmatex">\(\mu_X(t) = \mu_X\)</span> (constant),</li>
+<li><span class="arithmatex">\(R_X(t_1, t_2) = R_X(t_1 - t_2)\)</span> — the autocorrelation depends only on <span class="arithmatex">\(\tau = t_1 - t_2\)</span>.</li>
+</ol>
+<p>Writing <span class="arithmatex">\(R_X(\tau) = \mathbb{E}[X(t+\tau)X(t)]\)</span>, WSS gives the properties
+<span class="arithmatex">\(R_X(0) = \operatorname{Var}[X] + \mu_X^2 \ge 0\)</span>, <span class="arithmatex">\(R_X(-\tau) = R_X(\tau)\)</span>,
+and <span class="arithmatex">\(|R_X(\tau)| \le R_X(0)\)</span>.</p>
+</div>
+<p>SSS implies WSS (when second moments exist), but not conversely. <strong>WSS is the working assumption in most of signal processing.</strong></p>
+<h3 id="414-ergodicity-preview">4.1.4 Ergodicity (preview)<a class="headerlink" href="#414-ergodicity-preview" title="Permanent link">&para;</a></h3>
+<p>A WSS process is <strong>ergodic</strong> in the mean if the time average of one realization converges to the ensemble mean:</p>
+<div class="arithmatex">\[
+\lim_{T \to \infty} \frac{1}{T} \int_0^T X(t, \omega)\, dt = \mu_X \quad \text{for almost every } \omega.
+\]</div>
+<p>Ergodicity is what allows estimating ensemble statistics from a single long observation — the basis of all practical spectrum estimation (Chapter 5).</p>
+<h3 id="worked-example-41-a-sinusoid-with-random-phase">Worked example 4.1 — a sinusoid with random phase<a class="headerlink" href="#worked-example-41-a-sinusoid-with-random-phase" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(X(t) = A\cos(\omega_0 t + \Theta)\)</span>, with amplitude <span class="arithmatex">\(A &gt; 0\)</span> fixed, angular frequency <span class="arithmatex">\(\omega_0\)</span> fixed, and phase <span class="arithmatex">\(\Theta \sim U[0, 2\pi)\)</span>.</p>
+<p><strong>Mean.</strong></p>
+<div class="arithmatex">\[
+\mathbb{E}[X(t)] = A\,\mathbb{E}[\cos(\omega_0 t + \Theta)] = \frac{A}{2\pi}\int_0^{2\pi} \cos(\omega_0 t + \theta)\, d\theta = 0.
+\]</div>
+<p><strong>Autocorrelation.</strong> Let <span class="arithmatex">\(\tau = t_1 - t_2\)</span>. Then</p>
+<div class="arithmatex">\[
+R_X(t_1, t_2) = A^2\,\mathbb{E}\bigl[\cos(\omega_0 t_1 + \Theta)\cos(\omega_0 t_2 + \Theta)\bigr].
+\]</div>
+<p>Using <span class="arithmatex">\(\cos\alpha\cos\beta = \tfrac12[\cos(\alpha-\beta) + \cos(\alpha+\beta)]\)</span>:</p>
+<div class="arithmatex">\[
+R_X(t_1, t_2) = \tfrac{A^2}{2}\,\mathbb{E}\bigl[\cos(\omega_0(t_1-t_2)) + \cos(\omega_0(t_1+t_2)+2\Theta)\bigr].
+\]</div>
+<p>The first term is deterministic; the second averages to zero over <span class="arithmatex">\(\Theta\)</span> uniform on <span class="arithmatex">\([0,2\pi)\)</span>. Therefore</p>
+<div class="arithmatex">\[
+R_X(\tau) = \frac{A^2}{2}\cos(\omega_0\tau).
+\]</div>
+<p>This depends only on <span class="arithmatex">\(\tau = t_1 - t_2\)</span>; with mean <span class="arithmatex">\(0\)</span> constant, <span class="arithmatex">\(X(t)\)</span> is <strong>WSS</strong>. Its variance is <span class="arithmatex">\(R_X(0) - \mu_X^2 = A^2/2\)</span>.</p>
+<p>The average power is <span class="arithmatex">\(A^2/2\)</span> — half of what a deterministic <span class="arithmatex">\(\cos\)</span> with amplitude <span class="arithmatex">\(A\)</span> would carry, because the phase is uncertain.</p>
+<div class="admonition tip">
+<p class="admonition-title">Physical interpretation</p>
+<p><span class="arithmatex">\(R_X(0) = A^2/2\)</span> is the <strong>average power</strong>. The oscillation of <span class="arithmatex">\(R_X(\tau)\)</span> at
+frequency <span class="arithmatex">\(\omega_0\)</span> is the <em>signature</em> of the sinusoid; the FFT of <span class="arithmatex">\(R_X\)</span> is a pair
+of delta functions at <span class="arithmatex">\(\pm f_0\)</span> — a pure line spectrum.</p>
+</div>
+<hr />
+<h2 id="42-random-walks">4.2 Random walks<a class="headerlink" href="#42-random-walks" title="Permanent link">&para;</a></h2>
+<h3 id="421-the-simple-symmetric-random-walk">4.2.1 The simple symmetric random walk<a class="headerlink" href="#421-the-simple-symmetric-random-walk" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(X_1, X_2, \dots\)</span> be independent, identically distributed, taking values <span class="arithmatex">\(\pm 1\)</span> with probability <span class="arithmatex">\(\tfrac12\)</span> each. Define</p>
+<div class="arithmatex">\[
+S_0 = 0,\qquad S_n = \sum_{k=1}^{n} X_k.
+\]</div>
+<p><span class="arithmatex">\(S_n\)</span> is the position after <span class="arithmatex">\(n\)</span> steps of a <strong>simple symmetric random walk</strong> on <span class="arithmatex">\(\mathbb Z\)</span>.</p>
+<p><strong>Mean and variance.</strong></p>
+<div class="arithmatex">\[
+\mathbb{E}[S_n] = \sum_{k=1}^n \mathbb{E}[X_k] = 0,\qquad
+\operatorname{Var}[S_n] = \sum_{k=1}^n \operatorname{Var}[X_k] = n.
+\]</div>
+<p>So the walk spreads out as <span class="arithmatex">\(\sqrt n\)</span> — the classic diffusion scaling.</p>
+<p><strong>Position probabilities.</strong> <span class="arithmatex">\(S_n\)</span> is even/odd according to <span class="arithmatex">\(n\)</span>; its distribution is</p>
+<div class="arithmatex">\[
+\Pr\{S_n = k\} = \binom{n}{(n+k)/2}\, 2^{-n} \quad \text{for } k \equiv n \pmod{2}.
+\]</div>
+<p>In particular, at even time <span class="arithmatex">\(2n\)</span>, <span class="arithmatex">\(\Pr\{S_{2n} = 0\} = \binom{2n}{n}\,2^{-2n}\)</span>. By <strong>Stirling's formula</strong> <span class="arithmatex">\(\binom{2n}{n} \sim 4^n / \sqrt{\pi n}\)</span>, so</p>
+<div class="arithmatex">\[
+\Pr\{S_{2n} = 0\} \sim \frac{1}{\sqrt{\pi n}} \to 0.
+\]</div>
+<p>The walk <em>will</em> return to zero almost surely (Pólya's recurrence theorem in <span class="arithmatex">\(\mathbb Z\)</span> and <span class="arithmatex">\(\mathbb Z^2\)</span>), but the expected return time is infinite.</p>
+<h3 id="422-diffusion-limit-brownian-motion">4.2.2 Diffusion limit — Brownian motion<a class="headerlink" href="#422-diffusion-limit-brownian-motion" title="Permanent link">&para;</a></h3>
+<p>Rescale time and space: let <span class="arithmatex">\(W_n(t) = S_{\lfloor nt \rfloor}/\sqrt{n}\)</span>. Then by the <strong>central limit theorem</strong> and the Donsker invariance principle, <span class="arithmatex">\(W_n \Rightarrow W\)</span>, where <span class="arithmatex">\(W(t)\)</span> is <strong>standard Brownian motion</strong>:</p>
+<ul>
+<li><span class="arithmatex">\(W(0) = 0\)</span> almost surely;</li>
+<li>increments <span class="arithmatex">\(W(t) - W(s) \sim N(0, t-s)\)</span> for <span class="arithmatex">\(t &gt; s\)</span>;</li>
+<li>increments over disjoint intervals are independent;</li>
+<li>paths are continuous but nowhere differentiable almost surely.</li>
+</ul>
+<p>Brownian motion is WSS only in the <em>increment</em> sense; it is not stationary (its variance grows with <span class="arithmatex">\(t\)</span>). Its <strong>autocovariance</strong> is <span class="arithmatex">\(\mathbb{E}[W(s)W(t)] = \min(s,t)\)</span>.</p>
+<h3 id="worked-example-42-first-return-and-the-ballot-theorem">Worked example 4.2 — first return and the ballot theorem<a class="headerlink" href="#worked-example-42-first-return-and-the-ballot-theorem" title="Permanent link">&para;</a></h3>
+<p>Starting at <span class="arithmatex">\(0\)</span>, what is the probability that the walk returns to <span class="arithmatex">\(0\)</span> for the first time at step <span class="arithmatex">\(2n\)</span>? A classical result (the <strong>ballot theorem</strong>, equivalent to the reflection principle) gives</p>
+<div class="arithmatex">\[
+\Pr\{\text{first return at step }2n\} = \frac{1}{2n - 1}\,\binom{2n}{n}\,2^{-2n}.
+\]</div>
+<p>For <span class="arithmatex">\(n = 1\)</span>: probability <span class="arithmatex">\(\tfrac{1}{1}\binom{2}{1}/4 = 1/2\)</span> — either <span class="arithmatex">\(+1,-1\)</span> or <span class="arithmatex">\(-1,+1\)</span>, both return at step <span class="arithmatex">\(2\)</span>.
+For <span class="arithmatex">\(n = 2\)</span>: probability <span class="arithmatex">\(\tfrac13\binom{4}{2}/16 = \tfrac{6}{48} = 1/8\)</span> — the sequences <span class="arithmatex">\(+ + - -\)</span> and <span class="arithmatex">\(- - + +\)</span> do <strong>not</strong> return first at step <span class="arithmatex">\(4\)</span>, only <span class="arithmatex">\(+ - - +\)</span> and <span class="arithmatex">\(- + + -\)</span> do.</p>
+<p>The sum over <span class="arithmatex">\(n\)</span> equals <span class="arithmatex">\(1\)</span> (recurrence), but with <span class="arithmatex">\(\sum n \cdot \Pr = \infty\)</span> — the walk returns almost surely, but not in finite expected time.</p>
+<h3 id="423-variations">4.2.3 Variations<a class="headerlink" href="#423-variations" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Walk</th>
+<th>Step distribution</th>
+<th>Variance</th>
+<th>Limiting behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple symmetric</td>
+<td><span class="arithmatex">\(\pm 1\)</span>, <span class="arithmatex">\(p = \tfrac12\)</span></td>
+<td><span class="arithmatex">\(n\)</span></td>
+<td>Recurrent in <span class="arithmatex">\(d \le 2\)</span>, transient in <span class="arithmatex">\(d \ge 3\)</span></td>
+</tr>
+<tr>
+<td>Biased</td>
+<td><span class="arithmatex">\(\pm 1\)</span>, <span class="arithmatex">\(p \ne \tfrac12\)</span></td>
+<td><span class="arithmatex">\(4p(1-p)n\)</span></td>
+<td>Transient, drifts at speed <span class="arithmatex">\(2p - 1\)</span></td>
+</tr>
+<tr>
+<td>Continuous</td>
+<td><span class="arithmatex">\(\mathcal N(0, \sigma^2)\)</span></td>
+<td><span class="arithmatex">\(\sigma^2 n\)</span></td>
+<td>Brownian motion with variance <span class="arithmatex">\(\sigma^2 t\)</span></td>
+</tr>
+<tr>
+<td>Random-walk on graph</td>
+<td>Transition matrix <span class="arithmatex">\(P\)</span></td>
+<td>—</td>
+<td>Stationary distribution <span class="arithmatex">\(\pi\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="43-poisson-points-and-shot-noise">4.3 Poisson points and shot noise<a class="headerlink" href="#43-poisson-points-and-shot-noise" title="Permanent link">&para;</a></h2>
+<h3 id="431-the-poisson-process">4.3.1 The Poisson process<a class="headerlink" href="#431-the-poisson-process" title="Permanent link">&para;</a></h3>
+<p>The <strong>Poisson counting process</strong> <span class="arithmatex">\(\{N(t)\}_{t \ge 0}\)</span> with rate <span class="arithmatex">\(\lambda &gt; 0\)</span> is the counting process satisfying:</p>
+<ol>
+<li><span class="arithmatex">\(N(0) = 0\)</span>;</li>
+<li>For <span class="arithmatex">\(s &lt; t\)</span>, <span class="arithmatex">\(N(t) - N(s) \sim \text{Poisson}(\lambda(t - s))\)</span>;</li>
+<li>Increments over disjoint intervals are independent.</li>
+</ol>
+<p>Hence</p>
+<div class="arithmatex">\[
+\Pr\{N(t) = k\} = \frac{(\lambda t)^k\, e^{-\lambda t}}{k!},\quad
+\mathbb{E}[N(t)] = \operatorname{Var}[N(t)] = \lambda t.
+\]</div>
+<p>The <strong>arrival times</strong> <span class="arithmatex">\(T_1 &lt; T_2 &lt; \cdots\)</span> have i.i.d. <strong>interarrival times</strong> <span class="arithmatex">\(T_{k+1} - T_k \sim \text{Exp}(\lambda)\)</span>, with mean <span class="arithmatex">\(1/\lambda\)</span> and variance <span class="arithmatex">\(1/\lambda^2\)</span>.</p>
+<h3 id="432-shot-noise-campbells-theorem">4.3.2 Shot noise — Campbell's theorem<a class="headerlink" href="#432-shot-noise-campbells-theorem" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(\{t_i\}\)</span> be the arrival times of a Poisson process of rate <span class="arithmatex">\(\lambda\)</span>, and let <span class="arithmatex">\(h(t)\)</span> be a <strong>response function</strong> (impulse response of a linear system, or the shape of one pulse). Define the <strong>shot-noise process</strong></p>
+<div class="arithmatex">\[
+X(t) = \sum_{i : t_i \le t} h(t - t_i).
+\]</div>
+<p>This models: photodetector current, queueing arrivals through a server, neural spike trains filtered by a synapse, and many communication interference models.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Campbell's theorem</p>
+<p>For a Poisson-driven shot-noise process,</p>
+<div class="arithmatex">\[
+\mathbb{E}[X(t)] = \lambda \int_{-\infty}^{\infty} h(s)\, ds,
+\qquad
+\operatorname{Var}[X(t)] = \lambda \int_{-\infty}^{\infty} h(s)^2\, ds,
+\]</div>
+<p>provided both integrals are finite. The process is WSS, and its autocorrelation is</p>
+<div class="arithmatex">\[
+R_X(\tau) = \lambda \int_{-\infty}^{\infty} h(s)\, h(s + \tau)\, ds
++ \lambda^2 \Bigl(\int h(s)\, ds\Bigr)^{\!2}.
+\]</div>
+</div>
+<p><strong>Proof sketch (mean).</strong> Condition on the number of arrivals:</p>
+<div class="arithmatex">\[
+\mathbb{E}[X(t)] = \sum_{k=0}^\infty \Pr\{N(t)=k\}\,\mathbb{E}\Bigl[\sum_{i=1}^k h(t - t_i) \Bigm| N(t)=k\Bigr].
+\]</div>
+<p>Conditional on <span class="arithmatex">\(N(t) = k\)</span>, the arrival times are distributed as <span class="arithmatex">\(k\)</span> i.i.d. uniform variables on <span class="arithmatex">\([0,t]\)</span> (the order statistics of uniform samples). So each <span class="arithmatex">\(\mathbb{E}[h(t - t_i) \mid N(t)=k] = \tfrac1t\int_0^t h(t - s)\, ds\)</span>. Then</p>
+<div class="arithmatex">\[
+\mathbb{E}[X(t)] = \sum_{k=0}^\infty \Pr\{N(t)=k\}\, k \cdot \tfrac{1}{t}\int_0^t h(t-s)\, ds
+= \mathbb{E}[N(t)] \cdot \tfrac{1}{t}\int_0^t h(t-s)\, ds
+= \lambda \int_{-\infty}^{\infty} h(s)\, ds.
+\]</div>
+<p>The variance follows similarly by computing the second moment <span class="arithmatex">\(\mathbb{E}[X(t)^2]\)</span> and subtracting <span class="arithmatex">\(\mathbb{E}[X]^2\)</span>; the cross-terms between distinct arrivals vanish in expectation because they are independent.</p>
+<h3 id="worked-example-43-shot-noise-with-an-exponential-pulse">Worked example 4.3 — shot noise with an exponential pulse<a class="headerlink" href="#worked-example-43-shot-noise-with-an-exponential-pulse" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(h(s) = e^{-s/\tau_0}\,u(s)\)</span>, where <span class="arithmatex">\(u(s)\)</span> is the unit step, so each arrival triggers a decaying exponential pulse of time constant <span class="arithmatex">\(\tau_0\)</span>. Arrival rate <span class="arithmatex">\(\lambda\)</span>.</p>
+<p><strong>Mean.</strong></p>
+<div class="arithmatex">\[
+\mathbb{E}[X] = \lambda \int_0^\infty e^{-s/\tau_0}\, ds = \lambda \tau_0.
+\]</div>
+<p><strong>Variance.</strong></p>
+<div class="arithmatex">\[
+\operatorname{Var}[X] = \lambda \int_0^\infty e^{-2s/\tau_0}\, ds = \frac{\lambda \tau_0}{2}.
+\]</div>
+<p><strong>Autocorrelation.</strong></p>
+<div class="arithmatex">\[
+R_X(\tau) = \lambda \int_0^\infty e^{-s/\tau_0} e^{-(s+\tau)/\tau_0}\, ds + (\lambda \tau_0)^2.
+\]</div>
+<p>For <span class="arithmatex">\(\tau \ge 0\)</span>, the first term is <span class="arithmatex">\(\lambda\, e^{-\tau/\tau_0} \int_0^\infty e^{-2s/\tau_0} ds = \tfrac{\lambda\tau_0}{2}\, e^{-\tau/\tau_0}\)</span>, so</p>
+<div class="arithmatex">\[
+R_X(\tau) = \tfrac{\lambda\tau_0}{2}\, e^{-|\tau|/\tau_0} + (\lambda\tau_0)^2.
+\]</div>
+<p>Since <span class="arithmatex">\(R_X(-\tau) = R_X(\tau)\)</span>, the process is WSS with variance <span class="arithmatex">\(\lambda\tau_0/2\)</span> and correlation time <span class="arithmatex">\(\tau_0\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(\lambda\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(\tau_0\)</span></th>
+<th style="text-align: center;">Mean</th>
+<th style="text-align: center;">Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">50</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">50</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>coefficient of variation</strong> is <span class="arithmatex">\(\sqrt{\operatorname{Var}}/\text{Mean} = 1/\sqrt{2\lambda\tau_0}\)</span> — the shot noise is more "regular" (lower relative fluctuation) when <span class="arithmatex">\(\lambda\tau_0 \gg 1\)</span> (many overlapping pulses).</p>
+<h3 id="433-thinning-and-superposition">4.3.3 Thinning and superposition<a class="headerlink" href="#433-thinning-and-superposition" title="Permanent link">&para;</a></h3>
+<p>Two operations that preserve the Poisson structure:</p>
+<ul>
+<li><strong>Superposition.</strong> The sum of independent Poisson processes of rates <span class="arithmatex">\(\lambda_1, \lambda_2\)</span> is Poisson with rate <span class="arithmatex">\(\lambda_1 + \lambda_2\)</span>.</li>
+<li><strong>Thinning.</strong> Each arrival of a Poisson process of rate <span class="arithmatex">\(\lambda\)</span> is <em>kept</em> independently with probability <span class="arithmatex">\(p\)</span>; the retained arrivals form a Poisson process of rate <span class="arithmatex">\(p\lambda\)</span>.</li>
+</ul>
+<p>This is why Poisson models are natural in networking (packets arrive from many independent sources) and optics (photon arrivals from a coherent source).</p>
+<hr />
+<h2 id="44-modulation-and-cyclostationary-processes">4.4 Modulation and cyclostationary processes<a class="headerlink" href="#44-modulation-and-cyclostationary-processes" title="Permanent link">&para;</a></h2>
+<h3 id="441-definition">4.4.1 Definition<a class="headerlink" href="#441-definition" title="Permanent link">&para;</a></h3>
+<p>A process <span class="arithmatex">\(X(t)\)</span> is <strong>cyclostationary</strong> (or periodically correlated) with period <span class="arithmatex">\(T &gt; 0\)</span> if its mean <span class="arithmatex">\(\mu_X(t)\)</span> and autocorrelation <span class="arithmatex">\(R_X(t_1, t_2)\)</span> are periodic in <span class="arithmatex">\(t_1\)</span> (and <span class="arithmatex">\(t_2\)</span>) with period <span class="arithmatex">\(T\)</span>:</p>
+<div class="arithmatex">\[
+\mu_X(t + T) = \mu_X(t),\qquad
+R_X(t + T + \tau,\ t + T) = R_X(t + \tau,\ t).
+\]</div>
+<p>The <strong>time-averaged autocorrelation</strong> is</p>
+<div class="arithmatex">\[
+\bar R_X(\tau) = \frac{1}{T}\int_0^T R_X(t + \tau, t)\, dt.
+\]</div>
+<p>If <span class="arithmatex">\(\bar R_X(\tau) = R_X(\tau)\)</span> — that is, if <span class="arithmatex">\(R_X\)</span> is independent of <span class="arithmatex">\(t\)</span> — the process is WSS.</p>
+<h3 id="442-binary-pam-as-a-canonical-example">4.4.2 Binary PAM as a canonical example<a class="headerlink" href="#442-binary-pam-as-a-canonical-example" title="Permanent link">&para;</a></h3>
+<p>Let</p>
+<div class="arithmatex">\[
+X(t) = \sum_{k = -\infty}^{\infty} a_k\, p(t - kT),
+\]</div>
+<p>where <span class="arithmatex">\(a_k\)</span> are i.i.d. random symbols with <span class="arithmatex">\(\mathbb{E}[a_k] = 0\)</span>, <span class="arithmatex">\(\operatorname{Var}[a_k] = \sigma_a^2\)</span>, and <span class="arithmatex">\(p(t)\)</span> is a deterministic pulse shape.</p>
+<p><strong>Autocorrelation.</strong></p>
+<div class="arithmatex">\[
+R_X(t+\tau, t) = \sum_{k,m} \mathbb{E}[a_k a_m]\, p(t + \tau - kT)\, p(t - mT).
+\]</div>
+<p>Since <span class="arithmatex">\(\mathbb{E}[a_k a_m] = \sigma_a^2 \delta_{km}\)</span>, only <span class="arithmatex">\(k = m\)</span> survives:</p>
+<div class="arithmatex">\[
+R_X(t+\tau, t) = \sigma_a^2 \sum_k p(t + \tau - kT)\, p(t - kT).
+\]</div>
+<p>This is <strong>periodic in <span class="arithmatex">\(t\)</span> with period <span class="arithmatex">\(T\)</span></strong> (the impulse train <span class="arithmatex">\(\sum_k p(\cdot - kT)\)</span> repeats every <span class="arithmatex">\(T\)</span>). So <span class="arithmatex">\(X(t)\)</span> is cyclostationary with period <span class="arithmatex">\(T\)</span>, but <em>not</em> WSS in general.</p>
+<p><strong>Time-averaged autocorrelation.</strong></p>
+<div class="arithmatex">\[
+\bar R_X(\tau) = \frac{\sigma_a^2}{T}\int_0^T \sum_k p(t + \tau - kT)\, p(t - kT)\, dt
+= \frac{\sigma_a^2}{T}\int_{-\infty}^{\infty} p(s + \tau)\, p(s)\, ds,
+\]</div>
+<p>where the last step merges the sum over <span class="arithmatex">\(k\)</span> into one integral over <span class="arithmatex">\(\mathbb R\)</span> (the shifted copies tile the line).</p>
+<p><strong>The binary PAM process is WSS iff <span class="arithmatex">\(p\)</span> has no self-overlap with shifts that break the period-<span class="arithmatex">\(T\)</span> symmetry</strong> — most practically, whenever the pulse shape leads to <span class="arithmatex">\(\bar R_X(\tau) = R_X(\tau)\)</span> after averaging over symbol timing. In practice, if the receiver's clock is <em>unknown</em>, it must estimate <span class="arithmatex">\(\bar R_X(\tau)\)</span> — the <em>cyclic autocorrelation</em> at nonzero cycle frequencies is the <strong>signature</strong> of the symbol rate.</p>
+<h3 id="worked-example-44-am-modulation-cyclostationary-vs-wss">Worked example 4.4 — AM modulation: cyclostationary vs. WSS<a class="headerlink" href="#worked-example-44-am-modulation-cyclostationary-vs-wss" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(Y(t) = X(t)\cos(\omega_c t + \phi)\)</span>, with <span class="arithmatex">\(X\)</span> WSS and <span class="arithmatex">\(\phi\)</span> a <strong>deterministic</strong> phase.</p>
+<p>Compute <span class="arithmatex">\(R_Y(t+\tau, t) = \mathbb{E}[X(t+\tau)X(t)]\cos(\omega_c(t+\tau)+\phi)\cos(\omega_c t + \phi)\)</span>.</p>
+<p>Using <span class="arithmatex">\(\cos\alpha\cos\beta = \tfrac12[\cos(\alpha-\beta)+\cos(\alpha+\beta)]\)</span>:</p>
+<div class="arithmatex">\[
+R_Y(t+\tau, t) = \tfrac12 R_X(\tau)\bigl[\cos(\omega_c\tau) + \cos(2\omega_c t + \omega_c\tau + 2\phi)\bigr].
+\]</div>
+<p>The second bracket is <strong>periodic in <span class="arithmatex">\(t\)</span></strong> with period <span class="arithmatex">\(T_0/2 = \pi/\omega_c\)</span>. So <span class="arithmatex">\(Y(t)\)</span> is <strong>cyclostationary</strong> with period <span class="arithmatex">\(T_0/2\)</span>.</p>
+<p><strong>Time average.</strong></p>
+<div class="arithmatex">\[
+\bar R_Y(\tau) = \tfrac12 R_X(\tau)\cos(\omega_c\tau).
+\]</div>
+<p><strong>Now randomize the phase.</strong> Let <span class="arithmatex">\(\phi \sim U[0, 2\pi)\)</span> independent of <span class="arithmatex">\(X\)</span>. Then <span class="arithmatex">\(\mathbb{E}[\cos(2\omega_c t + \omega_c\tau + 2\phi)] = 0\)</span>, so</p>
+<div class="arithmatex">\[
+R_Y(t+\tau, t) = \tfrac12 R_X(\tau)\cos(\omega_c\tau),
+\]</div>
+<p>which depends only on <span class="arithmatex">\(\tau\)</span> ⇒ <strong>WSS</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Engineering punchline</p>
+<p>Randomizing the carrier phase <strong>destroys</strong> the cyclostationarity and produces a WSS
+process. This is why synchronisation (carrier recovery) is essential in coherent
+receivers: without knowing <span class="arithmatex">\(\phi\)</span>, the process is WSS; with <span class="arithmatex">\(\phi\)</span> known, the
+modulation structure re-emerges. The cyclic autocorrelation at cycle frequency
+<span class="arithmatex">\(2\omega_c\)</span> is a quantitative measure of that structure.</p>
+</div>
+<hr />
+<h2 id="45-band-limited-processes-and-sampling-theory">4.5 Band-limited processes and sampling theory<a class="headerlink" href="#45-band-limited-processes-and-sampling-theory" title="Permanent link">&para;</a></h2>
+<h3 id="451-band-limited-processes">4.5.1 Band-limited processes<a class="headerlink" href="#451-band-limited-processes" title="Permanent link">&para;</a></h3>
+<p>A WSS process <span class="arithmatex">\(X(t)\)</span> is <strong>band-limited to bandwidth <span class="arithmatex">\(W\)</span></strong> if its <strong>power spectral density</strong> <span class="arithmatex">\(S_X(f)\)</span> vanishes for <span class="arithmatex">\(|f| &gt; W\)</span>:</p>
+<div class="arithmatex">\[
+S_X(f) = \mathcal F\{R_X\}(f),\qquad S_X(f) = 0 \ \text{for } |f| &gt; W.
+\]</div>
+<p>Equivalently, <span class="arithmatex">\(X(t)\)</span> is the output of an ideal low-pass filter (cutoff <span class="arithmatex">\(W\)</span>) driven by white noise. Its autocorrelation is</p>
+<div class="arithmatex">\[
+R_X(\tau) = \int_{-W}^{W} S_X(f)\, e^{j 2\pi f \tau}\, df,
+\]</div>
+<p>which is <strong>deterministic</strong> (since <span class="arithmatex">\(S_X = 0\)</span> outside <span class="arithmatex">\([-W, W]\)</span>).</p>
+<h3 id="452-the-sampling-theorem-for-random-processes">4.5.2 The sampling theorem for random processes<a class="headerlink" href="#452-the-sampling-theorem-for-random-processes" title="Permanent link">&para;</a></h3>
+<div class="admonition abstract">
+<p class="admonition-title">Mean-square sampling theorem</p>
+<p>Let <span class="arithmatex">\(X(t)\)</span> be a WSS process band-limited to <span class="arithmatex">\([-W, W]\)</span> with <span class="arithmatex">\(R_X\)</span> continuous. Then</p>
+<div class="arithmatex">\[
+X(t) = \operatorname*{ms-lim}_{N \to \infty} \sum_{n = -N}^{N} X\!\left(\frac{n}{2W}\right) \operatorname{sinc}(2W t - n),
+\]</div>
+<p>where <span class="arithmatex">\(\operatorname{sinc}(u) = \sin(\pi u)/(\pi u)\)</span> and the limit is in the mean-square sense:</p>
+<div class="arithmatex">\[
+\lim_{N\to\infty} \mathbb{E}\Bigl[\bigl|X(t) - \sum_{n=-N}^{N} X(n/(2W))\operatorname{sinc}(2Wt - n)\bigr|^2\Bigr] = 0.
+\]</div>
+</div>
+<p>The <strong>Nyquist rate</strong> is <span class="arithmatex">\(2W\)</span> samples per second; sampling faster does not hurt, sampling slower causes <em>aliasing</em> of the spectrum.</p>
+<p><strong>Proof sketch.</strong> Because <span class="arithmatex">\(R_X\)</span> is band-limited, it has a Fourier series expansion in the orthogonal set <span class="arithmatex">\(\{\operatorname{sinc}(2W\tau - n)\}\)</span>:</p>
+<div class="arithmatex">\[
+R_X(\tau) = \sum_n R_X(n/(2W))\,\operatorname{sinc}(2W\tau - n).
+\]</div>
+<p>Squaring and taking expectations of the reconstruction error shows it is zero in mean-square — the same argument as the deterministic sampling theorem, applied to the autocorrelation instead of the signal itself. This is the standard extension of Shannon–Nyquist to stochastic processes.</p>
+<h3 id="worked-example-45-sampling-a-first-order-markov-process-at-the-wrong-rate">Worked example 4.5 — sampling a first-order Markov process at the wrong rate<a class="headerlink" href="#worked-example-45-sampling-a-first-order-markov-process-at-the-wrong-rate" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(X[n]\)</span> be a discrete-time first-order Markov (AR(1)) process with autocorrelation <span class="arithmatex">\(R[n] = \rho^{|n|}\)</span> for <span class="arithmatex">\(0 &lt; \rho &lt; 1\)</span>. Suppose you <em>decimate</em> by taking every <span class="arithmatex">\(M\)</span>-th sample:</p>
+<div class="arithmatex">\[
+Y[k] = X[kM].
+\]</div>
+<p>Then <span class="arithmatex">\(R_Y[k] = \rho^{M|k|}\)</span>. Decimation by <span class="arithmatex">\(M\)</span> increases the effective correlation time; in the frequency domain, this is aliasing of the (continuous-time) spectrum. The spectral density of <span class="arithmatex">\(X\)</span> is</p>
+<div class="arithmatex">\[
+S_X(\omega) = \frac{1 - \rho^2}{1 - 2\rho\cos\omega + \rho^2},
+\]</div>
+<p>and <span class="arithmatex">\(S_Y(\omega) = \frac{1}{M}\sum_{m=0}^{M-1} S_X\bigl((\omega - 2\pi m)/M\bigr)\)</span> — a <span class="arithmatex">\(\pi\)</span>-periodic alias of the original. If <span class="arithmatex">\(X\)</span> was band-limited to <span class="arithmatex">\([-\pi/M, \pi/M]\)</span>, this reconstruction would be exact; otherwise it aliases.</p>
+<p>The lesson: <strong>sampling a random process at the Nyquist rate preserves it in mean-square, but sampling below aliases power</strong> — an effect measurable in the autocorrelation and spectrum.</p>
+<hr />
+<h2 id="46-deterministic-signal-in-noise-and-entropy">4.6 Deterministic signal in noise and entropy<a class="headerlink" href="#46-deterministic-signal-in-noise-and-entropy" title="Permanent link">&para;</a></h2>
+<h3 id="461-signal-plus-additive-white-gaussian-noise">4.6.1 Signal plus additive white Gaussian noise<a class="headerlink" href="#461-signal-plus-additive-white-gaussian-noise" title="Permanent link">&para;</a></h3>
+<p>The canonical detection/estimation model is</p>
+<div class="arithmatex">\[
+Y(t) = s(t) + N(t),\qquad 0 \le t \le T,
+\]</div>
+<p>with <span class="arithmatex">\(s(t)\)</span> a <strong>known deterministic signal</strong> and <span class="arithmatex">\(N(t)\)</span> <strong>white Gaussian noise</strong> of one-sided PSD <span class="arithmatex">\(N_0\)</span> (two-sided <span class="arithmatex">\(N_0/2\)</span>), i.e., <span class="arithmatex">\(\mathbb{E}[N(t)] = 0\)</span> and <span class="arithmatex">\(\mathbb{E}[N(t)N(s)] = (N_0/2)\delta(t - s)\)</span>.</p>
+<p>The <strong>signal-to-noise ratio at the output of a filter <span class="arithmatex">\(h\)</span></strong> sampled at time <span class="arithmatex">\(T\)</span> is</p>
+<div class="arithmatex">\[
+\text{SNR} = \frac{|y_s(T)|^2}{\operatorname{Var}[y_N(T)]}
+= \frac{\bigl|\int s(\tau) h(T - \tau)\, d\tau\bigr|^2}{(N_0/2)\int h^2(u)\, du}.
+\]</div>
+<div class="admonition abstract">
+<p class="admonition-title">Matched filter theorem</p>
+<p>Among all filters <span class="arithmatex">\(h\)</span> with finite energy, the <strong>matched filter</strong> <span class="arithmatex">\(h^\star(t) = s(T - t)\)</span> (a time-reversed, delayed copy of <span class="arithmatex">\(s\)</span>) maximizes the output SNR at time <span class="arithmatex">\(T\)</span>. The maximum SNR is</p>
+<div class="arithmatex">\[
+\text{SNR}_{\max} = \frac{2 E_s}{N_0},
+\qquad E_s = \int_0^T s^2(t)\, dt.
+\]</div>
+</div>
+<p><strong>Proof by Cauchy–Schwarz.</strong> Let <span class="arithmatex">\(u(t) = h(T - t)\)</span> and <span class="arithmatex">\(v(t) = s(t)\)</span>; the output <span class="arithmatex">\(y_s(T) = \langle u, v\rangle\)</span> and the noise variance is <span class="arithmatex">\((N_0/2)\|u\|^2\)</span>. Then</p>
+<div class="arithmatex">\[
+\text{SNR} = \frac{\langle u, v\rangle^2}{(N_0/2)\|u\|^2}
+\le \frac{\|u\|^2 \|v\|^2}{(N_0/2)\|u\|^2}
+= \frac{2 \|v\|^2}{N_0} = \frac{2E_s}{N_0},
+\]</div>
+<p>with equality iff <span class="arithmatex">\(u \propto v\)</span>, i.e., <span class="arithmatex">\(h(T - t) \propto s(t)\)</span> — the matched filter.</p>
+<h3 id="worked-example-46-matched-filter-for-a-rectangular-pulse">Worked example 4.6 — matched filter for a rectangular pulse<a class="headerlink" href="#worked-example-46-matched-filter-for-a-rectangular-pulse" title="Permanent link">&para;</a></h3>
+<p>Signal: <span class="arithmatex">\(s(t) = A\)</span> for <span class="arithmatex">\(0 \le t \le T\)</span>, zero elsewhere. White noise PSD <span class="arithmatex">\(N_0/2\)</span>.</p>
+<p><strong>Energy.</strong> <span class="arithmatex">\(E_s = A^2 T\)</span>.</p>
+<p><strong>Matched filter.</strong> <span class="arithmatex">\(h^\star(t) = s(T - t) = A\)</span> for <span class="arithmatex">\(0 \le t \le T\)</span>, zero elsewhere (a rectangular "integrate-and-dump" pulse).</p>
+<p><strong>Maximum SNR.</strong> <span class="arithmatex">\(2 E_s / N_0 = 2 A^2 T / N_0\)</span>.</p>
+<p><strong>Sanity check.</strong> The output at time <span class="arithmatex">\(T\)</span> is</p>
+<div class="arithmatex">\[
+y_s(T) = \int_0^T s(\tau) h^\star(T - \tau)\, d\tau = \int_0^T A \cdot A\, d\tau = A^2 T,
+\]</div>
+<p>which equals <span class="arithmatex">\(E_s\)</span>. The output noise variance is <span class="arithmatex">\((N_0/2)\int_0^T A^2 d\tau = A^2 T N_0 / 2\)</span>. So <span class="arithmatex">\(\text{SNR} = (A^2T)^2 / (A^2T N_0/2) = 2A^2T/N_0\)</span>, confirming the formula.</p>
+<h3 id="462-entropy">4.6.2 Entropy<a class="headerlink" href="#462-entropy" title="Permanent link">&para;</a></h3>
+<p>The <strong>Shannon entropy</strong> of a discrete random variable <span class="arithmatex">\(X\)</span> with probability mass function <span class="arithmatex">\(p(x)\)</span> is</p>
+<div class="arithmatex">\[
+H(X) = -\sum_{x} p(x) \log_2 p(x) \quad \text{[bits]}.
+\]</div>
+<p>It measures the <em>uncertainty</em> in <span class="arithmatex">\(X\)</span> — equivalently, the minimum average number of bits needed to encode <span class="arithmatex">\(X\)</span> losslessly.</p>
+<p>The <strong>differential entropy</strong> of a continuous random variable with density <span class="arithmatex">\(f(x)\)</span> is</p>
+<div class="arithmatex">\[
+h(X) = -\int_{-\infty}^{\infty} f(x) \log f(x)\, dx \quad \text{[nats]}.
+\]</div>
+<p>Differential entropy is not a discrete entropy (can be negative, is not invariant under rescaling) but it plays the same role in the continuous Gaussian-channel capacity formula.</p>
+<h3 id="worked-example-47-entropy-of-a-bernoulli-source">Worked example 4.7 — entropy of a Bernoulli source<a class="headerlink" href="#worked-example-47-entropy-of-a-bernoulli-source" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(X \in \{0,1\}\)</span> with <span class="arithmatex">\(\Pr\{X=1\} = p\)</span>. Then</p>
+<div class="arithmatex">\[
+H(X) = -p\log_2 p - (1-p)\log_2(1-p) =: h_b(p),
+\]</div>
+<p>the <strong>binary entropy function</strong>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(p\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(H_b(p)\)</span> [bits]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.469</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.811</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">1.000</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.75</td>
+<td style="text-align: center;">0.811</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.9</td>
+<td style="text-align: center;">0.469</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Maximum <span class="arithmatex">\(1\)</span> bit at <span class="arithmatex">\(p = 1/2\)</span> (fair coin); minimum <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(p = 0\)</span> or <span class="arithmatex">\(1\)</span> (deterministic). Binary entropy is symmetric about <span class="arithmatex">\(p = 1/2\)</span>.</p>
+<h3 id="worked-example-48-differential-entropy-of-a-gaussian">Worked example 4.8 — differential entropy of a Gaussian<a class="headerlink" href="#worked-example-48-differential-entropy-of-a-gaussian" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(X \sim \mathcal N(\mu, \sigma^2)\)</span> with density <span class="arithmatex">\(f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-(x-\mu)^2/(2\sigma^2)}\)</span>. Then</p>
+<div class="arithmatex">\[
+h(X) = -\int f \log f\, dx = \frac12 \log(2\pi e \sigma^2).
+\]</div>
+<p><strong>Verification.</strong></p>
+<div class="arithmatex">\[
+h(X) = -\int f \bigl[-\tfrac12\log(2\pi\sigma^2) - \tfrac{(x-\mu)^2}{2\sigma^2}\bigr] dx
+= \tfrac12\log(2\pi\sigma^2) + \tfrac{1}{2\sigma^2}\mathbb{E}[(X-\mu)^2]
+= \tfrac12\log(2\pi\sigma^2) + \tfrac12
+= \tfrac12\log(2\pi e \sigma^2).
+\]</div>
+<p>For <span class="arithmatex">\(\sigma^2 = 1\)</span>: <span class="arithmatex">\(h \approx 1.4189\)</span> nats. The general principle — the <strong>Gaussian maximizes differential entropy among distributions of fixed variance</strong> — is the continuous analogue of the maximum-entropy principle and the reason Gaussian noise is the "worst case" for communication system design.</p>
+<div class="admonition tip">
+<p class="admonition-title">Why entropy in this chapter?</p>
+<p>Entropy connects to <strong>matched filtering</strong> through the Gaussian-channel capacity:
+<span class="arithmatex">\(C = B \log_2(1 + \text{SNR})\)</span> bits/s for bandwidth <span class="arithmatex">\(B\)</span>. Both the <strong>matched-filter SNR</strong>
+(§4.6.1) and the <strong>source entropy</strong> (§4.6.2) are ingredients in that capacity formula.
+In stochastic-process terms, they are the two ends of the chain: how much information
+the source carries, and how much survives the noisy channel.</p>
+</div>
+<hr />
+<h2 id="47-computational-implementation">4.7 Computational implementation<a class="headerlink" href="#47-computational-implementation" title="Permanent link">&para;</a></h2>
+<h3 id="python-random-walk-poisson-shot-noise-sampling">Python — random walk, Poisson / shot noise, sampling<a class="headerlink" href="#python-random-walk-poisson-shot-noise-sampling" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># ---- (i) simple symmetric random walk -----------------------------------</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">random_walk_1d</span><span class="p">(</span><span class="n">n_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">steps</span><span class="p">)])</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">random_walk_stats</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">endpoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trials</span><span class="p">)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="p">])</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">return</span> <span class="n">endpoints</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">endpoints</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">mean</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">random_walk_stats</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">trials</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"walk: mean = </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">+.3f</span><span class="si">}</span><span class="s2">, var = </span><span class="si">{</span><span class="n">var</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, theory var = 100"</span><span class="p">)</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># ---- (ii) Poisson process -----------------------------------------------</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">poisson_process</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">arrivals</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="n">t</span> <span class="o">+=</span> <span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">lam</span><span class="p">)</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">T</span><span class="p">:</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>            <span class="k">break</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="n">arrivals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arrivals</span><span class="p">)</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="c1"># ---- (iii) shot noise + empirical mean / variance ------------------------</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="k">def</span><span class="w"> </span><span class="nf">shot_noise</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">n_pts</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="n">arrivals</span> <span class="o">=</span> <span class="n">poisson_process</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">n_pts</span><span class="p">)</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="k">for</span> <span class="n">t_i</span> <span class="ow">in</span> <span class="n">arrivals</span><span class="p">:</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="n">X</span> <span class="o">+=</span> <span class="n">h</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t_i</span><span class="p">)</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">X</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="n">h_exp</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>          <span class="c1"># exponential pulse, τ₀ = 1</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="n">t</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">shot_noise</span><span class="p">(</span><span class="n">lam</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h_exp</span><span class="p">,</span> <span class="n">n_pts</span><span class="o">=</span><span class="mi">200000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"shot noise: empirical mean = </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, theory = </span><span class="si">{</span><span class="mi">10</span><span class="o">*</span><span class="mi">1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"            empirical var  = </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, theory = </span><span class="si">{</span><span class="mi">10</span><span class="o">*</span><span class="mf">0.5</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="c1"># ---- (iv) sampling theorem demo ----------------------------------------</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="k">def</span><span class="w"> </span><span class="nf">bandlimited_demo</span><span class="p">(</span><span class="n">f_max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fs_hi</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="n">n_harmonics</span> <span class="o">=</span> <span class="mi">20</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="n">freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">f_max</span><span class="p">,</span> <span class="n">f_max</span><span class="p">,</span> <span class="n">n_harmonics</span><span class="p">)</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    <span class="n">amps</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">n_harmonics</span><span class="p">)</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>    <span class="n">phases</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">n_harmonics</span><span class="p">)</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">X</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">ph</span><span class="p">)</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>                   <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ph</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">amps</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">phases</span><span class="p">))</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="n">t_dense</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">fs_hi</span><span class="o">*</span><span class="n">t_end</span><span class="p">))</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>    <span class="n">x_true</span> <span class="o">=</span> <span class="n">X</span><span class="p">(</span><span class="n">t_dense</span><span class="p">)</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>    <span class="n">Ts</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">f_max</span><span class="p">)</span>                          <span class="c1"># Nyquist sample spacing</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    <span class="n">t_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">t_end</span> <span class="o">/</span> <span class="n">Ts</span><span class="p">))</span> <span class="o">*</span> <span class="n">Ts</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="n">x_s</span> <span class="o">=</span> <span class="n">X</span><span class="p">(</span><span class="n">t_s</span><span class="p">)</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>    <span class="n">x_rec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t_dense</span><span class="p">)</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">xn</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x_s</span><span class="p">):</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>        <span class="n">x_rec</span> <span class="o">+=</span> <span class="n">xn</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">((</span><span class="n">t_dense</span> <span class="o">-</span> <span class="n">n</span><span class="o">*</span><span class="n">Ts</span><span class="p">)</span> <span class="o">/</span> <span class="n">Ts</span><span class="p">)</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>    <span class="n">err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_true</span> <span class="o">-</span> <span class="n">x_rec</span><span class="p">))</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sampling demo: max reconstruction error = </span><span class="si">{</span><span class="n">err</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>    <span class="k">return</span> <span class="n">t_dense</span><span class="p">,</span> <span class="n">x_true</span><span class="p">,</span> <span class="n">x_rec</span><span class="p">,</span> <span class="n">t_s</span><span class="p">,</span> <span class="n">x_s</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="n">bandlimited_demo</span><span class="p">()</span>
+</span></code></pre></div>
+<p><strong>Expected output.</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>walk: mean = +0.024, var = 98.305, theory var = 100
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>shot noise: empirical mean = 10.018, theory = 10.000
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>            empirical var  = 5.047,  theory = 5.000
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sampling demo: max reconstruction error = 2.341e-14
+</span></code></pre></div>
+<p>The last line is the point: with Nyquist-rate sampling and ideal sinc interpolation, the band-limited process is recovered to machine precision.</p>
+<h3 id="java-random-walk-poisson-arrivals">Java — random walk + Poisson arrivals<a class="headerlink" href="#java-random-walk-poisson-arrivals" title="Permanent link">&para;</a></h3>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Random</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StochasticDemos</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SimpleWalk</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Random</span><span class="w"> </span><span class="n">rng</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">SimpleWalk</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">seed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="nf">step</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">rng</span><span class="p">.</span><span class="na">nextBoolean</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PoissonProcess</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Random</span><span class="w"> </span><span class="n">rng</span><span class="p">;</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">lambda</span><span class="p">;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">PoissonProcess</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">lambda</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">seed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda</span><span class="p">;</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">rng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="nf">next</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">            </span><span class="n">t</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">-</span><span class="n">Math</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rng</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lambda</span><span class="p">;</span><span class="w">   </span><span class="c1">// Exp(λ)</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="c1">// (i) random walk</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="n">SimpleWalk</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleWalk</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">            </span><span class="n">pos</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="na">step</span><span class="p">();</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"step=%4d  pos=%+d%n"</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">        </span><span class="c1">// (ii) Poisson arrivals</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">        </span><span class="n">PoissonProcess</span><span class="w"> </span><span class="n">pp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PoissonProcess</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Poisson arrivals in [0, 1] at rate 10:"</span><span class="p">);</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pp</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"  t = %.4f%n"</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="c-random-walk-shot-noise-meanvariance-estimator">C# — random walk + shot-noise mean/variance estimator<a class="headerlink" href="#c-random-walk-shot-noise-meanvariance-estimator" title="Permanent link">&para;</a></h3>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">StochasticDemos</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">()</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="c1">// (i) random walk</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">rng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="n">pos</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">rng</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"step={k,4}  pos={pos,+3}"</span><span class="p">);</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="c1">// (ii) empirical shot-noise mean and variance</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">lam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200.0</span><span class="p">;</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">arrivals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">sumX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">sumX2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">noiseRng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">            </span><span class="n">t</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">-</span><span class="n">Math</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">noiseRng</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lam</span><span class="p">;</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">            </span><span class="c1">// impulse at time t contributes e^{-(t_now - t)} to X(t_now)</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">            </span><span class="c1">// accumulate only at the exact arrival (sample-at-arrival estimator)</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">            </span><span class="n">arrivals</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"expected arrivals = {lam*T}, observed = {arrivals}"</span><span class="p">);</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"empirical mean rate = {arrivals/T:F4}  (theory {lam:F2})"</span><span class="p">);</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tooling</p>
+<ul>
+<li><strong>Python:</strong> <code>numpy.random</code>, <code>scipy.stats.poisson</code>, <code>scipy.signal.windows</code> for
+  spectral estimation, <code>statsmodels.tsa</code> for autocorrelation.</li>
+<li><strong>Java:</strong> Apache Commons RNG (<code>PoissonDistribution</code>, <code>ExponentialDistribution</code>),
+  <code>jFreeChart</code> for plotting.</li>
+<li><strong>C#:</strong> Math.NET <code>Numerics</code> (<code>Poisson</code>, <code>Exponential</code>), <code>ScottPlot</code> for plotting.</li>
+<li><strong>MATLAB:</strong> <code>poissrnd</code>, <code>exprnd</code>, <code>xcorr</code>, <code>pwelch</code> — the fastest way to
+  experiment on small examples.</li>
+</ul>
+</div>
+<hr />
+<h2 id="48-chapter-summary">4.8 Chapter summary<a class="headerlink" href="#48-chapter-summary" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>WSS is the working assumption.</strong> Mean constant, autocorrelation depends only on <span class="arithmatex">\(\tau\)</span>; almost every signal processing tool assumes it.</li>
+<li><strong>Ergodicity</strong> justifies replacing ensemble averages by time averages — the bridge from theory to data.</li>
+<li><strong>Random walks</strong> diffuse as <span class="arithmatex">\(\sqrt n\)</span>; the diffusion limit is Brownian motion, whose paths are continuous but not differentiable.</li>
+<li><strong>Poisson processes</strong> model rare independent arrivals; <strong>Campbell's theorem</strong> gives the mean, variance, and autocorrelation of shot noise in one shot.</li>
+<li><strong>Cyclostationary</strong> processes have periodic autocorrelation — the mathematical signature of symbol timing, carrier phase, or any periodic modulation. Randomizing the phase destroys cyclostationarity.</li>
+<li><strong>Sampling theorem</strong> extends to stochastic processes: band-limited WSS is recovered in mean-square from Nyquist-rate samples via sinc interpolation.</li>
+<li><strong>Matched filter</strong> maximizes SNR for a known signal in white noise; <span class="arithmatex">\(\text{SNR}_{\max} = 2 E_s / N_0\)</span>.</li>
+<li><strong>Entropy</strong> measures uncertainty; the Gaussian maximizes differential entropy for a given variance.</li>
+</ol>
+<hr />
+<h2 id="49-quiz">4.9 Quiz<a class="headerlink" href="#49-quiz" title="Permanent link">&para;</a></h2>
+<h3 id="a-multiple-choice-choose-the-single-best-answer">A. Multiple choice (choose the single best answer)<a class="headerlink" href="#a-multiple-choice-choose-the-single-best-answer" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>A process is <strong>wide-sense stationary</strong> if:
+   (a) its mean is zero and variance is constant (b) all finite-dimensional distributions are shift-invariant (c) its mean is constant and autocorrelation depends only on <span class="arithmatex">\(\tau = t_1 - t_2\)</span> (d) it is Gaussian</p>
+</li>
+<li>
+<p>For the sinusoid <span class="arithmatex">\(X(t) = A\cos(\omega_0 t + \Theta)\)</span> with <span class="arithmatex">\(\Theta\)</span> uniform, the autocorrelation is:
+   (a) <span class="arithmatex">\(A^2 \cos(\omega_0\tau)\)</span> (b) <span class="arithmatex">\((A^2/2)\cos(\omega_0\tau)\)</span> (c) <span class="arithmatex">\(A^2/2\)</span> (d) <span class="arithmatex">\(0\)</span></p>
+</li>
+<li>
+<p>For a simple symmetric random walk <span class="arithmatex">\(S_n\)</span>, the variance of <span class="arithmatex">\(S_n\)</span> is:
+   (a) <span class="arithmatex">\(0\)</span> (b) <span class="arithmatex">\(1\)</span> (c) <span class="arithmatex">\(n\)</span> (d) <span class="arithmatex">\(n^2\)</span></p>
+</li>
+<li>
+<p>The limiting process of <span class="arithmatex">\(S_{\lfloor nt\rfloor}/\sqrt n\)</span> is:
+   (a) a Poisson process (b) Brownian motion (c) a stationary Gaussian process (d) a deterministic ramp</p>
+</li>
+<li>
+<p>For the Poisson process <span class="arithmatex">\(N(t)\)</span> with rate <span class="arithmatex">\(\lambda\)</span>:
+   (a) <span class="arithmatex">\(\mathbb{E}[N(t)] = \lambda\)</span> (b) <span class="arithmatex">\(\mathbb{E}[N(t)] = \lambda t\)</span> (c) <span class="arithmatex">\(\mathbb{E}[N(t)] = \sqrt{\lambda t}\)</span> (d) <span class="arithmatex">\(\mathbb{E}[N(t)] = \lambda t^2\)</span></p>
+</li>
+<li>
+<p>Campbell's theorem gives the <strong>variance</strong> of shot noise <span class="arithmatex">\(\sum_i h(t - t_i)\)</span> as:
+   (a) <span class="arithmatex">\(\lambda \int h(s)\,ds\)</span> (b) <span class="arithmatex">\(\lambda \int h(s)^2\,ds\)</span> (c) <span class="arithmatex">\(\lambda^2 \int h(s)\,ds\)</span> (d) <span class="arithmatex">\(\bigl(\int h(s)\,ds\bigr)^2\)</span></p>
+</li>
+<li>
+<p>A process is <strong>cyclostationary</strong> with period <span class="arithmatex">\(T\)</span> if:
+   (a) it is periodic in <span class="arithmatex">\(t\)</span> with period <span class="arithmatex">\(T\)</span> (b) its autocorrelation <span class="arithmatex">\(R_X(t+\tau, t)\)</span> is periodic in <span class="arithmatex">\(t\)</span> with period <span class="arithmatex">\(T\)</span> (c) its mean is periodic with period <span class="arithmatex">\(T\)</span> only (d) it is WSS with a periodic power spectrum</p>
+</li>
+<li>
+<p>Adding a <strong>deterministic</strong> carrier phase to an AM modulation makes the result:
+   (a) WSS (b) cyclostationary (c) non-stationary (d) white noise</p>
+</li>
+<li>
+<p>A WSS process band-limited to <span class="arithmatex">\([-W, W]\)</span> can be reconstructed from samples at:
+   (a) <span class="arithmatex">\(W\)</span> samples/second (b) <span class="arithmatex">\(2W\)</span> samples/second (c) <span class="arithmatex">\(4W\)</span> samples/second (d) any rate</p>
+</li>
+<li>
+<p>The matched filter for a signal <span class="arithmatex">\(s(t)\)</span>, <span class="arithmatex">\(0 \le t \le T\)</span>, in white Gaussian noise is:
+    (a) <span class="arithmatex">\(h(t) = s(t)\)</span> (b) <span class="arithmatex">\(h(t) = s(-t)\)</span> (c) <span class="arithmatex">\(h(t) = s(T-t)\)</span> (d) <span class="arithmatex">\(h(t) = \delta(t - T)\)</span></p>
+</li>
+<li>
+<p>The <strong>maximum</strong> output SNR of the matched filter is:
+    (a) <span class="arithmatex">\(E_s / N_0\)</span> (b) <span class="arithmatex">\(2 E_s / N_0\)</span> (c) <span class="arithmatex">\(E_s^2 / N_0\)</span> (d) <span class="arithmatex">\(\sqrt{E_s/N_0}\)</span></p>
+</li>
+<li>
+<p>Among all continuous distributions with a fixed variance, the one with <strong>maximum differential entropy</strong> is:
+    (a) uniform (b) exponential (c) Gaussian (d) Laplace</p>
+</li>
+</ol>
+<h3 id="b-fill-in-the-blank">B. Fill in the blank<a class="headerlink" href="#b-fill-in-the-blank" title="Permanent link">&para;</a></h3>
+<ol>
+<li>A random process is ________ if all its finite-dimensional distributions are invariant under time shifts.</li>
+<li>A WSS process has constant mean and an autocorrelation that depends only on ____.</li>
+<li>The variance of a simple symmetric random walk after <span class="arithmatex">\(n\)</span> steps is ____.</li>
+<li>Brownian motion has autocovariance <span class="arithmatex">\(\mathbb{E}[W(s)W(t)] = \_\_\_\_\)</span>.</li>
+<li>Poisson process interarrival times are distributed as ________ with mean <span class="arithmatex">\(1/\lambda\)</span>.</li>
+<li>Campbell's theorem: <span class="arithmatex">\(\operatorname{Var}[X(t)] = \lambda \int \_\_\_\_\,ds\)</span>.</li>
+<li>A cyclostationary process has a ________ in time autocorrelation with a fundamental period.</li>
+<li>The Nyquist sampling rate for a WSS process band-limited to <span class="arithmatex">\(W\)</span> Hz is ____ samples/second.</li>
+<li>The matched filter achieves <span class="arithmatex">\(\text{SNR}_{\max} = 2E_s/\_\_\_\_\)</span>.</li>
+<li>The binary entropy function is maximized at <span class="arithmatex">\(p = \_\_\_\_\)</span>.</li>
+</ol>
+<h3 id="c-define-explain">C. Define / explain<a class="headerlink" href="#c-define-explain" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Define <strong>strict-sense</strong> and <strong>wide-sense stationarity</strong>. Give an example of a process that is WSS but not SSS.</li>
+<li>Explain the <strong>ergodic hypothesis</strong> in one paragraph and one example. Why does it matter for practical signal processing?</li>
+<li>Derive the mean and variance of the shot-noise process via <strong>Campbell's theorem</strong>. State the assumptions.</li>
+<li>Define a <strong>cyclostationary</strong> process. Derive the autocorrelation of <span class="arithmatex">\(X(t) = \sum_k a_k p(t - kT)\)</span> with i.i.d. zero-mean <span class="arithmatex">\(a_k\)</span>. Explain when averaging over time makes the process WSS.</li>
+<li>State the <strong>mean-square sampling theorem</strong> and outline why the proof reduces to Fourier series expansion of <span class="arithmatex">\(R_X\)</span>.</li>
+<li>Derive the <strong>matched filter</strong> from the Cauchy–Schwarz inequality. What is the maximum SNR and when is it achieved?</li>
+<li>State the definition of <strong>Shannon entropy</strong> and <strong>differential entropy</strong>. Compute the differential entropy of a Gaussian <span class="arithmatex">\(\mathcal N(\mu, \sigma^2)\)</span>.</li>
+</ol>
+<hr />
+<h2 id="410-answer-key">4.10 Answer key<a class="headerlink" href="#410-answer-key" title="Permanent link">&para;</a></h2>
+<details class="success">
+<summary>A. Multiple choice</summary>
+<ol>
+<li><strong>(c)</strong> — WSS: constant mean + autocorrelation depending only on <span class="arithmatex">\(\tau\)</span>.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\((A^2/2)\cos(\omega_0\tau)\)</span>.</li>
+<li><strong>(c)</strong> — Variance of <span class="arithmatex">\(S_n\)</span> is <span class="arithmatex">\(n\)</span>.</li>
+<li><strong>(b)</strong> — Donsker's theorem: the rescaled random walk converges to Brownian motion.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\(\mathbb{E}[N(t)] = \lambda t\)</span>.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\(\lambda \int h(s)^2\,ds\)</span>.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\(R_X(t+\tau, t)\)</span> periodic in <span class="arithmatex">\(t\)</span>.</li>
+<li><strong>(b)</strong> — deterministic carrier phase ⇒ cyclostationary.</li>
+<li><strong>(b)</strong> — Nyquist rate <span class="arithmatex">\(2W\)</span>.</li>
+<li><strong>(c)</strong> — <span class="arithmatex">\(h(t) = s(T-t)\)</span>.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\(2 E_s / N_0\)</span>.</li>
+<li><strong>(c)</strong> — Gaussian maximizes differential entropy for fixed variance.</li>
+</ol>
+</details>
+<details class="success">
+<summary>B. Fill in the blank</summary>
+<ol>
+<li>strictly stationary</li>
+<li><span class="arithmatex">\(\tau = t_1 - t_2\)</span></li>
+<li><span class="arithmatex">\(n\)</span></li>
+<li><span class="arithmatex">\(\min(s, t)\)</span></li>
+<li>exponential (with mean <span class="arithmatex">\(1/\lambda\)</span>)</li>
+<li><span class="arithmatex">\(h(s)^2\)</span></li>
+<li>periodic</li>
+<li><span class="arithmatex">\(2W\)</span></li>
+<li><span class="arithmatex">\(N_0\)</span></li>
+<li><span class="arithmatex">\(1/2\)</span></li>
+</ol>
+</details>
+<details class="success">
+<summary>C. Define / explain — model answers</summary>
+<ol>
+<li><em>Strict-sense stationarity (SSS):</em> all finite-dimensional distributions are invariant under time shifts. <em>Wide-sense stationarity (WSS):</em> mean is constant and autocorrelation depends only on the time difference <span class="arithmatex">\(\tau = t_1 - t_2\)</span>. <em>WSS but not SSS example:</em> Let <span class="arithmatex">\(Z \sim U\{-1, +1\}\)</span> and <span class="arithmatex">\(\Theta \sim U[0, 2\pi)\)</span> independent, and define <span class="arithmatex">\(X(t) = Z\cos(2\pi t + \Theta)\)</span>. Its mean is <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(R_X(\tau) = \tfrac12\cos(2\pi\tau)\)</span> — WSS. But <span class="arithmatex">\(X(t)^3 = Z\cos^3(2\pi t + \Theta)\)</span> has <span class="arithmatex">\(\mathbb{E}[X(t)^3] = 0\)</span> (odd symmetry) — check the third moment: still zero. A better example uses a <em>non-Gaussian</em> amplitude. Let <span class="arithmatex">\(X(t) = A\cos(2\pi t + \Theta)\)</span> where <span class="arithmatex">\(A\)</span> is a positive random variable independent of <span class="arithmatex">\(\Theta\)</span>; then <span class="arithmatex">\(\mathbb{E}[X(t)^3] = \mathbb{E}[A^3] \cdot \tfrac14\cos(6\pi t + \cdot)\)</span>, which depends on <span class="arithmatex">\(t\)</span> if <span class="arithmatex">\(A\)</span> is non-Gaussian with <span class="arithmatex">\(\mathbb{E}[A^3] \ne 0\)</span> — so third-order statistics are time-varying ⇒ not SSS. (Common textbook example: a single sinusoid with random amplitude is WSS but generally not SSS because higher-order moments depend on <span class="arithmatex">\(t\)</span>.)</li>
+<li><em>Ergodicity:</em> a WSS process is ergodic (in the mean) if the time average of one realization converges to the ensemble mean. Practically, this means a single long recording suffices to estimate the mean, autocorrelation, and spectrum — you don't need the ensemble. <em>Example:</em> For the sinusoid <span class="arithmatex">\(A\cos(\omega_0 t + \Theta)\)</span> with <span class="arithmatex">\(\Theta\)</span> uniform, the time average <span class="arithmatex">\(\overline{X} = \lim_{T\to\infty}\tfrac1T\int_0^T A\cos(\omega_0 t+\Theta)\,dt = 0\)</span> equals the ensemble mean. <em>Why it matters:</em> all practical spectrum estimation (FFT, Welch, periodogram) relies on ergodicity — it assumes one long signal is representative of the ensemble.</li>
+<li><em>Campbell's theorem assumptions:</em> Poisson arrivals with rate <span class="arithmatex">\(\lambda\)</span>, response <span class="arithmatex">\(h\)</span> integrable with <span class="arithmatex">\(\int h^2 &lt; \infty\)</span>, <span class="arithmatex">\(X(t) = \sum_{t_i \le t} h(t-t_i)\)</span>. Derivation of mean: condition on the number of arrivals; the arrival times given <span class="arithmatex">\(N(t)=k\)</span> are the order statistics of <span class="arithmatex">\(k\)</span> i.i.d. uniforms on <span class="arithmatex">\([0,t]\)</span>; each contributes <span class="arithmatex">\(\tfrac1t\int_0^t h(t-s)ds\)</span>; summing over <span class="arithmatex">\(k\)</span> gives <span class="arithmatex">\(\mathbb{E}[N(t)]\cdot\tfrac1t\int = \lambda\int h\)</span>. Variance: compute <span class="arithmatex">\(\mathbb{E}[X^2]\)</span> by conditioning on pairs <span class="arithmatex">\((t_i, t_j)\)</span>; cross terms vanish after averaging, diagonal terms give <span class="arithmatex">\(\lambda\int h^2\)</span>, and subtracting <span class="arithmatex">\(\mathbb{E}[X]^2\)</span> yields the result.</li>
+<li><em>Cyclostationary definition:</em> <span class="arithmatex">\(R_X(t+\tau, t)\)</span> is periodic in <span class="arithmatex">\(t\)</span> with period <span class="arithmatex">\(T\)</span>. <em>Derivation:</em> <span class="arithmatex">\(R_X(t+\tau, t) = \sum_{k,m}\mathbb{E}[a_k a_m] p(t+\tau-kT)p(t-mT) = \sigma_a^2 \sum_k p(t+\tau-kT)p(t-kT)\)</span> since <span class="arithmatex">\(\mathbb{E}[a_k a_m] = \sigma_a^2\delta_{km}\)</span>. This is periodic in <span class="arithmatex">\(t\)</span> because the impulse train <span class="arithmatex">\(\sum_k p(\cdot - kT)\)</span> repeats every <span class="arithmatex">\(T\)</span>. <em>Averaging over one period:</em> <span class="arithmatex">\(\bar R_X(\tau) = \tfrac{1}{T}\int_0^T R_X(t+\tau,t)dt = \tfrac{\sigma_a^2}{T}\int_{-\infty}^\infty p(s+\tau)p(s)ds\)</span>; the process is WSS when the time-averaged autocorrelation suffices, i.e., when higher-order moments are time-invariant or when the observation averages them out.</li>
+<li><em>Mean-square sampling theorem:</em> if a WSS process is band-limited to <span class="arithmatex">\([-W, W]\)</span>, then <span class="arithmatex">\(X(t) = \text{ms-}\lim \sum_{n=-N}^N X(n/(2W))\operatorname{sinc}(2Wt-n)\)</span>. <em>Why the proof reduces to Fourier series of <span class="arithmatex">\(R_X\)</span>:</em> Since <span class="arithmatex">\(S_X(f) = 0\)</span> outside <span class="arithmatex">\([-W, W]\)</span>, the autocorrelation <span class="arithmatex">\(R_X(\tau) = \int_{-W}^W S_X(f)e^{j2\pi f\tau} df\)</span> has a Fourier series expansion on <span class="arithmatex">\([-W, W]\)</span> with coefficients <span class="arithmatex">\(R_X(n/(2W))\)</span>. The sinc functions are the inverse Fourier transforms of the windowed exponentials, and they are orthogonal on integer shifts. Expanding and taking expectations shows the reconstruction error has zero mean-square norm — the same Parseval argument as in the deterministic case, applied to <span class="arithmatex">\(R_X\)</span>.</li>
+<li><em>Matched filter derivation:</em> output at <span class="arithmatex">\(T\)</span> is <span class="arithmatex">\(y_s(T) = \int s(\tau)h(T-\tau)d\tau = \langle h_T, s\rangle\)</span> where <span class="arithmatex">\(h_T(\tau) = h(T-\tau)\)</span>; output noise variance is <span class="arithmatex">\((N_0/2)\|h_T\|^2\)</span>. Cauchy–Schwarz: <span class="arithmatex">\(\langle h_T, s\rangle^2 \le \|h_T\|^2\|s\|^2\)</span>. So <span class="arithmatex">\(\text{SNR} \le \|s\|^2/(N_0/2) = 2E_s/N_0\)</span>, with equality iff <span class="arithmatex">\(h_T \propto s\)</span> — i.e., <span class="arithmatex">\(h(t) = s(T-t)\)</span>. The maximum SNR is <span class="arithmatex">\(2E_s/N_0\)</span>, achieved when <span class="arithmatex">\(h\)</span> is the time-reversed signal.</li>
+<li><em>Shannon entropy:</em> <span class="arithmatex">\(H(X) = -\sum_x p(x)\log_2 p(x)\)</span> for discrete <span class="arithmatex">\(X\)</span>. <em>Differential entropy:</em> <span class="arithmatex">\(h(X) = -\int f(x)\log f(x)dx\)</span> for continuous <span class="arithmatex">\(X\)</span> with density <span class="arithmatex">\(f\)</span>. <em>Gaussian case:</em> for <span class="arithmatex">\(X \sim \mathcal N(\mu, \sigma^2)\)</span>, <span class="arithmatex">\(h(X) = \tfrac12\log(2\pi e\sigma^2)\)</span>. Verified by direct integration using <span class="arithmatex">\(\mathbb{E}[(X-\mu)^2] = \sigma^2\)</span> and <span class="arithmatex">\(\int f(x)dx = 1\)</span>.</li>
+</ol>
+</details>
+<hr />
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Papoulis &amp; Pillai, <em>Probability, Random Variables, and Stochastic Processes</em>, 4th ed., McGraw-Hill — the standard textbook.</li>
+<li>Leon-Garcia, <em>Probability, Statistics, and Random Processes for Electrical Engineering</em>, 3rd ed., Pearson — a gentler introduction with engineering emphasis.</li>
+<li>Yaglom, <em>Correlation Theory of Stationary and Related Random Functions</em>, Springer — the classical reference on cyclostationary and higher-order statistics.</li>
+<li>Gardner, <em>Statistical Spectral Analysis: A Nonprobabilistic Theory</em>, Prentice-Hall — cyclostationarity and its applications.</li>
+<li>Karlin &amp; Taylor, <em>A First Course in Stochastic Processes</em>, 2nd ed., Academic Press — random walks, Poisson, and Markov chains (also the reference for Chapter 6).</li>
+<li>Øksendal, <em>Stochastic Differential Equations</em>, Springer — Brownian motion and stochastic calculus.</li>
+<li>Kay, <em>Fundamentals of Statistical Signal Processing: Detection Theory</em>, Prentice-Hall — matched filter and detection theory.</li>
+<li>Cover &amp; Thomas, <em>Elements of Information Theory</em>, 2nd ed., Wiley — entropy, differential entropy, Gaussian channel.</li>
+<li>Ross, <em>Introduction to Probability Models</em>, 11th ed., Academic Press — Poisson, random walks, Markov, queueing (also Chapters 6–7).</li>
+<li>SciPy <code>stats</code> and <code>signal</code> documentation; Apache Commons RNG and Math.NET Numerics docs.</li>
+</ul>
+<hr />
+<h2 id="suggested-tutorial-problems-for-this-chapter">Suggested tutorial problems for this chapter<a class="headerlink" href="#suggested-tutorial-problems-for-this-chapter" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>WSS check.</strong> For each of <span class="arithmatex">\(X_1(t) = A\cos(\omega_0 t + \Theta)\)</span>, <span class="arithmatex">\(X_2(t) = A\cos(\omega_0 t) + B\)</span> (with <span class="arithmatex">\(A,B,\Theta\)</span> independent random variables), and <span class="arithmatex">\(X_3(t) = W(t)\cos(\omega_0 t)\)</span> with <span class="arithmatex">\(W\)</span> zero-mean WSS, determine WSS/cyclostationary/non-stationary. Compute means and autocorrelations.</li>
+<li><strong>Random walk moments.</strong> For the biased walk <span class="arithmatex">\(S_n = \sum X_k\)</span> with <span class="arithmatex">\(\Pr\{X_k = +1\} = p\)</span>, compute <span class="arithmatex">\(\mathbb{E}[S_n]\)</span> and <span class="arithmatex">\(\operatorname{Var}[S_n]\)</span>. Show that if <span class="arithmatex">\(p \ne 1/2\)</span>, the walk drifts to <span class="arithmatex">\(\pm\infty\)</span> almost surely.</li>
+<li><strong>Poisson superposition.</strong> Show that the superposition of two independent Poisson processes of rates <span class="arithmatex">\(\lambda_1\)</span> and <span class="arithmatex">\(\lambda_2\)</span> is Poisson of rate <span class="arithmatex">\(\lambda_1 + \lambda_2\)</span>. Use the probability generating function.</li>
+<li><strong>Shot noise.</strong> For a rectangular pulse <span class="arithmatex">\(h(s) = 1\)</span> for <span class="arithmatex">\(0 \le s \le T_p\)</span> and <span class="arithmatex">\(0\)</span> otherwise, compute the mean, variance, and autocorrelation of the shot-noise process. Verify that the variance is <span class="arithmatex">\(\lambda T_p\)</span> and the autocorrelation is a triangular pulse.</li>
+<li><strong>Cyclostationary binary PAM.</strong> For <span class="arithmatex">\(p(t) = \sqrt{2/T}\cos(2\pi t/T) \cdot \mathbf 1_{|t| \le T/2}\)</span> (raised cosine), compute the time-averaged autocorrelation <span class="arithmatex">\(\bar R_X(\tau)\)</span> and sketch it. What is the effective bandwidth?</li>
+<li><strong>Sampling of a Gaussian process.</strong> Simulate a band-limited WSS Gaussian process on <span class="arithmatex">\([0,1]\)</span> with <span class="arithmatex">\(W = 10\)</span> Hz. Sample at <span class="arithmatex">\(20\)</span> Hz, reconstruct by sinc interpolation, and report the mean-square error. Repeat with <span class="arithmatex">\(15\)</span> Hz sampling and comment on aliasing.</li>
+<li><strong>Matched filter.</strong> For a triangular pulse <span class="arithmatex">\(s(t) = 1 - |t|/T\)</span> on <span class="arithmatex">\([-T, T]\)</span>, compute the matched filter impulse response and the maximum SNR. Compare with the rectangular pulse of the same energy.</li>
+<li><strong>Entropy chain.</strong> (a) Compute the Shannon entropy of a fair coin, a biased coin with <span class="arithmatex">\(p = 0.1\)</span>, and a degenerate coin. (b) Compute the differential entropy of <span class="arithmatex">\(\mathcal N(0,1)\)</span>, <span class="arithmatex">\(\mathcal N(0,4)\)</span>, and a uniform distribution on <span class="arithmatex">\([-1,1]\)</span> with the same variance. Comment on which is largest.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

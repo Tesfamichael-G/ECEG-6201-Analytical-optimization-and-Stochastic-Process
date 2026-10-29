@@ -1,0 +1,3217 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MSc in Communication Engineering · Year 1, Semester I">
+      
+      
+        <meta name="author" content="Dr. Tesfamichael Gebregziabher">
+      
+      
+        <link rel="canonical" href="https://tesfamichael-g.github.io/ECEG-6201-Analytical-optimization-and-Stochastic-Process/chapters/01-optimization-preliminaries/">
+      
+      
+        <link rel="prev" href="../../schedule/">
+      
+      
+        <link rel="next" href="../02-unconstrained-optimization/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>1. Optimization — Preliminaries - ECEG-6201 — Analytical Optimization and Stochastic Processes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-1-optimization-preliminaries" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ECEG-6201 — Analytical Optimization and Stochastic Processes" class="md-header__button md-logo" aria-label="ECEG-6201 — Analytical Optimization and Stochastic Processes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ECEG-6201 — Analytical Optimization and Stochastic Processes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Optimization — Preliminaries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../syllabus/" class="md-tabs__link">
+        
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../schedule/" class="md-tabs__link">
+        
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Chapters
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../solutions/" class="md-tabs__link">
+          
+  
+    
+  
+  Solutions
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exam-bank/" class="md-tabs__link">
+        
+  
+    
+  
+  Exam Bank
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../assessment/" class="md-tabs__link">
+        
+  
+    
+  
+  Assessment
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../feedback/" class="md-tabs__link">
+        
+  
+    
+  
+  Feedback
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ECEG-6201 — Analytical Optimization and Stochastic Processes" class="md-nav__button md-logo" aria-label="ECEG-6201 — Analytical Optimization and Stochastic Processes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19Z"/></svg>
+
+    </a>
+    ECEG-6201 — Analytical Optimization and Stochastic Processes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../syllabus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Syllabus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schedule
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1. Optimization — Preliminaries
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1. Optimization — Preliminaries
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-characterization-of-a-minimum" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Characterization of a minimum
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Characterization of a minimum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-11-three-critical-points-of-a-cubic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.1 — three critical points of a cubic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-local-versus-global-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Local versus global minima
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Local versus global minima">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-12-a-quartic-with-two-global-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.2 — a quartic with two global minima
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-13-a-multimodal-function-where-locals-are-not-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.3 — a multimodal function where locals are not global
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-pareto-optimality-in-multi-objective-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Pareto-optimality in multi-objective optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Pareto-optimality in multi-objective optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-14-the-pareto-set-of-a-two-objective-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.4 — the Pareto set of a two-objective problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-gradient-and-hessian-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Gradient and Hessian matrix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 Gradient and Hessian matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-15-gradient-and-hessian-of-a-polynomial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.5 — gradient and Hessian of a polynomial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computing-the-gradient-vector-nabla-fx_1-x_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the Gradient Vector, \(\nabla f(x_1, x_2)\)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computing-the-hessian-matrix-hx_1-x_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the Hessian Matrix, \(H(x_1, x_2)\)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-at-point-x_1-x_2-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation at Point \((x_1, x_2) = (1, 2)\)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation at Point \((x_1, x_2) = (1, 2)\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradient-at-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradient at \((1, 2)\):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hessian-at-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hessian at \((1, 2)\):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigenvalues-and-positive-definiteness-h-succ-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigenvalues and Positive Definiteness (\(H \succ 0\))
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eigenvalues and Positive Definiteness (\(H \succ 0\))">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#significance-of-h-succ-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      Significance of \(H \succ 0\):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-slope-and-curvature" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 Slope and curvature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-properties-of-linear-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6 Properties of linear functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-properties-of-quadratic-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7 Properties of quadratic functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.7 Properties of quadratic functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-16-solve-a-quadratic-via-the-eigen-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.6 — solve a quadratic via the eigen-structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-optimality-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8 Optimality conditions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.8 Optimality conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#181-unconstrained" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.1 Unconstrained
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-17-first-order-and-second-order-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.7 — first-order and second-order conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182-linearly-constrained-equality-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.2 Linearly constrained — equality constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-18-projection-onto-an-affine-subspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.8 — projection onto an affine subspace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#183-linearly-constrained-inequality-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.3 Linearly constrained — inequality constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-19-a-small-inequality-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.9 — a small inequality problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#184-nonlinearly-constrained-full-kkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.4 Nonlinearly constrained — full KKT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-110-a-nonlinear-inequality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.10 — a nonlinear inequality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-the-line-search-subproblem" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9 The line-search subproblem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.9 The line-search subproblem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#191-bracketing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.1 Bracketing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#192-sectioning-golden-section-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.2 Sectioning — golden-section search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-111-golden-section-on-a-smooth-quadratic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.11 — golden-section on a smooth quadratic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#193-convergence-criteria-for-line-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.3 Convergence criteria for line search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110-derivatives-of-the-objective-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10 Derivatives of the objective function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.10 Derivatives of the objective function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1101-numerically-derived-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.1 Numerically derived gradient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-112-compare-numeric-and-analytic-gradients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.12 — compare numeric and analytic gradients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1102-analytically-derived-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.2 Analytically derived gradient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1103-adjoint-variable-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.3 Adjoint variable approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-113-adjoint-derivation-verified-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.13 — adjoint derivation verified by hand
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#111-computational-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.11 Computational implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.11 Computational implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python (NumPy)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-comparison-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost comparison at a glance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112-chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.12 Chapter summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.13 Quiz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.13 Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-multiple-choice-choose-the-single-best-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Multiple choice (choose the single best answer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-fill-in-the-blank" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Fill in the blank
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-define-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Define / explain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114-answer-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.14 Answer key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-tutorial-problems-for-this-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested tutorial problems for this chapter
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-unconstrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Unconstrained Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-constrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Constrained Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-stochastic-processes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Stochastic Processes & Random Walks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-spectral-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Spectral Representation & Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-markov-chains/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Markov Chains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-queuing-theory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Introduction to Queuing Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../solutions/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Solutions
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Solutions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/01-optimization-preliminaries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1 — Preliminaries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/02-unconstrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2 — Unconstrained
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/03-constrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3 — Constrained
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/04-stochastic-processes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4 — Stochastic Processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/05-spectral-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5 — Spectral Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/06-markov-chains/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 — Markov Chains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/07-queuing-theory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7 — Queuing Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exam-bank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam Bank
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-characterization-of-a-minimum" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Characterization of a minimum
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Characterization of a minimum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-11-three-critical-points-of-a-cubic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.1 — three critical points of a cubic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-local-versus-global-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Local versus global minima
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Local versus global minima">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-12-a-quartic-with-two-global-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.2 — a quartic with two global minima
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-13-a-multimodal-function-where-locals-are-not-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.3 — a multimodal function where locals are not global
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-pareto-optimality-in-multi-objective-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Pareto-optimality in multi-objective optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Pareto-optimality in multi-objective optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-14-the-pareto-set-of-a-two-objective-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.4 — the Pareto set of a two-objective problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-gradient-and-hessian-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Gradient and Hessian matrix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 Gradient and Hessian matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-15-gradient-and-hessian-of-a-polynomial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.5 — gradient and Hessian of a polynomial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computing-the-gradient-vector-nabla-fx_1-x_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the Gradient Vector, \(\nabla f(x_1, x_2)\)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computing-the-hessian-matrix-hx_1-x_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computing the Hessian Matrix, \(H(x_1, x_2)\)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-at-point-x_1-x_2-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation at Point \((x_1, x_2) = (1, 2)\)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation at Point \((x_1, x_2) = (1, 2)\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradient-at-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradient at \((1, 2)\):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hessian-at-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hessian at \((1, 2)\):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigenvalues-and-positive-definiteness-h-succ-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigenvalues and Positive Definiteness (\(H \succ 0\))
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eigenvalues and Positive Definiteness (\(H \succ 0\))">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#significance-of-h-succ-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      Significance of \(H \succ 0\):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-slope-and-curvature" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 Slope and curvature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-properties-of-linear-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6 Properties of linear functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-properties-of-quadratic-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7 Properties of quadratic functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.7 Properties of quadratic functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-16-solve-a-quadratic-via-the-eigen-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.6 — solve a quadratic via the eigen-structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-optimality-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8 Optimality conditions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.8 Optimality conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#181-unconstrained" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.1 Unconstrained
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-17-first-order-and-second-order-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.7 — first-order and second-order conditions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182-linearly-constrained-equality-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.2 Linearly constrained — equality constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-18-projection-onto-an-affine-subspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.8 — projection onto an affine subspace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#183-linearly-constrained-inequality-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.3 Linearly constrained — inequality constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-19-a-small-inequality-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.9 — a small inequality problem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#184-nonlinearly-constrained-full-kkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8.4 Nonlinearly constrained — full KKT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-110-a-nonlinear-inequality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.10 — a nonlinear inequality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-the-line-search-subproblem" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9 The line-search subproblem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.9 The line-search subproblem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#191-bracketing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.1 Bracketing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#192-sectioning-golden-section-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.2 Sectioning — golden-section search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-111-golden-section-on-a-smooth-quadratic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.11 — golden-section on a smooth quadratic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#193-convergence-criteria-for-line-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9.3 Convergence criteria for line search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110-derivatives-of-the-objective-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10 Derivatives of the objective function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.10 Derivatives of the objective function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1101-numerically-derived-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.1 Numerically derived gradient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-112-compare-numeric-and-analytic-gradients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.12 — compare numeric and analytic gradients
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1102-analytically-derived-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.2 Analytically derived gradient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1103-adjoint-variable-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10.3 Adjoint variable approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-113-adjoint-derivation-verified-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 1.13 — adjoint derivation verified by hand
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#111-computational-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.11 Computational implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.11 Computational implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python (NumPy)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-comparison-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost comparison at a glance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112-chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.12 Chapter summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.13 Quiz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.13 Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-multiple-choice-choose-the-single-best-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Multiple choice (choose the single best answer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-fill-in-the-blank" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Fill in the blank
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-define-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Define / explain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114-answer-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.14 Answer key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-tutorial-problems-for-this-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested tutorial problems for this chapter
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="chapter-1-optimization-preliminaries">Chapter 1 — Optimization: Preliminaries<a class="headerlink" href="#chapter-1-optimization-preliminaries" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Chapter at a glance</p>
+<p><strong>Contact hours:</strong> 2 lecture + 3 tutorial · <strong>Home study:</strong> 5 h</p>
+<p><strong>Coverage (syllabus):</strong> characterization of a minimum · local vs. global minima ·
+Pareto optimality · gradient and Hessian · slope and curvature · properties of
+linear and quadratic functions · optimality conditions (unconstrained, linear
+equality, linear inequality, nonlinear) · line-search subproblem (bracketing and
+sectioning) · numerically and analytically derived gradients · adjoint-variable
+approach.</p>
+</div>
+<hr />
+<h2 id="learning-outcomes">Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permanent link">&para;</a></h2>
+<p>By the end of this chapter you should be able to:</p>
+<ol>
+<li>Characterize a <em>local</em>, <em>strict</em>, and <em>global</em> minimizer and recognize them on a plot.</li>
+<li>Define Pareto optimality and identify the Pareto front of a small multi-objective problem.</li>
+<li>Compute gradients and Hessians analytically; interpret them as slope and curvature.</li>
+<li>State and use the first- and second-order optimality conditions (unconstrained and constrained, including KKT).</li>
+<li>Solve the line-search subproblem via bracketing and golden-section sectioning.</li>
+<li>Estimate gradients numerically and explain when to prefer analytical or adjoint derivations.</li>
+<li>Implement basic gradient/Hessian checks and golden-section search in Python, Java, or C#.</li>
+</ol>
+<hr />
+<h2 id="11-characterization-of-a-minimum">1.1 Characterization of a minimum<a class="headerlink" href="#11-characterization-of-a-minimum" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(f:\mathbb{R}^n \to \mathbb{R}\)</span> be a (smooth) objective and let <span class="arithmatex">\(S \subseteq \mathbb{R}^n\)</span> be the feasible set.</p>
+<div class="admonition note">
+<p class="admonition-title">Definitions</p>
+<ul>
+<li><strong>Local minimizer.</strong> <span class="arithmatex">\(x^\star \in S\)</span> is a <em>weak</em> local minimizer if there is <span class="arithmatex">\(\varepsilon&gt;0\)</span> with
+  <span class="arithmatex">\(f(x^\star) \le f(x)\)</span> for all <span class="arithmatex">\(x \in S\)</span>, <span class="arithmatex">\(\|x-x^\star\|&lt;\varepsilon\)</span>.
+  If the inequality is strict for <span class="arithmatex">\(x \ne x^\star\)</span>, <span class="arithmatex">\(x^\star\)</span> is a <strong>strict local minimizer</strong>.</li>
+<li><strong>Global minimizer.</strong> <span class="arithmatex">\(f(x^\star) \le f(x)\)</span> for all <span class="arithmatex">\(x \in S\)</span>.</li>
+<li><strong>Isolated minimizer.</strong> A neighborhood of <span class="arithmatex">\(x^\star\)</span> contains no other local minimizer.</li>
+</ul>
+</div>
+<p>A point that satisfies the necessary condition <span class="arithmatex">\(\nabla f(x^\star)=0\)</span> is a <strong>stationary point</strong> — it may be a minimizer, a maximizer, or a saddle.</p>
+<h3 id="worked-example-11-three-critical-points-of-a-cubic">Worked example 1.1 — three critical points of a cubic<a class="headerlink" href="#worked-example-11-three-critical-points-of-a-cubic" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(f(x) = x^3 - 3x + 1\)</span> over <span class="arithmatex">\(x \in \mathbb{R}\)</span>.</p>
+<p><strong>First-order condition.</strong> <span class="arithmatex">\(f'(x) = 3x^2 - 3 = 3(x-1)(x+1) = 0 \Rightarrow x = \pm 1\)</span>.</p>
+<p><strong>Second-order condition.</strong> <span class="arithmatex">\(f''(x) = 6x\)</span>, <span class="arithmatex">\(f''(1) = 6&gt;0\)</span>, <span class="arithmatex">\(f''(-1)=-6&lt;0\)</span>. </p>
+<p><strong>Classification.</strong></p>
+<ul>
+<li><span class="arithmatex">\(x = 1\)</span>: strict local minimum with <span class="arithmatex">\(f(1) = 1 - 3 + 1 = -1\)</span>.</li>
+<li><span class="arithmatex">\(x = -1\)</span>: strict local maximum with <span class="arithmatex">\(f(-1) = -1 + 3 + 1 = 3\)</span>.</li>
+</ul>
+<p><strong>Global behavior.</strong> Because <span class="arithmatex">\(f(x) \to +\infty\)</span> as <span class="arithmatex">\(x \to +\infty\)</span> and <span class="arithmatex">\(f(x) \to -\infty\)</span> as <span class="arithmatex">\(x \to -\infty\)</span>, neither a global minimum nor a global maximum exists on <span class="arithmatex">\(\mathbb{R}\)</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Takeaway</p>
+<p>A stationary point is <em>not automatically</em> a minimum. The Hessian (here the scalar <span class="arithmatex">\(f''\)</span>)
+decides between minimum, maximum, and saddle.</p>
+</div>
+<hr />
+<h2 id="12-local-versus-global-minima">1.2 Local versus global minima<a class="headerlink" href="#12-local-versus-global-minima" title="Permanent link">&para;</a></h2>
+<p>Local minima are <strong>neighbourhood</strong> statements — the comparison is only with nearby points. To decide <em>global</em> status you either</p>
+<ul>
+<li>prove <strong>convexity</strong> of <span class="arithmatex">\(f\)</span> on a convex <span class="arithmatex">\(S\)</span> (then every local minimizer is global), or</li>
+<li>enumerate all local minima and compare their values (only feasible for small or structured problems), or</li>
+<li>use a certified global solver (branch-and-bound, interval methods, etc.).</li>
+</ul>
+<h3 id="worked-example-12-a-quartic-with-two-global-minima">Worked example 1.2 — a quartic with two global minima<a class="headerlink" href="#worked-example-12-a-quartic-with-two-global-minima" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(f(x) = x^4 - 2x^2 + 1 = (x^2-1)^2\)</span> over <span class="arithmatex">\(\mathbb{R}\)</span>.</p>
+<ol>
+<li><span class="arithmatex">\(f'(x) = 4x(x^2 - 1) = 0\)</span> ⇒ critical points <span class="arithmatex">\(x = 0, \pm 1\)</span>.</li>
+<li><span class="arithmatex">\(f''(x) = 12x^2 - 4\)</span>.</li>
+<li><span class="arithmatex">\(x = 0\)</span>: <span class="arithmatex">\(f''(0) = -4 &lt; 0\)</span>, so <span class="arithmatex">\(x=0\)</span> is a <strong>local maximum</strong> (<span class="arithmatex">\(f(0)=1\)</span>).</li>
+<li><span class="arithmatex">\(x = \pm 1\)</span>: <span class="arithmatex">\(f''(\pm 1) = 8 &gt; 0\)</span>, so both are <strong>strict local minima</strong> with <span class="arithmatex">\(f(\pm 1) = 0\)</span>.</li>
+<li>Since <span class="arithmatex">\(f(x) \ge 0\)</span> everywhere and <span class="arithmatex">\(f(\pm 1)=0\)</span>, <strong>both local minima are global</strong>.
+   The <strong>global minimizer is not unique</strong>; the set of minimizers is <span class="arithmatex">\(\{-1, +1\}\)</span>.</li>
+</ol>
+<h3 id="worked-example-13-a-multimodal-function-where-locals-are-not-global">Worked example 1.3 — a multimodal function where locals are <em>not</em> global<a class="headerlink" href="#worked-example-13-a-multimodal-function-where-locals-are-not-global" title="Permanent link">&para;</a></h3>
+<p>For <span class="arithmatex">\(f(x) = 0.5 x^2 + 3\sin(3x)\)</span> on <span class="arithmatex">\([-3, 3]\)</span> the derivative</p>
+<div class="arithmatex">\[
+f'(x) = x + 9\cos(3x)
+\]</div>
+<p>has several zeros (see the Python scan below). Two local minima exist, but only one is global.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">f</span>  <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">df</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># coarse scan for sign changes of f'</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4001</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">sign_change</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">df</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">roots</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sign_change</span> <span class="p">]</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"stationary points:"</span><span class="p">,</span> <span class="n">roots</span><span class="p">)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"values:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">roots</span><span class="p">])</span>
+</span></code></pre></div>
+<p>The smallest computed value is the <strong>global</strong> minimum; the others are <strong>local</strong> minima
+(local but not global). This is the <em>typical</em> situation in engineering design problems.</p>
+<hr />
+<h2 id="13-pareto-optimality-in-multi-objective-optimization">1.3 Pareto-optimality in multi-objective optimization<a class="headerlink" href="#13-pareto-optimality-in-multi-objective-optimization" title="Permanent link">&para;</a></h2>
+<p>When we minimize <strong>several</strong> objectives at once, there is rarely a single point that improves all of them simultaneously.</p>
+<div class="admonition note">
+<p class="admonition-title">Definitions</p>
+<p>Let <span class="arithmatex">\(\mathbf f(x) = (f_1(x),\dots,f_m(x))\)</span>. A point <span class="arithmatex">\(x^\star\)</span> <strong>Pareto-dominates</strong> <span class="arithmatex">\(y\)</span> if</p>
+<div class="arithmatex">\[
+  f_i(x^\star) \le f_i(y) \ \forall i,\qquad\text{and } f_j(x^\star) &lt; f_j(y) \ \text{for some }j.
+\]</div>
+<p><span class="arithmatex">\(x^\star\)</span> is <strong>Pareto-optimal</strong> if no feasible <span class="arithmatex">\(y\)</span> dominates it.
+The set of objective vectors of all Pareto-optimal points is the <strong>Pareto front</strong>.</p>
+</div>
+<h3 id="worked-example-14-the-pareto-set-of-a-two-objective-problem">Worked example 1.4 — the Pareto set of a two-objective problem<a class="headerlink" href="#worked-example-14-the-pareto-set-of-a-two-objective-problem" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\min_{x\in\mathbb{R}}\ \bigl(f_1(x), f_2(x)\bigr) = \bigl(x^2,\ (x-2)^2\bigr).
+\]</div>
+<ul>
+<li>If <span class="arithmatex">\(x &lt; 0\)</span>, moving to <span class="arithmatex">\(x=0\)</span> reduces <strong>both</strong> objectives ⇒ every <span class="arithmatex">\(x&lt;0\)</span> is dominated.</li>
+<li>If <span class="arithmatex">\(x &gt; 2\)</span>, moving to <span class="arithmatex">\(x=2\)</span> reduces both ⇒ every <span class="arithmatex">\(x&gt;2\)</span> is dominated.</li>
+<li>If <span class="arithmatex">\(0 \le x \le 2\)</span>: moving right increases <span class="arithmatex">\(f_1\)</span> but decreases <span class="arithmatex">\(f_2\)</span>; moving left does the opposite. <strong>No point in <span class="arithmatex">\([0,2]\)</span> is dominated.</strong></li>
+</ul>
+<p>Hence the <strong>Pareto set</strong> is <span class="arithmatex">\([0,2]\)</span> and the <strong>Pareto front</strong> is</p>
+<div class="arithmatex">\[
+\mathcal F = \Bigl\{\,(x^2,\ (x-2)^2) : 0 \le x \le 2 \,\Bigr\}.
+\]</div>
+<p>On the front:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(x\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(f_1=x^2\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(f_2=(x-2)^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">4.00</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">2.25</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">1.00</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">2.25</td>
+<td style="text-align: center;">0.25</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.0</td>
+<td style="text-align: center;">4.00</td>
+<td style="text-align: center;">0.00</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Engineering usage</p>
+<p>When you face a trade-off between, say, <strong>link throughput</strong> and <strong>energy per bit</strong>, you
+do not look for a single number — you look for the Pareto front and let the design
+authority select a knee point on it.</p>
+</div>
+<hr />
+<h2 id="14-gradient-and-hessian-matrix">1.4 Gradient and Hessian matrix<a class="headerlink" href="#14-gradient-and-hessian-matrix" title="Permanent link">&para;</a></h2>
+<p>For <span class="arithmatex">\(f:\mathbb{R}^n \to \mathbb{R}\)</span>,</p>
+<div class="arithmatex">\[
+\nabla f(x) = \begin{bmatrix} \partial f/\partial x_1 \\ \vdots \\ \partial f/\partial x_n\end{bmatrix},
+\qquad
+\nabla^2 f(x) = H(x) = \begin{bmatrix}
+\dfrac{\partial^2 f}{\partial x_i \partial x_j}
+\end{bmatrix}_{i,j=1}^{n}.
+\]</div>
+<p><span class="arithmatex">\(H\)</span> is symmetric when <span class="arithmatex">\(f\)</span> has continuous second derivatives (Schwarz's theorem).</p>
+<h3 id="worked-example-15-gradient-and-hessian-of-a-polynomial">Worked example 1.5 — gradient and Hessian of a polynomial<a class="headerlink" href="#worked-example-15-gradient-and-hessian-of-a-polynomial" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(f(x_1, x_2) = x_1^2 x_2 + x_2^3 - 2 x_1\)</span>. Then</p>
+<div class="arithmatex">\[
+\nabla f(x_1,x_2) = \begin{bmatrix} 2x_1 x_2 - 2 \\ x_1^2 + 3x_2^2 \end{bmatrix},
+\qquad
+H(x_1,x_2) = \begin{bmatrix} 2x_2 &amp; 2x_1 \\ 2x_1 &amp; 6x_2 \end{bmatrix}.
+\]</div>
+<p>At the point <span class="arithmatex">\((1,2)\)</span>: <span class="arithmatex">\(\nabla f = (2, 13)^\top\)</span>, <span class="arithmatex">\(H = \begin{bmatrix} 4 &amp; 2 \\ 2 &amp; 12\end{bmatrix}\)</span>.
+The eigenvalues of <span class="arithmatex">\(H\)</span> are <span class="arithmatex">\(3\pm\sqrt{5}&gt;0\)</span>, so <span class="arithmatex">\(H\succ 0\)</span> there — useful when we later use Newton's method (Chapter 2).</p>
+<p>Here is a step-by-step breakdown of how each part of the example is computed and what it means.</p>
+<h3 id="computing-the-gradient-vector-nabla-fx_1-x_2">Computing the Gradient Vector, <span class="arithmatex">\(\nabla f(x_1, x_2)\)</span><a class="headerlink" href="#computing-the-gradient-vector-nabla-fx_1-x_2" title="Permanent link">&para;</a></h3>
+<p>The gradient is a column vector containing the first-order partial derivatives of <span class="arithmatex">\(f\)</span>:</p>
+<div class="arithmatex">\[\nabla f(x_1, x_2) = \begin{bmatrix} \frac{\partial f}{\partial x_1} \\ \frac{\partial f}{\partial x_2} \end{bmatrix}\]</div>
+<ul>
+<li><strong>Partial derivative with respect to <span class="arithmatex">\(x_1\)</span></strong> (treat <span class="arithmatex">\(x_2\)</span> as a constant):</li>
+</ul>
+<div class="arithmatex">\[\frac{\partial f}{\partial x_1} = \frac{\partial}{\partial x_1}(x_1^2 x_2) + 0 - \frac{\partial}{\partial x_1}(2 x_1) = 2x_1 x_2 - 2\]</div>
+<ul>
+<li><strong>Partial derivative with respect to <span class="arithmatex">\(x_2\)</span></strong> (treat <span class="arithmatex">\(x_1\)</span> as a constant):</li>
+</ul>
+<div class="arithmatex">\[\frac{\partial f}{\partial x_2} = \frac{\partial}{\partial x_2}(x_1^2 x_2) + \frac{\partial}{\partial x_2}(x_2^3) - 0 = x_1^2 + 3x_2^2\]</div>
+<p>Putting them together gives the gradient vector:</p>
+<div class="arithmatex">\[\nabla f(x_1,x_2) = \begin{bmatrix} 2x_1 x_2 - 2 \\ x_1^2 + 3x_2^2 \end{bmatrix}\]</div>
+<h3 id="computing-the-hessian-matrix-hx_1-x_2">Computing the Hessian Matrix, <span class="arithmatex">\(H(x_1, x_2)\)</span><a class="headerlink" href="#computing-the-hessian-matrix-hx_1-x_2" title="Permanent link">&para;</a></h3>
+<p>The Hessian is a square matrix of second-order partial derivatives:</p>
+<div class="arithmatex">\[H(x_1, x_2) = \begin{bmatrix} \frac{\partial^2 f}{\partial x_1^2} &amp; \frac{\partial^2 f}{\partial x_1 \partial x_2} \\ \frac{\partial^2 f}{\partial x_2 \partial x_1} &amp; \frac{\partial^2 f}{\partial x_2^2} \end{bmatrix}\]</div>
+<ul>
+<li><strong><span class="arithmatex">\(H_{11} = \frac{\partial}{\partial x_1}(2x_1 x_2 - 2) = 2x_2\)</span></strong></li>
+<li><strong><span class="arithmatex">\(H_{12} = \frac{\partial}{\partial x_2}(2x_1 x_2 - 2) = 2x_1\)</span></strong></li>
+<li><strong><span class="arithmatex">\(H_{21} = \frac{\partial}{\partial x_1}(x_1^2 + 3x_2^2) = 2x_1\)</span></strong> <em>(Note: <span class="arithmatex">\(H_{12} = H_{21}\)</span> by Schwarz's theorem)</em></li>
+<li><strong><span class="arithmatex">\(H_{22} = \frac{\partial}{\partial x_2}(x_1^2 + 3x_2^2) = 6x_2\)</span></strong></li>
+</ul>
+<p>Putting these into the matrix format gives:</p>
+<div class="arithmatex">\[H(x_1,x_2) = \begin{bmatrix} 2x_2 &amp; 2x_1 \\ 2x_1 &amp; 6x_2 \end{bmatrix}\]</div>
+<h3 id="evaluation-at-point-x_1-x_2-1-2">Evaluation at Point <span class="arithmatex">\((x_1, x_2) = (1, 2)\)</span><a class="headerlink" href="#evaluation-at-point-x_1-x_2-1-2" title="Permanent link">&para;</a></h3>
+<h4 id="gradient-at-1-2">Gradient at <span class="arithmatex">\((1, 2)\)</span>:<a class="headerlink" href="#gradient-at-1-2" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[\nabla f(1, 2) = \begin{bmatrix} 2(1)(2) - 2 \\ (1)^2 + 3(2)^2 \end{bmatrix} = \begin{bmatrix} 4 - 2 \\ 1 + 12 \end{bmatrix} = \begin{bmatrix} 2 \\ 13 \end{bmatrix} = (2, 13)^\top\]</div>
+<p><em>(The transpose symbol <span class="arithmatex">\(\top\)</span> turns the row representation back into a column vector).</em></p>
+<h4 id="hessian-at-1-2">Hessian at <span class="arithmatex">\((1, 2)\)</span>:<a class="headerlink" href="#hessian-at-1-2" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[H(1, 2) = \begin{bmatrix} 2(2) &amp; 2(1) \\ 2(1) &amp; 6(2) \end{bmatrix} = \begin{bmatrix} 4 &amp; 2 \\ 2 &amp; 12 \end{bmatrix}\]</div>
+<h3 id="eigenvalues-and-positive-definiteness-h-succ-0">Eigenvalues and Positive Definiteness (<span class="arithmatex">\(H \succ 0\)</span>)<a class="headerlink" href="#eigenvalues-and-positive-definiteness-h-succ-0" title="Permanent link">&para;</a></h3>
+<p>To evaluate local curvature, we find the eigenvalues <span class="arithmatex">\(\lambda\)</span> of <span class="arithmatex">\(H\)</span> by solving the characteristic equation <span class="arithmatex">\(\det(H - \lambda I) = 0\)</span>:</p>
+<div class="arithmatex">\[\det \begin{bmatrix} 4 - \lambda &amp; 2 \\ 2 &amp; 12 - \lambda \end{bmatrix} = 0\]</div>
+<div class="arithmatex">\[(4 - \lambda)(12 - \lambda) - (2)(2) = 0\]</div>
+<div class="arithmatex">\[\lambda^2 - 16\lambda + 48 - 4 = 0\]</div>
+<div class="arithmatex">\[\lambda^2 - 16\lambda + 44 = 0\]</div>
+<p>Using the quadratic formula <span class="arithmatex">\(\lambda = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\)</span>:</p>
+<div class="arithmatex">\[\lambda = \frac{16 \pm \sqrt{(-16)^2 - 4(1)(44)}}{2} = \frac{16 \pm \sqrt{256 - 176}}{2} = \frac{16 \pm \sqrt{80}}{2}\]</div>
+<p>Since <span class="arithmatex">\(\sqrt{80} = 4\sqrt{5}\)</span>:</p>
+<div class="arithmatex">\[\lambda = \frac{16 \pm 4\sqrt{5}}{2} = 8 \pm 2\sqrt{5}\]</div>
+<p><em>(Note: The textbook simplifies this directly into factored form, but both expressions yield <span class="arithmatex">\(\lambda_1 \approx 12.47\)</span> and <span class="arithmatex">\(\lambda_2 \approx 3.53\)</span>.)</em></p>
+<h4 id="significance-of-h-succ-0">Significance of <span class="arithmatex">\(H \succ 0\)</span>:<a class="headerlink" href="#significance-of-h-succ-0" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Since both eigenvalues are strictly positive (<span class="arithmatex">\(\lambda &gt; 0\)</span>), the matrix is <strong>positive definite</strong>, denoted as <span class="arithmatex">\(H \succ 0\)</span>.</li>
+<li>This means the function is <strong>strictly convex locally</strong> at the point <span class="arithmatex">\((1, 2)\)</span> (i.e., it shapes like a bowl opening upwards).</li>
+<li>Because <span class="arithmatex">\(H\)</span> is positive definite, Newton's optimization method is guaranteed to move in a valid descent direction at this point without requiring modifications or regularization.</li>
+</ul>
+<hr />
+<h2 id="15-slope-and-curvature">1.5 Slope and curvature<a class="headerlink" href="#15-slope-and-curvature" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The <strong>directional derivative</strong> of <span class="arithmatex">\(f\)</span> at <span class="arithmatex">\(x\)</span> along a unit vector <span class="arithmatex">\(d\)</span> is <span class="arithmatex">\(\nabla f(x)^\top d\)</span> — the <em>slope</em>.</li>
+<li>The <strong>curvature</strong> along <span class="arithmatex">\(d\)</span> is <span class="arithmatex">\(d^\top H(x)\, d\)</span>:</li>
+<li><span class="arithmatex">\(d^\top H d &gt; 0\)</span>: <span class="arithmatex">\(f\)</span> curves <em>up</em> along <span class="arithmatex">\(d\)</span>.</li>
+<li><span class="arithmatex">\(d^\top H d &lt; 0\)</span>: <span class="arithmatex">\(f\)</span> curves <em>down</em> along <span class="arithmatex">\(d\)</span>.</li>
+<li><span class="arithmatex">\(d^\top H d = 0\)</span>: locally flat along <span class="arithmatex">\(d\)</span> to second order.</li>
+</ul>
+<p>The <strong>level set</strong> <span class="arithmatex">\(f(x) = \text{const}\)</span> near a regular point is perpendicular to <span class="arithmatex">\(\nabla f(x)\)</span>, so moving along a <em>level set</em> is a zero-slope direction. This is the geometric basis of constrained optimality (Section 1.8).</p>
+<hr />
+<h2 id="16-properties-of-linear-functions">1.6 Properties of linear functions<a class="headerlink" href="#16-properties-of-linear-functions" title="Permanent link">&para;</a></h2>
+<p>For <span class="arithmatex">\(f(x) = a^\top x + b\)</span> with <span class="arithmatex">\(a \in \mathbb{R}^n\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gradient</td>
+<td><span class="arithmatex">\(\nabla f(x) = a\)</span> (constant)</td>
+</tr>
+<tr>
+<td>Hessian</td>
+<td><span class="arithmatex">\(H(x) = 0\)</span></td>
+</tr>
+<tr>
+<td>Level sets <span class="arithmatex">\(f=\text{const}\)</span></td>
+<td>Hyperplanes orthogonal to <span class="arithmatex">\(a\)</span></td>
+</tr>
+<tr>
+<td>Local minima</td>
+<td>Only if <span class="arithmatex">\(a = 0\)</span> (then every point is a minimum)</td>
+</tr>
+<tr>
+<td>Global minima on a polytope</td>
+<td>Attained on a face / at a vertex (LPs)</td>
+</tr>
+</tbody>
+</table>
+<p>A linear objective has <strong>no interior unconstrained minimum</strong> — you need constraints (Chapter 3) to get a well-posed problem.</p>
+<hr />
+<h2 id="17-properties-of-quadratic-functions">1.7 Properties of quadratic functions<a class="headerlink" href="#17-properties-of-quadratic-functions" title="Permanent link">&para;</a></h2>
+<p>A quadratic function has the form</p>
+<div class="arithmatex">\[
+f(x) = \tfrac12 x^\top Q x - c^\top x + d,
+\qquad Q = Q^\top \in \mathbb{R}^{n\times n},\quad c\in\mathbb{R}^n,\ d\in\mathbb{R}.
+\]</div>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gradient</td>
+<td><span class="arithmatex">\(\nabla f(x) = Qx - c\)</span></td>
+</tr>
+<tr>
+<td>Hessian</td>
+<td><span class="arithmatex">\(H(x) = Q\)</span> (constant)</td>
+</tr>
+<tr>
+<td>Stationary point</td>
+<td><span class="arithmatex">\(x^\star = Q^{-1}c\)</span> (if <span class="arithmatex">\(Q\)</span> invertible)</td>
+</tr>
+<tr>
+<td>Unique global minimum</td>
+<td>Exists ⇔ <span class="arithmatex">\(Q \succ 0\)</span></td>
+</tr>
+<tr>
+<td>Level sets (with <span class="arithmatex">\(Q \succ 0\)</span>)</td>
+<td>Ellipsoids aligned with eigenvectors of <span class="arithmatex">\(Q\)</span>; semi-axis lengths <span class="arithmatex">\(\propto 1/\sqrt{\lambda_i}\)</span></td>
+</tr>
+<tr>
+<td>Condition number <span class="arithmatex">\(\kappa(Q)\)</span></td>
+<td>Determines how difficult the problem is for iterative methods</td>
+</tr>
+</tbody>
+</table>
+<h3 id="worked-example-16-solve-a-quadratic-via-the-eigen-structure">Worked example 1.6 — solve a quadratic via the eigen-structure<a class="headerlink" href="#worked-example-16-solve-a-quadratic-via-the-eigen-structure" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(f(x) = 2x_1^2 + x_2^2 + x_1 x_2 - 3 x_1 + 4 x_2\)</span>.</p>
+<p>Write it as <span class="arithmatex">\(\tfrac12 x^\top Q x - c^\top x\)</span> with</p>
+<div class="arithmatex">\[
+Q = \begin{bmatrix} 4 &amp; 1 \\ 1 &amp; 2\end{bmatrix},
+\qquad
+c = \begin{bmatrix} 3 \\ -4 \end{bmatrix}.
+\]</div>
+<p><strong>Eigenvalues of <span class="arithmatex">\(Q\)</span>:</strong> <span class="arithmatex">\(\det(Q-\lambda I) = (4-\lambda)(2-\lambda) - 1 = \lambda^2 - 6\lambda + 7 = 0 \Rightarrow \lambda = 3 \pm \sqrt{2}\)</span>, both positive ⇒ <span class="arithmatex">\(Q \succ 0\)</span>, so <span class="arithmatex">\(f\)</span> has a <strong>unique global minimum</strong>.</p>
+<p><strong>Stationary point</strong> solves <span class="arithmatex">\(Qx = c\)</span>:</p>
+<div class="arithmatex">\[
+\begin{cases} 4x_1 + x_2 = 3 \\ x_1 + 2x_2 = -4 \end{cases}
+\ \Rightarrow\ x^\star = \Bigl(\tfrac{10}{7}, -\tfrac{19}{7}\Bigr).
+\]</div>
+<p><strong>Optimal value</strong> (using <span class="arithmatex">\(f^\star = -\tfrac12 c^\top Q^{-1} c\)</span>):</p>
+<div class="arithmatex">\[
+f(x^\star) = -\tfrac{53}{7}\approx -7.571.
+\]</div>
+<p>The condition number is <span class="arithmatex">\(\kappa(Q) = \frac{3+\sqrt2}{3-\sqrt2}\approx 1.97\)</span> — well-conditioned; a gradient method would converge reasonably fast.</p>
+<hr />
+<h2 id="18-optimality-conditions">1.8 Optimality conditions<a class="headerlink" href="#18-optimality-conditions" title="Permanent link">&para;</a></h2>
+<h3 id="181-unconstrained">1.8.1 Unconstrained<a class="headerlink" href="#181-unconstrained" title="Permanent link">&para;</a></h3>
+<div class="admonition abstract">
+<p class="admonition-title">First-order necessary condition (FONC)</p>
+<p>If <span class="arithmatex">\(x^\star\)</span> is a local minimizer of <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(f\)</span> is differentiable in a neighbourhood, then</p>
+<div class="arithmatex">\[
+  \nabla f(x^\star) = 0 .
+\]</div>
+<p>If in addition <span class="arithmatex">\(f\in C^2\)</span>,</p>
+<div class="arithmatex">\[
+  \nabla^2 f(x^\star) \succeq 0
+\]</div>
+<p>(the Hessian is positive semi-definite) is <strong>necessary</strong>. The strict version
+<span class="arithmatex">\(\nabla^2 f(x^\star) \succ 0\)</span> is <strong>sufficient</strong> for a strict local minimum.</p>
+</div>
+<h3 id="worked-example-17-first-order-and-second-order-conditions">Worked example 1.7 — first-order and second-order conditions<a class="headerlink" href="#worked-example-17-first-order-and-second-order-conditions" title="Permanent link">&para;</a></h3>
+<p>For <span class="arithmatex">\(f(x_1,x_2)=x_1^2 x_2 + x_2^3 - 2x_1\)</span> find all stationary points and classify them.</p>
+<div class="arithmatex">\[
+\nabla f = 0 \;\Longleftrightarrow\;
+\begin{cases} 2x_1 x_2 = 2 \\ x_1^2 + 3x_2^2 = 0 \end{cases}
+\]</div>
+<p>The second equation forces <span class="arithmatex">\(x_1 = x_2 = 0\)</span>, which then violates <span class="arithmatex">\(2x_1 x_2 = 2\)</span>. <strong>No real stationary point</strong> exists ⇒ <span class="arithmatex">\(f\)</span> is unbounded below. This is an important diagnostic: an optimizer that diverges is telling you the problem is unbounded.</p>
+<h3 id="182-linearly-constrained-equality-constraints">1.8.2 Linearly constrained — equality constraints<a class="headerlink" href="#182-linearly-constrained-equality-constraints" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(f(x)\)</span> subject to <span class="arithmatex">\(Ax = b\)</span>, <span class="arithmatex">\(A\in\mathbb{R}^{m\times n}\)</span> of rank <span class="arithmatex">\(m\)</span>.</p>
+<p>Introduce a <strong>Lagrange multiplier vector</strong> <span class="arithmatex">\(\lambda\in\mathbb{R}^m\)</span> and the Lagrangian</p>
+<div class="arithmatex">\[
+\mathcal L(x,\lambda) = f(x) + \lambda^\top (Ax - b).
+\]</div>
+<div class="admonition abstract">
+<p class="admonition-title">Equality-constrained FONC</p>
+<p>If <span class="arithmatex">\(x^\star\)</span> is a local minimizer of <span class="arithmatex">\(f\)</span> on <span class="arithmatex">\(\{x: Ax=b\}\)</span>, there exists <span class="arithmatex">\(\lambda^\star\)</span> with</p>
+<div class="arithmatex">\[
+  \nabla_x \mathcal L(x^\star,\lambda^\star) = \nabla f(x^\star) + A^\top \lambda^\star = 0,
+  \qquad Ax^\star = b.
+\]</div>
+</div>
+<p>Geometric interpretation: at <span class="arithmatex">\(x^\star\)</span>, the negative gradient <span class="arithmatex">\(-\nabla f(x^\star)\)</span> lies in the row space of <span class="arithmatex">\(A\)</span> — equivalently, <span class="arithmatex">\(\nabla f(x^\star)\)</span> is orthogonal to the <em>tangent space</em> of the constraint (which is <span class="arithmatex">\(\ker A\)</span>).</p>
+<h3 id="worked-example-18-projection-onto-an-affine-subspace">Worked example 1.8 — projection onto an affine subspace<a class="headerlink" href="#worked-example-18-projection-onto-an-affine-subspace" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(f(x_1, x_2) = x_1^2 + x_2^2\)</span> subject to <span class="arithmatex">\(x_1 + x_2 = 2\)</span>.</p>
+<p>Lagrangian: <span class="arithmatex">\(\mathcal L = x_1^2 + x_2^2 + \lambda(x_1 + x_2 - 2)\)</span>.
+First-order conditions:</p>
+<div class="arithmatex">\[
+2x_1 + \lambda = 0,\qquad 2x_2 + \lambda = 0,\qquad x_1 + x_2 = 2.
+\]</div>
+<p>The first two imply <span class="arithmatex">\(x_1 = x_2\)</span>; with the constraint <span class="arithmatex">\(x_1 = x_2 = 1\)</span>. Then <span class="arithmatex">\(\lambda = -2\)</span>, and</p>
+<div class="arithmatex">\[
+f^\star = 1 + 1 = 2.
+\]</div>
+<p>Geometric check: <span class="arithmatex">\(-\nabla f(1,1) = (-2,-2) = 2\cdot(1,1)\)</span> — the negative gradient is (up to scale) the constraint normal, as required.</p>
+<h3 id="183-linearly-constrained-inequality-constraints">1.8.3 Linearly constrained — inequality constraints<a class="headerlink" href="#183-linearly-constrained-inequality-constraints" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(f(x)\)</span> subject to <span class="arithmatex">\(Ax \le b\)</span>.</p>
+<p>The <strong>Karush–Kuhn–Tucker (KKT) conditions</strong> for this case read</p>
+<div class="arithmatex">\[
+\nabla f(x^\star) + A^\top \mu^\star = 0,\qquad
+\mu^\star \ge 0,\qquad
+\mu_i^\star\,[Ax^\star - b]_i = 0,\qquad
+Ax^\star \le b.
+\]</div>
+<p>The last column condition is <strong>complementary slackness</strong>: an active constraint carries a non-negative multiplier; an inactive one carries zero.</p>
+<h3 id="worked-example-19-a-small-inequality-problem">Worked example 1.9 — a small inequality problem<a class="headerlink" href="#worked-example-19-a-small-inequality-problem" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\((x-2)^2 + 1\)</span> subject to <span class="arithmatex">\(x \le 1\)</span>.</p>
+<ul>
+<li><strong>Unconstrained solution:</strong> <span class="arithmatex">\(x = 2\)</span>, but <span class="arithmatex">\(2 \le 1\)</span> is false ⇒ infeasible.</li>
+<li><strong>Active-constraint ansatz:</strong> <span class="arithmatex">\(x^\star = 1\)</span>. Then <span class="arithmatex">\(f'(1) = 2(1-2) = -2\)</span>, and KKT with <span class="arithmatex">\(g(x)=x-1\le 0\)</span>, <span class="arithmatex">\(\nabla g = 1\)</span>:</li>
+</ul>
+<p>[
+  -2 + \mu \cdot 1 = 0 \Rightarrow \mu = 2 \ge 0. \;\checkmark
+  ]</p>
+<p><span class="arithmatex">\(x^\star = 1\)</span> satisfies all KKT conditions. <strong>Optimal value:</strong> <span class="arithmatex">\((1-2)^2+1 = 2\)</span>.</p>
+<h3 id="184-nonlinearly-constrained-full-kkt">1.8.4 Nonlinearly constrained — full KKT<a class="headerlink" href="#184-nonlinearly-constrained-full-kkt" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(f(x)\)</span> subject to <span class="arithmatex">\(g_i(x) \le 0\ (i=1,\dots,p)\)</span> and <span class="arithmatex">\(h_j(x) = 0\ (j=1,\dots,q)\)</span>, all <span class="arithmatex">\(C^1\)</span>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">KKT conditions (necessary, under a constraint qualification)</p>
+<p>There exist multipliers <span class="arithmatex">\(\mu^\star\in\mathbb{R}^p\)</span> and <span class="arithmatex">\(\lambda^\star\in\mathbb{R}^q\)</span> such that</p>
+<div class="arithmatex">\[
+  \nabla f(x^\star) + \sum_i \mu_i^\star \nabla g_i(x^\star) + \sum_j \lambda_j^\star \nabla h_j(x^\star) = 0,
+\]</div>
+<div class="arithmatex">\[
+  g_i(x^\star) \le 0,\ \ \mu_i^\star \ge 0,\ \ \mu_i^\star g_i(x^\star) = 0,
+  \qquad
+  h_j(x^\star) = 0.
+\]</div>
+</div>
+<p>Common constraint qualifications: LICQ (gradients of active constraints are linearly independent), Slater (for convex problems).</p>
+<h3 id="worked-example-110-a-nonlinear-inequality">Worked example 1.10 — a nonlinear inequality<a class="headerlink" href="#worked-example-110-a-nonlinear-inequality" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(f(x,y) = x^2+y^2\)</span> subject to <span class="arithmatex">\(g(x,y) = x^2 + 2y^2 - 4 \le 0\)</span>.</p>
+<p>The unconstrained minimizer <span class="arithmatex">\((0,0)\)</span> satisfies <span class="arithmatex">\(g(0,0) = -4 &lt; 0\)</span> (strictly feasible), so <span class="arithmatex">\(x^\star=(0,0)\)</span>, <span class="arithmatex">\(\mu^\star = 0\)</span> — inactive constraint. Optimal value <span class="arithmatex">\(0\)</span>. This illustrates complementary slackness: <strong>when the constraint does not bite, the unconstrained solution is the answer</strong>.</p>
+<p>Now modify: minimize <span class="arithmatex">\(x^2+y^2\)</span> subject to <span class="arithmatex">\(x^2+2y^2 - 1\ge 0\)</span> (i.e. <span class="arithmatex">\(-x^2 - 2y^2 + 1 \le 0\)</span>).
+The unconstrained minimizer <span class="arithmatex">\((0,0)\)</span> is infeasible. The active-constraint case forces <span class="arithmatex">\(x^2+2y^2=1\)</span>. By symmetry one can show <span class="arithmatex">\(y^\star = 0\)</span>, <span class="arithmatex">\(x^\star = \pm 1\)</span> with <span class="arithmatex">\(\mu=1\)</span>, <span class="arithmatex">\(f^\star = 1\)</span>. (Exercise: verify by writing the KKT system.)</p>
+<hr />
+<h2 id="19-the-line-search-subproblem">1.9 The line-search subproblem<a class="headerlink" href="#19-the-line-search-subproblem" title="Permanent link">&para;</a></h2>
+<p>Many algorithms (steepest descent, quasi-Newton, conjugate gradient) update</p>
+<div class="arithmatex">\[
+x_{k+1} = x_k + \alpha_k d_k
+\]</div>
+<p>where <span class="arithmatex">\(d_k\)</span> is a <em>descent direction</em> (<span class="arithmatex">\(\nabla f(x_k)^\top d_k &lt; 0\)</span>) and <span class="arithmatex">\(\alpha_k\)</span> is a <strong>step length</strong> chosen by solving the scalar subproblem</p>
+<div class="arithmatex">\[
+\min_{\alpha&gt;0}\ \phi(\alpha) := f(x_k + \alpha d_k).
+\]</div>
+<h3 id="191-bracketing">1.9.1 Bracketing<a class="headerlink" href="#191-bracketing" title="Permanent link">&para;</a></h3>
+<p>First find three points <span class="arithmatex">\(\alpha^{(1)} &lt; \alpha^{(2)} &lt; \alpha^{(3)}\)</span> with
+<span class="arithmatex">\(\phi(\alpha^{(2)}) &lt; \phi(\alpha^{(1)})\)</span> and <span class="arithmatex">\(\phi(\alpha^{(2)}) &lt; \phi(\alpha^{(3)})\)</span>. This bracket contains a local minimum.</p>
+<p>Algorithm (bracket by expansion):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>α₀ = 0, φ₀ = φ(α₀)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>α₁ = s, φ₁ = φ(α₁)            # s = user-supplied initial step
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>if φ₁ &gt; φ₀: swap and negate s  # make sure we descend
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>α₂ = α₁ + s, φ₂ = φ(α₂)
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>while φ₂ &lt; φ₁:
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    α₀, α₁, α₂ = α₁, α₂, α₂ + 2·s
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    φ₀, φ₁, φ₂ = φ₁, φ₂, φ(α₂)
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>return (α₀, α₁, α₂)
+</span></code></pre></div>
+<h3 id="192-sectioning-golden-section-search">1.9.2 Sectioning — golden-section search<a class="headerlink" href="#192-sectioning-golden-section-search" title="Permanent link">&para;</a></h3>
+<p>Once a bracket <span class="arithmatex">\([a,b]\)</span> is known, we shrink it. <strong>Golden-section</strong> places two interior points</p>
+<div class="arithmatex">\[
+c = b - \tau(b-a),\qquad d = a + \tau(b-a),\qquad \tau = \frac{\sqrt 5 - 1}{2} \approx 0.618,
+\]</div>
+<p>evaluates <span class="arithmatex">\(\phi\)</span> there, and keeps the subinterval that contains the smaller value. Each iteration reduces the interval by a factor <span class="arithmatex">\(\tau \approx 0.618\)</span> <strong>with one new evaluation</strong> — the interval length <span class="arithmatex">\(L_k\)</span> satisfies <span class="arithmatex">\(L_k \approx \tau^k L_0\)</span>, so the sub-interval reaching a tolerance <span class="arithmatex">\(\epsilon\)</span> takes <span class="arithmatex">\(k \approx \log(\epsilon/L_0)/\log\tau\)</span> iterations.</p>
+<h3 id="worked-example-111-golden-section-on-a-smooth-quadratic">Worked example 1.11 — golden-section on a smooth quadratic<a class="headerlink" href="#worked-example-111-golden-section-on-a-smooth-quadratic" title="Permanent link">&para;</a></h3>
+<p>Minimize <span class="arithmatex">\(\phi(\alpha) = (\alpha - 2)^2 + 1\)</span> on <span class="arithmatex">\([0,5]\)</span> using golden-section search (<span class="arithmatex">\(\tau=0.618\)</span>).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Iter</th>
+<th style="text-align: center;">Interval</th>
+<th style="text-align: center;"><span class="arithmatex">\(c\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(d\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(\phi(c)\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(\phi(d)\)</span></th>
+<th>Keep</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="arithmatex">\([0, 5]\)</span></td>
+<td style="text-align: center;">1.910</td>
+<td style="text-align: center;">3.090</td>
+<td style="text-align: center;">1.008</td>
+<td style="text-align: center;">2.188</td>
+<td><span class="arithmatex">\(b \leftarrow d\)</span>, <span class="arithmatex">\([0, 3.09]\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="arithmatex">\([0, 3.09]\)</span></td>
+<td style="text-align: center;">1.180</td>
+<td style="text-align: center;">1.910</td>
+<td style="text-align: center;">1.672</td>
+<td style="text-align: center;">1.008</td>
+<td><span class="arithmatex">\(a \leftarrow c\)</span>, <span class="arithmatex">\([1.18, 3.09]\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="arithmatex">\([1.18, 3.09]\)</span></td>
+<td style="text-align: center;">1.910</td>
+<td style="text-align: center;">2.360</td>
+<td style="text-align: center;">1.008</td>
+<td style="text-align: center;">1.130</td>
+<td><span class="arithmatex">\(b \leftarrow d\)</span>, <span class="arithmatex">\([1.18, 2.36]\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="arithmatex">\([1.18, 2.36]\)</span></td>
+<td style="text-align: center;">1.630</td>
+<td style="text-align: center;">1.910</td>
+<td style="text-align: center;">1.136</td>
+<td style="text-align: center;">1.008</td>
+<td><span class="arithmatex">\(a \leftarrow c\)</span>, <span class="arithmatex">\([1.63, 2.36]\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span class="arithmatex">\([1.63, 2.36]\)</span></td>
+<td style="text-align: center;">1.910</td>
+<td style="text-align: center;">2.081</td>
+<td style="text-align: center;">1.008</td>
+<td style="text-align: center;">1.007</td>
+<td><span class="arithmatex">\(\approx [1.91, 2.08]\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>After 5 iterations the bracket contains the exact minimum <span class="arithmatex">\(\alpha^\star = 2\)</span> to within <span class="arithmatex">\(\sim 0.1\)</span>, having used just <span class="arithmatex">\(5+1=6\)</span> evaluations of <span class="arithmatex">\(\phi\)</span> (the reuse of the "carried" interior point is what makes golden-section efficient).</p>
+<h3 id="193-convergence-criteria-for-line-search">1.9.3 Convergence criteria for line search<a class="headerlink" href="#193-convergence-criteria-for-line-search" title="Permanent link">&para;</a></h3>
+<p>The two classical conditions on <span class="arithmatex">\(\alpha_k\)</span> are:</p>
+<ul>
+<li><strong>Armijo (sufficient decrease):</strong> <span class="arithmatex">\(\phi(\alpha_k) \le \phi(0) + c_1 \alpha_k \phi'(0)\)</span>, with <span class="arithmatex">\(c_1 \approx 10^{-4}\)</span>.</li>
+<li><strong>Wolfe (curvature):</strong> <span class="arithmatex">\(|\phi'(\alpha_k)| \le c_2 |\phi'(0)|\)</span>, with <span class="arithmatex">\(0&lt;c_1&lt;c_2&lt;1\)</span>.</li>
+</ul>
+<p>They together guarantee that the line-search subproblem terminates in finitely many iterations.</p>
+<hr />
+<h2 id="110-derivatives-of-the-objective-function">1.10 Derivatives of the objective function<a class="headerlink" href="#110-derivatives-of-the-objective-function" title="Permanent link">&para;</a></h2>
+<h3 id="1101-numerically-derived-gradient">1.10.1 Numerically derived gradient<a class="headerlink" href="#1101-numerically-derived-gradient" title="Permanent link">&para;</a></h3>
+<p>Finite-difference formulas:</p>
+<table>
+<thead>
+<tr>
+<th>Formula</th>
+<th>Expression</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forward</td>
+<td><span class="arithmatex">\(\dfrac{f(x+he_i) - f(x)}{h}\)</span></td>
+<td><span class="arithmatex">\(O(h)\)</span></td>
+</tr>
+<tr>
+<td>Backward</td>
+<td><span class="arithmatex">\(\dfrac{f(x) - f(x-he_i)}{h}\)</span></td>
+<td><span class="arithmatex">\(O(h)\)</span></td>
+</tr>
+<tr>
+<td>Central</td>
+<td><span class="arithmatex">\(\dfrac{f(x+he_i) - f(x-he_i)}{2h}\)</span></td>
+<td><span class="arithmatex">\(O(h^2)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>With floating-point arithmetic the truncation error <span class="arithmatex">\(O(h)\)</span> and round-off error <span class="arithmatex">\(O(\epsilon_{\text{mach}}/h)\)</span> balance; the optimal choice is roughly <span class="arithmatex">\(h \sim \sqrt{\epsilon_{\text{mach}}} \approx 10^{-8}\)</span> for forward differences, and <span class="arithmatex">\(h \sim \epsilon_{\text{mach}}^{1/3} \approx 10^{-5}\)</span> for central differences.</p>
+<p>Cost: computing <span class="arithmatex">\(\nabla f\)</span> by finite differences costs <span class="arithmatex">\(n+1\)</span> (forward) or <span class="arithmatex">\(2n\)</span> (central) objective evaluations — prohibitively expensive when <span class="arithmatex">\(n\)</span> is large.</p>
+<h3 id="worked-example-112-compare-numeric-and-analytic-gradients">Worked example 1.12 — compare numeric and analytic gradients<a class="headerlink" href="#worked-example-112-compare-numeric-and-analytic-gradients" title="Permanent link">&para;</a></h3>
+<p>For <span class="arithmatex">\(f(x_1,x_2) = x_1^2 x_2 + x_2^3 - 2x_1\)</span> at <span class="arithmatex">\(x = (1,2)\)</span>:</p>
+<ul>
+<li>Analytic: <span class="arithmatex">\(\nabla f = (2x_1 x_2 - 2,\ x_1^2 + 3x_2^2) = (2, 13)\)</span>.</li>
+<li>Central-difference with <span class="arithmatex">\(h = 10^{-6}\)</span> gives, to seven significant figures, <span class="arithmatex">\((2.000000,\ 13.000000)\)</span>. Forward-difference gives about <span class="arithmatex">\((2.000001,\ 13.000001)\)</span> — six correct digits.</li>
+</ul>
+<p><strong>Rule of thumb.</strong> Use central differences when <span class="arithmatex">\(n\)</span> is small and accuracy matters; use forward differences inside large-scale optimizers where <span class="arithmatex">\(n\)</span> is large and expensive.</p>
+<h3 id="1102-analytically-derived-gradient">1.10.2 Analytically derived gradient<a class="headerlink" href="#1102-analytically-derived-gradient" title="Permanent link">&para;</a></h3>
+<p>Preferred whenever available:</p>
+<ul>
+<li>exact (no truncation error),</li>
+<li>typically an order of magnitude faster,</li>
+<li>required for <em>guaranteed</em> convergence of Newton-type methods.</li>
+</ul>
+<p>Use <strong>automatic differentiation</strong> (AD) when the model is a big computational graph — tools such as JAX, PyTorch, TensorFlow, Stan, and CasADi give machine-precision derivatives at the cost of one forward and one reverse pass.</p>
+<h3 id="1103-adjoint-variable-approach">1.10.3 Adjoint variable approach<a class="headerlink" href="#1103-adjoint-variable-approach" title="Permanent link">&para;</a></h3>
+<p>Adjoint methods compute the <em>gradient with respect to many parameters at the cost of one (or two) forward+adjoint solves</em>, regardless of how many parameters there are. This is the reason they dominate optimal-control and inverse problems.</p>
+<p>Consider the discrete-time system</p>
+<div class="arithmatex">\[
+x_{k+1} = F_k(x_k, u_k),\qquad x_0 \text{ given},\qquad
+J(u) = \sum_{k=0}^{N-1} L_k(x_k, u_k) + \Phi(x_N).
+\]</div>
+<p>Introduce <strong>adjoint variables</strong> (costates) <span class="arithmatex">\(\lambda_k\)</span> defined by the backward recursion</p>
+<div class="arithmatex">\[
+\lambda_N = \nabla \Phi(x_N),\qquad
+\lambda_k = \nabla_x L_k(x_k,u_k) + \Bigl(\frac{\partial F_k}{\partial x_k}\Bigr)^\top \lambda_{k+1}.
+\]</div>
+<p>Then the gradient w.r.t. each control is</p>
+<div class="arithmatex">\[
+\boxed{\;\nabla_{u_k} J = \nabla_{u_k} L_k(x_k,u_k) + \Bigl(\frac{\partial F_k}{\partial u_k}\Bigr)^\top \lambda_{k+1}\;}
+\]</div>
+<p>The forward pass produces <span class="arithmatex">\(x_0,\dots,x_N\)</span>; the backward pass produces <span class="arithmatex">\(\lambda_N,\dots,\lambda_0\)</span>. Total cost: <strong>one forward + one backward pass</strong>, independent of <span class="arithmatex">\(\dim u\)</span>.</p>
+<h3 id="worked-example-113-adjoint-derivation-verified-by-hand">Worked example 1.13 — adjoint derivation verified by hand<a class="headerlink" href="#worked-example-113-adjoint-derivation-verified-by-hand" title="Permanent link">&para;</a></h3>
+<p>Discrete problem with <span class="arithmatex">\(x_0 = 2\)</span>, <span class="arithmatex">\(x_{k+1} = x_k + u_k\)</span> (<span class="arithmatex">\(k=0,1\)</span>), and</p>
+<div class="arithmatex">\[
+J(u_0,u_1) = x_2^2 + u_0^2 + u_1^2.
+\]</div>
+<p><strong>Direct elimination</strong> (to have a reference answer):</p>
+<div class="arithmatex">\[
+x_1 = 2 + u_0,\qquad x_2 = 2 + u_0 + u_1,\qquad
+J = (2+u_0+u_1)^2 + u_0^2 + u_1^2.
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial J}{\partial u_0} = 2(2+u_0+u_1) + 2u_0,\qquad
+\frac{\partial J}{\partial u_1} = 2(2+u_0+u_1) + 2u_1.
+\]</div>
+<p>Setting both to zero: <span class="arithmatex">\(4 + 4u_0 + 2u_1 = 0\)</span>, <span class="arithmatex">\(4 + 2u_0 + 4u_1 = 0\)</span>; subtracting gives <span class="arithmatex">\(u_0 = u_1\)</span>, hence <span class="arithmatex">\(u_0 = u_1 = -2/3\)</span>.</p>
+<p><strong>Adjoint method.</strong></p>
+<ul>
+<li>Terminal: <span class="arithmatex">\(\lambda_2 = 2 x_2 = 2(2+u_0+u_1)\)</span>.</li>
+<li>Recurrence: <span class="arithmatex">\(\lambda_k = \partial L_k/\partial x_k + (\partial F_k/\partial x_k)\lambda_{k+1}\)</span>.
+  Since <span class="arithmatex">\(L_0 = u_0^2\)</span> and <span class="arithmatex">\(L_1 = u_1^2\)</span> do not depend on <span class="arithmatex">\(x\)</span>, we get
+  <span class="arithmatex">\(\lambda_1 = \lambda_2\)</span> and <span class="arithmatex">\(\lambda_0 = \lambda_1 = \lambda_2\)</span>.</li>
+<li>Gradients:</li>
+</ul>
+<p>[
+  \frac{\partial J}{\partial u_0} = 2u_0 + \lambda_1,\qquad
+  \frac{\partial J}{\partial u_1} = 2u_1 + \lambda_2.
+  ]</p>
+<ul>
+<li>At <span class="arithmatex">\(u_0 = u_1 = -2/3\)</span>: <span class="arithmatex">\(x_2 = 2/3\)</span>, <span class="arithmatex">\(\lambda_1=\lambda_2 = 4/3\)</span>, so
+  <span class="arithmatex">\(\partial J/\partial u_0 = -4/3 + 4/3 = 0\)</span> and <span class="arithmatex">\(\partial J/\partial u_1 = 0\)</span> — matching the direct computation.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Continuous-time version</p>
+<p>For <span class="arithmatex">\(\dot x = F(x,u)\)</span>, <span class="arithmatex">\(J = \int_0^T L(x,u)\,dt + \Phi(x(T))\)</span>, the continuous adjoint is</p>
+<div class="arithmatex">\[
+  -\dot\lambda = \nabla_x H,\quad \lambda(T) = \nabla \Phi(x(T)),\quad H(x,u,\lambda) = L + \lambda^\top F,
+\]</div>
+<p>and <span class="arithmatex">\(\nabla_u J = \nabla_u H\)</span>. Use a forward ODE solve for <span class="arithmatex">\(x(t)\)</span> and a backward ODE solve for <span class="arithmatex">\(\lambda(t)\)</span>.</p>
+</div>
+<hr />
+<h2 id="111-computational-implementation">1.11 Computational implementation<a class="headerlink" href="#111-computational-implementation" title="Permanent link">&para;</a></h2>
+<p>The snippets below implement <em>gradient checking</em> (comparing analytic and numeric derivatives) and <em>golden-section search</em> in three languages. You can drop them straight into a Jupyter notebook, a Java console app, or a C# program.</p>
+<h3 id="python-numpy">Python (NumPy)<a class="headerlink" href="#python-numpy" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># ---- objective and analytic derivatives -------------------------------------</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>                                <span class="c1"># f(x,y) = x^2 y + y^3 - 2x</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">grad_analytic</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">grad_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span> <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="k">return</span> <span class="n">g</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">grad_central</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span> <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">e</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="k">return</span> <span class="n">g</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="k">def</span><span class="w"> </span><span class="nf">hessian_central</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>            <span class="n">ei</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">ei</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>            <span class="n">ej</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">ej</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>            <span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">ei</span><span class="o">+</span><span class="n">ej</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">ei</span><span class="o">-</span><span class="n">ej</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">ei</span><span class="o">+</span><span class="n">ej</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">ei</span><span class="o">-</span><span class="n">ej</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>    <span class="k">return</span> <span class="n">H</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="c1"># ---- golden-section search --------------------------------------------------</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="k">def</span><span class="w"> </span><span class="nf">golden_section</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>    <span class="n">tau</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>    <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">),</span> <span class="n">a</span> <span class="o">+</span> <span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    <span class="n">fc</span><span class="p">,</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxit</span><span class="p">):</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="k">if</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>            <span class="k">break</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>        <span class="k">if</span> <span class="n">fc</span> <span class="o">&lt;</span> <span class="n">fd</span><span class="p">:</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>            <span class="n">b</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">d</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">fc</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>            <span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">);</span> <span class="n">fc</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>            <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">fc</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">fd</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>            <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">);</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="c1"># ---- demo -------------------------------------------------------------------</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"analytic :"</span><span class="p">,</span> <span class="n">grad_analytic</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"forward  :"</span><span class="p">,</span> <span class="n">grad_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"central  :"</span><span class="p">,</span> <span class="n">grad_central</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hessian  :</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">hessian_central</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"golden   :"</span><span class="p">,</span> <span class="n">golden_section</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+</span></code></pre></div>
+<p><strong>Typical output:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>analytic : [2. 13.]
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>forward  : [ 2.000001 13.000001]
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>central  : [ 2. 13.]
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Hessian  :
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a> [[ 4.  2.]
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  [ 2. 12.]]
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>golden   : 1.999999...
+</span></code></pre></div>
+<h3 id="java">Java<a class="headerlink" href="#java" title="Permanent link">&para;</a></h3>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GradientCheck</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]*</span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]*</span><span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="nf">gradAnalytic</span><span class="p">(</span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="o">[]</span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]*</span><span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]*</span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">]*</span><span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="nf">gradCentral</span><span class="p">(</span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="o">[</span><span class="n">x</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">xp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="na">clone</span><span class="p">();</span><span class="w"> </span><span class="n">xp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">            </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">xm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="na">clone</span><span class="p">();</span><span class="w"> </span><span class="n">xm</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">            </span><span class="n">g</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">xm</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">);</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">goldenSection</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">function</span><span class="p">.</span><span class="na">DoubleUnaryOperator</span><span class="w"> </span><span class="n">phi</span><span class="p">,</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">                                </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">fc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phi</span><span class="p">.</span><span class="na">applyAsDouble</span><span class="p">(</span><span class="n">c</span><span class="p">),</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phi</span><span class="p">.</span><span class="na">applyAsDouble</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">tol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fc</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">fd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="n">fd</span><span class="o">=</span><span class="n">fc</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="n">fc</span><span class="o">=</span><span class="n">phi</span><span class="p">.</span><span class="na">applyAsDouble</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">            </span><span class="k">else</span><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="n">fc</span><span class="o">=</span><span class="n">fd</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="n">fd</span><span class="o">=</span><span class="n">phi</span><span class="p">.</span><span class="na">applyAsDouble</span><span class="p">(</span><span class="n">d</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">        </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">gradAnalytic</span><span class="p">(</span><span class="n">x</span><span class="p">)));</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">gradCentral</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">)));</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goldenSection</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">));</span>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="c">C<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">GradientCheck</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">F</span><span class="p">(</span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Pow</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="nf">GradAnalytic</span><span class="p">(</span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="k">new</span><span class="p">[]{</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="nf">GradCentral</span><span class="p">(</span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="n">x</span><span class="p">.</span><span class="n">Length</span><span class="p">];</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">xp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">[])</span><span class="n">x</span><span class="p">.</span><span class="n">Clone</span><span class="p">();</span><span class="w"> </span><span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">xm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">[])</span><span class="n">x</span><span class="p">.</span><span class="n">Clone</span><span class="p">();</span><span class="w"> </span><span class="n">xm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">            </span><span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">xm</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">);</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GoldenSection</span><span class="p">(</span><span class="n">Func</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">phi</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">fc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phi</span><span class="p">(</span><span class="n">c</span><span class="p">),</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phi</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">tol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fc</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">fd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="n">fd</span><span class="o">=</span><span class="n">fc</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="n">fc</span><span class="o">=</span><span class="n">phi</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">            </span><span class="k">else</span><span class="w">         </span><span class="p">{</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="n">fc</span><span class="o">=</span><span class="n">fd</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="n">fd</span><span class="o">=</span><span class="n">phi</span><span class="p">(</span><span class="n">d</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[]{</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">", "</span><span class="p">,</span><span class="w"> </span><span class="n">GradAnalytic</span><span class="p">(</span><span class="n">x</span><span class="p">)));</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">", "</span><span class="p">,</span><span class="w"> </span><span class="n">GradCentral</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">)));</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">GoldenSection</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">));</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Which language for what?</p>
+<ul>
+<li><strong>Python (NumPy + SciPy):</strong> day-to-day optimization prototyping, <code>scipy.optimize.check_grad</code>, plotting.</li>
+<li><strong>Java:</strong> production-style implementation inside enterprise systems; also for teaching OOP-based algorithm design.</li>
+<li><strong>C#:</strong> Windows/.NET infrastructure, Unity simulations, and interop with MATLAB <code>Coder</code>-generated code.</li>
+<li><strong>C/C++:</strong> required when you must link the optimizer to a high-fidelity simulator.</li>
+</ul>
+<p>All three snippets above are mathematically equivalent — a good exercise is to <em>run all three</em> and compare the printed gradient vectors to machine precision.</p>
+</div>
+<h3 id="cost-comparison-at-a-glance">Cost comparison at a glance<a class="headerlink" href="#cost-comparison-at-a-glance" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Derivative method</th>
+<th>Cost to obtain <span class="arithmatex">\(\nabla f\)</span></th>
+<th>Accuracy</th>
+<th>Requires user code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Analytic (hand)</td>
+<td>1 evaluation</td>
+<td>exact</td>
+<td>Yes — derivation</td>
+</tr>
+<tr>
+<td>Automatic diff.</td>
+<td>≤ 4× cost of <span class="arithmatex">\(f\)</span></td>
+<td>machine precision</td>
+<td>No (framework)</td>
+</tr>
+<tr>
+<td>Central differences</td>
+<td><span class="arithmatex">\(2n\)</span> evaluations of <span class="arithmatex">\(f\)</span></td>
+<td><span class="arithmatex">\(O(h^2)\)</span></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Forward differences</td>
+<td><span class="arithmatex">\(n+1\)</span> evaluations</td>
+<td><span class="arithmatex">\(O(h)\)</span></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Adjoint (discrete or continuous)</td>
+<td>1 forward + 1 backward</td>
+<td>exact (to ODE error)</td>
+<td>Yes — adjoint code</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="112-chapter-summary">1.12 Chapter summary<a class="headerlink" href="#112-chapter-summary" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Local vs global vs Pareto.</strong> Three independent notions; in engineering you usually need at least two of them (a Pareto front of local solutions, then a global choice).</li>
+<li><strong>Gradient = slope, Hessian = curvature.</strong> These two objects drive every algorithm from Chapter 2 onward.</li>
+<li><strong>Linearity &amp; quadraticity.</strong> Linear problems have no interior minimum; quadratic problems are <em>solved in closed form</em> — the reference for what an iterative method should converge to.</li>
+<li><strong>Optimality conditions.</strong> FONC <span class="arithmatex">\(\nabla f = 0\)</span>, SOSC <span class="arithmatex">\(\nabla^2 f \succ 0\)</span>; with constraints, replace by <strong>Lagrange/KKT</strong> with multipliers and complementary slackness.</li>
+<li><strong>Line search.</strong> Bracket by expansion, refine by golden-section (or bisection/interpolation); a superlinear method with a poor line search can be worse than gradient descent with a good one.</li>
+<li><strong>Derivatives.</strong> Prefer analytic/AD; fall back to finite differences; use adjoints when the parameter dimension is large.</li>
+</ol>
+<hr />
+<h2 id="113-quiz">1.13 Quiz<a class="headerlink" href="#113-quiz" title="Permanent link">&para;</a></h2>
+<h3 id="a-multiple-choice-choose-the-single-best-answer">A. Multiple choice (choose the single best answer)<a class="headerlink" href="#a-multiple-choice-choose-the-single-best-answer" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Which of the following is <strong>necessary</strong> for a differentiable <span class="arithmatex">\(f\)</span> to have a local minimum at an interior point <span class="arithmatex">\(x^\star\)</span>?
+   (a) <span class="arithmatex">\(f(x^\star)=0\)</span> (b) <span class="arithmatex">\(\nabla f(x^\star)=0\)</span> (c) <span class="arithmatex">\(\nabla^2 f(x^\star)\succ 0\)</span> (d) <span class="arithmatex">\(f\)</span> is convex</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(\nabla^2 f(x^\star) \succ 0\)</span> and <span class="arithmatex">\(\nabla f(x^\star) = 0\)</span>, then <span class="arithmatex">\(x^\star\)</span> is:
+   (a) a strict local maximum (b) a strict local minimum (c) a saddle (d) undetermined</p>
+</li>
+<li>
+<p>Which <span class="arithmatex">\(x\)</span> is <strong>Pareto-optimal</strong> for <span class="arithmatex">\(\min (x^2, (x-2)^2)\)</span> over <span class="arithmatex">\(\mathbb{R}\)</span>?
+   (a) <span class="arithmatex">\(x=-1\)</span> (b) <span class="arithmatex">\(x=1\)</span> (c) <span class="arithmatex">\(x=3\)</span> (d) <span class="arithmatex">\(x=0.5\)</span> only if <span class="arithmatex">\(x\le0\)</span></p>
+</li>
+<li>
+<p>For <span class="arithmatex">\(f(x) = \tfrac12 x^\top Q x - c^\top x\)</span> with <span class="arithmatex">\(Q\succ0\)</span>, the unique global minimizer is:
+   (a) <span class="arithmatex">\(Qc\)</span> (b) <span class="arithmatex">\(Q^{-1}c\)</span> (c) <span class="arithmatex">\(-Q^{-1}c\)</span> (d) <span class="arithmatex">\(c-Q\)</span></p>
+</li>
+<li>
+<p>The gradient of a linear function <span class="arithmatex">\(f(x)=a^\top x + b\)</span> is:
+   (a) <span class="arithmatex">\(a\)</span> (b) <span class="arithmatex">\(b\)</span> (c) <span class="arithmatex">\(0\)</span> (d) <span class="arithmatex">\(a x\)</span></p>
+</li>
+<li>
+<p>Which finite-difference formula has <span class="arithmatex">\(O(h^2)\)</span> truncation error?
+   (a) forward (b) backward (c) central (d) all three</p>
+</li>
+<li>
+<p>In golden-section search, the interval reduction factor per iteration is:
+   (a) <span class="arithmatex">\(1/2\)</span> (b) <span class="arithmatex">\((\sqrt 5 - 1)/2 \approx 0.618\)</span> (c) <span class="arithmatex">\(1/\sqrt{2}\)</span> (d) <span class="arithmatex">\(1/e\)</span></p>
+</li>
+<li>
+<p>For <span class="arithmatex">\(\min x_1^2+x_2^2\)</span> s.t. <span class="arithmatex">\(x_1+x_2=2\)</span>, the solution <span class="arithmatex">\(x^\star\)</span> is:
+   (a) <span class="arithmatex">\((2,0)\)</span> (b) <span class="arithmatex">\((0,2)\)</span> (c) <span class="arithmatex">\((1,1)\)</span> (d) <span class="arithmatex">\((\sqrt2,\sqrt2)\)</span></p>
+</li>
+<li>
+<p>In the KKT conditions for <span class="arithmatex">\(\min f\)</span> s.t. <span class="arithmatex">\(g_i(x)\le 0\)</span>, the multipliers satisfy:
+   (a) <span class="arithmatex">\(\mu_i \le 0\)</span> (b) <span class="arithmatex">\(\mu_i = 0\)</span> (c) <span class="arithmatex">\(\mu_i \ge 0\)</span> (d) no sign restriction</p>
+</li>
+<li>
+<p>For a quadratic with condition number <span class="arithmatex">\(\kappa(Q)\gg 1\)</span>, an iterative method will typically:
+    (a) converge faster (b) converge more slowly (c) converge in one step (d) fail</p>
+</li>
+<li>
+<p>Which derivative method is most efficient when there are <strong>many</strong> parameters and one scalar output?
+    (a) forward finite differences (b) central finite differences (c) reverse-mode AD / adjoint (d) forward-mode AD</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(\phi(\alpha) = f(x + \alpha d)\)</span> with <span class="arithmatex">\(\nabla f(x)^\top d &gt; 0\)</span>, then <span class="arithmatex">\(d\)</span> is:
+    (a) a descent direction (b) an ascent direction (c) orthogonal to <span class="arithmatex">\(\nabla f\)</span> (d) not enough information</p>
+</li>
+</ol>
+<h3 id="b-fill-in-the-blank">B. Fill in the blank<a class="headerlink" href="#b-fill-in-the-blank" title="Permanent link">&para;</a></h3>
+<ol>
+<li>The first-order necessary condition for an unconstrained minimizer is <span class="arithmatex">\(\nabla f(x^\star) = \_\_\_\_\)</span>.</li>
+<li>The Hessian is the matrix of ________ partial derivatives.</li>
+<li>A point that no other feasible point Pareto-dominates is called ________.</li>
+<li>The second-order Taylor term is <span class="arithmatex">\(\tfrac12 d^\top \_\_\_\_ d\)</span>.</li>
+<li>The central-difference formula for <span class="arithmatex">\(\partial f/\partial x_i\)</span> is <span class="arithmatex">\((f(x+h e_i) - f(x-h e_i)) / \_\_\_\_\)</span>.</li>
+<li>Golden-section uses <span class="arithmatex">\(\tau = (\sqrt 5 - 1)/2 \approx \_\_\_\_\)</span>.</li>
+<li>For equality constraints <span class="arithmatex">\(Ax=b\)</span>, the FONC is <span class="arithmatex">\(\nabla f(x^\star) + \_\_\_\_ = 0\)</span>.</li>
+<li>KKT complementary slackness reads <span class="arithmatex">\(\mu_i g_i(x^\star) = \_\_\_\_\)</span>.</li>
+<li>The adjoint (costate) method's gradient cost is independent of the number of _____.</li>
+<li>A symmetric matrix <span class="arithmatex">\(Q\)</span> is positive definite if all eigenvalues are ____.</li>
+</ol>
+<h3 id="c-define-explain">C. Define / explain<a class="headerlink" href="#c-define-explain" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Define <strong>local minimum</strong>, <strong>strict local minimum</strong>, and <strong>global minimum</strong>. Give a one-variable example illustrating the difference between local and global.</li>
+<li>Explain <strong>Pareto optimality</strong> and the <strong>Pareto front</strong> with an example. Why is there usually no single optimum for a multi-objective problem?</li>
+<li>State the <strong>first-order</strong> and <strong>second-order</strong> optimality conditions (both necessary and sufficient) for an unconstrained smooth problem. Give a counterexample showing that FONC alone is not sufficient.</li>
+<li>Describe the <strong>adjoint variable approach</strong> for gradient computation. In two or three sentences, explain why it is preferable to finite differences for problems with many parameters.</li>
+<li>Explain <strong>bracketing</strong> and <strong>sectioning</strong> in a line search. What is the reduction factor of golden-section, and what does the name mean?</li>
+<li>For a quadratic form <span class="arithmatex">\(\tfrac12 x^\top Qx - c^\top x\)</span>, explain how the <strong>eigenvalues of <span class="arithmatex">\(Q\)</span></strong> determine (i) whether a unique minimum exists, and (ii) the shape of level sets. Give the formula for the optimal value.</li>
+</ol>
+<hr />
+<h2 id="114-answer-key">1.14 Answer key<a class="headerlink" href="#114-answer-key" title="Permanent link">&para;</a></h2>
+<details class="success">
+<summary>A. Multiple choice</summary>
+<ol>
+<li><strong>(b)</strong> — <span class="arithmatex">\(\nabla f(x^\star)=0\)</span> is necessary but not sufficient; <span class="arithmatex">\(\nabla^2 f\succ0\)</span> is only sufficient.</li>
+<li><strong>(b)</strong> — FONC + strict SOSC gives a strict local minimum.</li>
+<li><strong>(b)</strong> — In the Pareto set <span class="arithmatex">\([0,2]\)</span>; the rest are dominated (see Example 1.4).</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\(Qx^\star = c\)</span>, so <span class="arithmatex">\(x^\star = Q^{-1}c\)</span>.</li>
+<li><strong>(a)</strong> — <span class="arithmatex">\(\nabla (a^\top x+b) = a\)</span>, a constant.</li>
+<li><strong>(c)</strong> — central differences are <span class="arithmatex">\(O(h^2)\)</span>; forward/backward are <span class="arithmatex">\(O(h)\)</span>.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\(1/\varphi = (\sqrt 5-1)/2\approx 0.618\)</span>.</li>
+<li><strong>(c)</strong> — <span class="arithmatex">\(x_1=x_2=1\)</span> from symmetry and the constraint (Example 1.8).</li>
+<li><strong>(c)</strong> — <span class="arithmatex">\(\mu_i\ge0\)</span> for minimisation with <span class="arithmatex">\(g_i\le0\)</span>.</li>
+<li><strong>(b)</strong> — large <span class="arithmatex">\(\kappa\)</span> = slow convergence; <span class="arithmatex">\(\kappa=1\)</span> would be ideal.</li>
+<li><strong>(c)</strong> — reverse-mode AD / adjoint: one forward + one reverse pass.</li>
+<li><strong>(b)</strong> — positive directional derivative means <span class="arithmatex">\(\phi\)</span> initially increases.</li>
+</ol>
+</details>
+<details class="success">
+<summary>B. Fill in the blank</summary>
+<ol>
+<li><span class="arithmatex">\(0\)</span></li>
+<li>second (second-order / mixed)</li>
+<li>Pareto-optimal (Pareto-efficient)</li>
+<li><span class="arithmatex">\(\nabla^2 f(x)\)</span> (i.e. the Hessian)</li>
+<li><span class="arithmatex">\(2h\)</span></li>
+<li><span class="arithmatex">\(0.618\)</span> (golden ratio conjugate)</li>
+<li><span class="arithmatex">\(A^\top\lambda\)</span> (or <span class="arithmatex">\(A^\top \lambda^\star\)</span>)</li>
+<li><span class="arithmatex">\(0\)</span></li>
+<li>parameters (unknowns / control variables / inputs)</li>
+<li>positive (strictly greater than zero)</li>
+</ol>
+</details>
+<details class="success">
+<summary>C. Define / explain — model answers</summary>
+<ol>
+<li><em>Local minimum:</em> <span class="arithmatex">\(f(x^\star)\le f(x)\)</span> for all feasible <span class="arithmatex">\(x\)</span> in some neighborhood of <span class="arithmatex">\(x^\star\)</span>.
+   <em>Strict local minimum:</em> the inequality is strict for <span class="arithmatex">\(x\ne x^\star\)</span>.
+   <em>Global minimum:</em> the inequality holds over the whole feasible set.
+   <em>Example:</em> <span class="arithmatex">\(f(x)=(x^2-1)^2\)</span> has strict local minima at <span class="arithmatex">\(x=\pm1\)</span> and both are also global; by contrast <span class="arithmatex">\(f(x)=0.5 x^2+3\sin(3x)\)</span> on <span class="arithmatex">\([-3,3]\)</span> has multiple local minima but only one is global.</li>
+<li><em>Pareto dominance:</em> <span class="arithmatex">\(x\)</span> dominates <span class="arithmatex">\(y\)</span> if <span class="arithmatex">\(f_i(x)\le f_i(y)\)</span> for all <span class="arithmatex">\(i\)</span> and strictly for at least one <span class="arithmatex">\(i\)</span>. <em>Pareto-optimal:</em> not dominated by any feasible point. The <em>Pareto front</em> is the image of the Pareto set in objective space. There is generally no single optimum because objectives conflict — improving one worsens another. Example: <span class="arithmatex">\(\min(x^2,(x-2)^2)\)</span>; the Pareto set is <span class="arithmatex">\([0,2]\)</span>.</li>
+<li>FONC: <span class="arithmatex">\(\nabla f(x^\star)=0\)</span>. SOSC-necessary: <span class="arithmatex">\(\nabla^2 f(x^\star)\succeq0\)</span>. SOSC-sufficient: <span class="arithmatex">\(\nabla^2 f(x^\star)\succ0\)</span> ⇒ strict local min. Counterexample to FONC alone: <span class="arithmatex">\(f(x)=x^3\)</span> at <span class="arithmatex">\(x=0\)</span> — <span class="arithmatex">\(\nabla f(0)=0\)</span> but <span class="arithmatex">\(0\)</span> is an inflection, not a minimum.</li>
+<li>The adjoint (costate) method augments the state with a dual variable <span class="arithmatex">\(\lambda\)</span> obeying a backward-in-time (or backward-in-index) equation; a single forward pass yields the states and a single backward pass yields the costates. The gradient with respect to <em>all</em> parameters is then obtained by simple products, at a cost independent of the parameter dimension. This contrasts with finite differences, whose cost grows linearly with the number of parameters.</li>
+<li><em>Bracketing</em> is the phase that finds three points <span class="arithmatex">\(a&lt;b&lt;c\)</span> with <span class="arithmatex">\(\phi(b)&lt;\phi(a)\)</span> and <span class="arithmatex">\(\phi(b)&lt;\phi(c)\)</span> — a <em>bracket</em> that must contain a local minimum. <em>Sectioning</em> refines the bracket by placing one or two interior test points and discarding the region that cannot contain the minimum. Golden-section places the interior points at a ratio <span class="arithmatex">\(\tau=(\sqrt5-1)/2\approx0.618\)</span> from each end; each iteration reduces the interval to a fraction <span class="arithmatex">\(\tau\)</span> of its length while reusing one previously computed value — this is why it is called <em>golden-section</em>.</li>
+<li>(i) A unique global minimum of <span class="arithmatex">\(\tfrac12 x^\top Qx - c^\top x\)</span> exists <strong>iff <span class="arithmatex">\(Q\succ0\)</span></strong> (all eigenvalues positive); if <span class="arithmatex">\(Q\)</span> is indefinite, the quadratic is unbounded below along a negative-curvature direction. (ii) Level sets are ellipsoids whose axes are eigenvectors of <span class="arithmatex">\(Q\)</span> with semi-axis lengths proportional to <span class="arithmatex">\(1/\sqrt{\lambda_i}\)</span>; the ratio of the longest to the shortest semi-axis is <span class="arithmatex">\(\sqrt{\kappa(Q)}\)</span>. Optimal value: <span class="arithmatex">\(f^\star = -\tfrac12 c^\top Q^{-1} c\)</span>.</li>
+</ol>
+</details>
+<hr />
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Boyd &amp; Vandenberghe, <em>Convex Optimization</em>, §1–§5.</li>
+<li>Nocedal &amp; Wright, <em>Numerical Optimization</em>, Chapters 1–3 and 10 (line search).</li>
+<li>Luenberger &amp; Ye, <em>Linear and Nonlinear Programming</em>, Chapters 1–4.</li>
+<li>Press, Teukolsky, Vetterling &amp; Flannery, <em>Numerical Recipes</em>, §10.</li>
+<li>Betts, <em>Practical Methods for Optimal Control and Estimation Using Nonlinear Programming</em>, Chapter 1.</li>
+<li>SciPy documentation: <code>scipy.optimize.check_grad</code>, <code>scipy.optimize.line_search</code>, <code>scipy.optimize.minimize</code>.</li>
+<li>CasADi / JAX tutorials on reverse-mode AD for gradient computation.</li>
+</ul>
+<hr />
+<h2 id="suggested-tutorial-problems-for-this-chapter">Suggested tutorial problems for this chapter<a class="headerlink" href="#suggested-tutorial-problems-for-this-chapter" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Unconstrained.</strong> For <span class="arithmatex">\(f(x)=x^3-6x^2+9x+1\)</span>, find all stationary points, classify them, and identify the global minimum on <span class="arithmatex">\([0,4]\)</span>. Compare with a numerical golden-section result.</li>
+<li><strong>Pareto.</strong> Compute and sketch the Pareto front of <span class="arithmatex">\(\min(x^2+y^2, (x-1)^2+y^2)\)</span> over <span class="arithmatex">\(\mathbb{R}^2\)</span>. Identify at least three Pareto-optimal points.</li>
+<li><strong>Lagrange.</strong> Use the Lagrange multiplier method to minimize <span class="arithmatex">\(x_1^2 + x_2^2 + x_3^2\)</span> subject to <span class="arithmatex">\(x_1 + 2x_2 + 3x_3 = 6\)</span>. Verify the multiplier via the envelope theorem.</li>
+<li><strong>KKT.</strong> Solve <span class="arithmatex">\(\min (x-3)^2 + (y-2)^2\)</span> s.t. <span class="arithmatex">\(x+y\le4\)</span>, <span class="arithmatex">\(x\ge0\)</span>, <span class="arithmatex">\(y\ge0\)</span>. Which constraints are active at the optimum, and what are the multipliers?</li>
+<li><strong>Line search.</strong> Implement golden-section search and use it to minimize <span class="arithmatex">\(\phi(\alpha)=\sin(3\alpha)+\alpha^2/4\)</span> on <span class="arithmatex">\([0,2]\)</span>. Verify convergence against <code>scipy.optimize.minimize_scalar</code> (method <code>'golden'</code>).</li>
+<li><strong>Adjoint.</strong> Extend Example 1.13 to <span class="arithmatex">\(N=4\)</span>, <span class="arithmatex">\(x_{k+1}=x_k + u_k\)</span>, <span class="arithmatex">\(J = x_4^2 + \sum_{k=0}^3 u_k^2\)</span>. Derive the optimal <span class="arithmatex">\(u_0,\dots,u_3\)</span> by both direct differentiation and the adjoint recursion, and confirm they agree.</li>
+<li><strong>Gradient check.</strong> For <span class="arithmatex">\(f(x_1,x_2,x_3) = \sin(x_1 x_2) + x_3^4 - x_1 e^{x_2 x_3}\)</span>, compute the analytic gradient at <span class="arithmatex">\((0.5, -1, 0.3)\)</span> and compare with central-difference and reverse-mode AD (JAX) results.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

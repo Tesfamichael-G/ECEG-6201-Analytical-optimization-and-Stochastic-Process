@@ -1,0 +1,2766 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MSc in Communication Engineering · Year 1, Semester I">
+      
+      
+        <meta name="author" content="Dr. Tesfamichael Gebregziabher">
+      
+      
+        <link rel="canonical" href="https://tesfamichael-g.github.io/ECEG-6201-Analytical-optimization-and-Stochastic-Process/chapters/06-markov-chains/">
+      
+      
+        <link rel="prev" href="../05-spectral-representation/">
+      
+      
+        <link rel="next" href="../07-queuing-theory/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>6. Markov Chains - ECEG-6201 — Analytical Optimization and Stochastic Processes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-6-markov-chains" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ECEG-6201 — Analytical Optimization and Stochastic Processes" class="md-header__button md-logo" aria-label="ECEG-6201 — Analytical Optimization and Stochastic Processes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ECEG-6201 — Analytical Optimization and Stochastic Processes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Markov Chains
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../syllabus/" class="md-tabs__link">
+        
+  
+    
+  
+  Syllabus
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../schedule/" class="md-tabs__link">
+        
+  
+    
+  
+  Schedule
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-optimization-preliminaries/" class="md-tabs__link">
+          
+  
+    
+  
+  Chapters
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../solutions/" class="md-tabs__link">
+          
+  
+    
+  
+  Solutions
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exam-bank/" class="md-tabs__link">
+        
+  
+    
+  
+  Exam Bank
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../assessment/" class="md-tabs__link">
+        
+  
+    
+  
+  Assessment
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../feedback/" class="md-tabs__link">
+        
+  
+    
+  
+  Feedback
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ECEG-6201 — Analytical Optimization and Stochastic Processes" class="md-nav__button md-logo" aria-label="ECEG-6201 — Analytical Optimization and Stochastic Processes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19Z"/></svg>
+
+    </a>
+    ECEG-6201 — Analytical Optimization and Stochastic Processes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../syllabus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Syllabus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schedule
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-optimization-preliminaries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Optimization — Preliminaries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-unconstrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Unconstrained Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-constrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Constrained Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-stochastic-processes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Stochastic Processes & Random Walks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-spectral-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Spectral Representation & Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6. Markov Chains
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6. Markov Chains
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#61-the-markov-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 The Markov property
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 The Markov property">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-61-the-weather-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.1 — the weather chain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-the-chapmankolmogorov-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 The Chapman–Kolmogorov equations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 The Chapman–Kolmogorov equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-62-gamblers-ruin-absorbing-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.2 — gambler's ruin (absorbing chain)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-63-ehrenfest-urn-periodic-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.3 — Ehrenfest urn (periodic chain)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-classification-of-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Classification of states
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Classification of states">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#631-communication-and-irreducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3.1 Communication and irreducibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#632-recurrence-and-transience" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3.2 Recurrence and transience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#633-periodicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3.3 Periodicity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-64-a-finite-irreducible-chain-with-no-absorbing-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.4 — a finite irreducible chain with no absorbing states
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-65-periodicity-in-the-two-state-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.5 — periodicity in the two-state chain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table-of-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary table of classification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-stationary-distributions-and-ergodicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Stationary distributions and ergodicity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 Stationary distributions and ergodicity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#641-stationary-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4.1 Stationary distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#642-ergodicity-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4.2 Ergodicity theorem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#643-detailed-balance-reversibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4.3 Detailed balance (reversibility)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-66-detailed-balance-for-a-birthdeath-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.6 — detailed balance for a birth–death chain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-continuous-time-markov-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5 Continuous-time Markov chains
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 Continuous-time Markov chains">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#651-definition-and-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5.1 Definition and generator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#652-holding-times-and-jumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5.2 Holding times and jumps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#653-stationary-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5.3 Stationary distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-67-two-state-ctmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.7 — two-state CTMC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-68-birthdeath-ctmc-and-mm1-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.8 — birth–death CTMC and M/M/1 preview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-comparison-dtmc-vs-ctmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.6 Comparison: DTMC vs. CTMC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-computational-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.7 Computational implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.7 Computational implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-dtmc-classification-ctmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python — DTMC, classification, CTMC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-iterative-stationary-distribution-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java — iterative stationary distribution + classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-dtmc-simulation-ctmc-stationary-by-q-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      C# — DTMC simulation + CTMC stationary by πQ = 0
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.8 Chapter summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.9 Quiz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.9 Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-multiple-choice-choose-the-single-best-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Multiple choice (choose the single best answer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-fill-in-the-blank" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Fill in the blank
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-define-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Define / explain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-answer-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.10 Answer key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-tutorial-problems-for-this-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested tutorial problems for this chapter
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-queuing-theory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Introduction to Queuing Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../solutions/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Solutions
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Solutions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/01-optimization-preliminaries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1 — Preliminaries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/02-unconstrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2 — Unconstrained
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/03-constrained-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3 — Constrained
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/04-stochastic-processes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4 — Stochastic Processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/05-spectral-representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5 — Spectral Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/06-markov-chains/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6 — Markov Chains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/07-queuing-theory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7 — Queuing Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exam-bank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam Bank
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#61-the-markov-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 The Markov property
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 The Markov property">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-61-the-weather-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.1 — the weather chain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-the-chapmankolmogorov-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 The Chapman–Kolmogorov equations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 The Chapman–Kolmogorov equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-62-gamblers-ruin-absorbing-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.2 — gambler's ruin (absorbing chain)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-63-ehrenfest-urn-periodic-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.3 — Ehrenfest urn (periodic chain)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-classification-of-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Classification of states
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Classification of states">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#631-communication-and-irreducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3.1 Communication and irreducibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#632-recurrence-and-transience" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3.2 Recurrence and transience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#633-periodicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3.3 Periodicity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-64-a-finite-irreducible-chain-with-no-absorbing-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.4 — a finite irreducible chain with no absorbing states
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-65-periodicity-in-the-two-state-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.5 — periodicity in the two-state chain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table-of-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary table of classification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-stationary-distributions-and-ergodicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Stationary distributions and ergodicity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 Stationary distributions and ergodicity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#641-stationary-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4.1 Stationary distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#642-ergodicity-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4.2 Ergodicity theorem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#643-detailed-balance-reversibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4.3 Detailed balance (reversibility)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-66-detailed-balance-for-a-birthdeath-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.6 — detailed balance for a birth–death chain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-continuous-time-markov-chains" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5 Continuous-time Markov chains
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 Continuous-time Markov chains">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#651-definition-and-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5.1 Definition and generator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#652-holding-times-and-jumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5.2 Holding times and jumps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#653-stationary-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5.3 Stationary distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-67-two-state-ctmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.7 — two-state CTMC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worked-example-68-birthdeath-ctmc-and-mm1-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example 6.8 — birth–death CTMC and M/M/1 preview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-comparison-dtmc-vs-ctmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.6 Comparison: DTMC vs. CTMC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-computational-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.7 Computational implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.7 Computational implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-dtmc-classification-ctmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python — DTMC, classification, CTMC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-iterative-stationary-distribution-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java — iterative stationary distribution + classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-dtmc-simulation-ctmc-stationary-by-q-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      C# — DTMC simulation + CTMC stationary by πQ = 0
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.8 Chapter summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.9 Quiz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.9 Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-multiple-choice-choose-the-single-best-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Multiple choice (choose the single best answer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-fill-in-the-blank" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Fill in the blank
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-define-explain" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Define / explain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-answer-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.10 Answer key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-tutorial-problems-for-this-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suggested tutorial problems for this chapter
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="chapter-6-markov-chains">Chapter 6 — Markov Chains<a class="headerlink" href="#chapter-6-markov-chains" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Chapter at a glance</p>
+<p><strong>Contact hours:</strong> 2 lecture + 3 tutorial · <strong>Home study:</strong> 5 h</p>
+<p><strong>Coverage (syllabus):</strong> concepts of the Markov process · discrete-time
+Markov chains (DTMC) · continuous-time Markov chains (CTMC) · classification
+of states · stationary distributions · ergodic properties and limiting
+probabilities.</p>
+</div>
+<hr />
+<h2 id="learning-outcomes">Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permanent link">&para;</a></h2>
+<p>By the end of this chapter you should be able to:</p>
+<ol>
+<li>State the <strong>Markov property</strong> and decide whether a given process satisfies it.</li>
+<li>Build a <strong>transition matrix</strong> for a DTMC; verify that its rows sum to one.</li>
+<li>Apply the <strong>Chapman–Kolmogorov equation</strong> to compute <span class="arithmatex">\(n\)</span>-step transition probabilities.</li>
+<li>Classify states as <strong>recurrent/transient</strong>, <strong>periodic/aperiodic</strong>, and identify <strong>communicating classes</strong>.</li>
+<li>Compute <strong>stationary distributions</strong> for small DTMCs, both by solving <span class="arithmatex">\(\pi P = \pi\)</span> and by detailed balance when applicable.</li>
+<li>State the <strong>ergodic theorem</strong> for finite irreducible aperiodic chains and use it to justify long-run averages.</li>
+<li>Write the <strong>generator matrix</strong> <span class="arithmatex">\(Q\)</span> for a CTMC, derive the <strong>Kolmogorov forward equations</strong>, and compute stationary distributions by solving <span class="arithmatex">\(\pi Q = 0\)</span>.</li>
+<li>Model simple engineering systems (buffers, servers, two-state links) as birth–death chains and derive their stationary distributions.</li>
+<li>Implement DTMC / CTMC computations in Python, Java, or C#.</li>
+</ol>
+<hr />
+<h2 id="61-the-markov-property">6.1 The Markov property<a class="headerlink" href="#61-the-markov-property" title="Permanent link">&para;</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">Markov property</p>
+<p>A stochastic process <span class="arithmatex">\(\{X_n\}_{n \ge 0}\)</span> taking values in a countable set
+<span class="arithmatex">\(\mathcal S\)</span> (the <strong>state space</strong>) satisfies the <strong>Markov property</strong> if, for
+every <span class="arithmatex">\(n\)</span> and every choice of states <span class="arithmatex">\(i_0, \dots, i_n, j\)</span>,</p>
+<div class="arithmatex">\[
+\Pr\{X_{n+1} = j \mid X_0 = i_0, \dots, X_n = i_n\}
+= \Pr\{X_{n+1} = j \mid X_n = i_n\}.
+\]</div>
+<p>In words: the <strong>future depends on the past only through the present</strong> —
+“the process has no memory of how it got here”.</p>
+</div>
+<p>A process satisfying this property is called a <strong>Markov chain</strong>. When <span class="arithmatex">\(n \in \mathbb Z_{\ge 0}\)</span> it is a <strong>discrete-time Markov chain (DTMC)</strong>; when <span class="arithmatex">\(t \in \mathbb R_{\ge 0}\)</span> it is a <strong>continuous-time Markov chain (CTMC)</strong>.</p>
+<p>The quantity</p>
+<div class="arithmatex">\[
+P_{ij} = \Pr\{X_{n+1} = j \mid X_n = i\}
+\]</div>
+<p>is the <strong>transition probability</strong> from state <span class="arithmatex">\(i\)</span> to state <span class="arithmatex">\(j\)</span>. The chain is <strong>time-homogeneous</strong> if <span class="arithmatex">\(P_{ij}\)</span> does not depend on <span class="arithmatex">\(n\)</span>; in that case the entire chain is determined by the <strong>transition matrix</strong> <span class="arithmatex">\(P = (P_{ij})\)</span>.</p>
+<p><strong>Basic properties of <span class="arithmatex">\(P\)</span>.</strong></p>
+<ul>
+<li><span class="arithmatex">\(P_{ij} \ge 0\)</span> for all <span class="arithmatex">\(i, j\)</span>.</li>
+<li><span class="arithmatex">\(\sum_j P_{ij} = 1\)</span> for each <span class="arithmatex">\(i\)</span> (each row sums to one) — such a matrix is called <strong>stochastic</strong>.</li>
+<li>The initial distribution <span class="arithmatex">\(\mu_0\)</span> is a row vector with <span class="arithmatex">\(\mu_0(i) = \Pr\{X_0 = i\}\)</span>, <span class="arithmatex">\(\sum_i \mu_0(i) = 1\)</span>.</li>
+</ul>
+<h3 id="worked-example-61-the-weather-chain">Worked example 6.1 — the weather chain<a class="headerlink" href="#worked-example-61-the-weather-chain" title="Permanent link">&para;</a></h3>
+<p>States: <span class="arithmatex">\(1\)</span> = sunny, <span class="arithmatex">\(2\)</span> = rainy. Transition matrix</p>
+<div class="arithmatex">\[
+P = \begin{bmatrix} 0.9 &amp; 0.1 \\ 0.5 &amp; 0.5 \end{bmatrix}.
+\]</div>
+<p>From sunny: 90% sunny tomorrow, 10% rainy. From rainy: 50% sunny, 50% rainy.</p>
+<p><strong>Two-step transition.</strong> Today sunny, what is the probability of being sunny in 2 days?</p>
+<div class="arithmatex">\[
+\Pr\{X_2 = \text{sunny} \mid X_0 = \text{sunny}\} = (P^2)_{11}.
+\]</div>
+<p>Compute <span class="arithmatex">\(P^2\)</span>:</p>
+<div class="arithmatex">\[
+P^2 = \begin{bmatrix} 0.9\cdot 0.9 + 0.1\cdot 0.5 &amp; 0.9\cdot 0.1 + 0.1\cdot 0.5 \\ 0.5\cdot 0.9 + 0.5\cdot 0.5 &amp; 0.5\cdot 0.1 + 0.5\cdot 0.5 \end{bmatrix}
+= \begin{bmatrix} 0.86 &amp; 0.14 \\ 0.70 &amp; 0.30 \end{bmatrix}.
+\]</div>
+<p>So the answer is <span class="arithmatex">\(0.86\)</span>. In general, <span class="arithmatex">\(P^n\)</span> gives <span class="arithmatex">\(n\)</span>-step transition probabilities: <span class="arithmatex">\((P^n)_{ij} = \Pr\{X_n = j \mid X_0 = i\}\)</span>.</p>
+<p><strong>Long-run behaviour.</strong> Compute <span class="arithmatex">\(P^\infty = \lim_{n\to\infty} P^n\)</span> by repeatedly squaring <span class="arithmatex">\(P\)</span>:</p>
+<div class="arithmatex">\[
+P^2 = \begin{bmatrix}0.86 &amp; 0.14\\0.70&amp;0.30\end{bmatrix}, \quad
+P^4 = \begin{bmatrix}0.842 &amp; 0.158\\0.79&amp;0.21\end{bmatrix}, \quad
+P^8 \approx \begin{bmatrix}0.8337 &amp; 0.1663 \\ 0.8315 &amp; 0.1685\end{bmatrix}.
+\]</div>
+<p>The rows converge to the same vector, roughly <span class="arithmatex">\((0.8333,\ 0.1667)\)</span>. This row is the <strong>stationary distribution</strong> of the chain — computed in Example 6.4.</p>
+<div class="admonition tip">
+<p class="admonition-title">Markov property check</p>
+<p>A process satisfies the Markov property if its future is <em>conditionally
+independent</em> of the past given the present. Note that this does <strong>not</strong>
+mean it is memoryless in the everyday sense — the <em>state</em> can encode memory
+(e.g. a queue's state encodes how full it is). It means the state variable
+is <em>rich enough</em> that knowing it is sufficient to predict the future.</p>
+</div>
+<hr />
+<h2 id="62-the-chapmankolmogorov-equations">6.2 The Chapman–Kolmogorov equations<a class="headerlink" href="#62-the-chapmankolmogorov-equations" title="Permanent link">&para;</a></h2>
+<p>The <strong>Chapman–Kolmogorov (CK) equations</strong> relate the <span class="arithmatex">\((m+n)\)</span>-step transition probabilities to the <span class="arithmatex">\(m\)</span>-step and <span class="arithmatex">\(n\)</span>-step probabilities:</p>
+<div class="arithmatex">\[
+\boxed{\;(P^{m+n})_{ij} = \sum_{k \in \mathcal S} (P^m)_{ik}\,(P^n)_{kj}\;}
+\]</div>
+<p>This is exactly matrix multiplication: <span class="arithmatex">\(P^{m+n} = P^m P^n\)</span>. The proof is a one-line application of the <strong>law of total probability</strong> and the Markov property:</p>
+<div class="arithmatex">\[
+\Pr\{X_{m+n} = j \mid X_0 = i\} = \sum_k \Pr\{X_{m+n} = j \mid X_m = k\}\Pr\{X_m = k \mid X_0 = i\}.
+\]</div>
+<p>The power <span class="arithmatex">\(P^n\)</span> therefore encodes all multi-step transition probabilities, and the marginal distribution at step <span class="arithmatex">\(n\)</span> is</p>
+<div class="arithmatex">\[
+\mu_n = \mu_0 P^n,
+\]</div>
+<p>where <span class="arithmatex">\(\mu_n(j) = \Pr\{X_n = j\}\)</span> and <span class="arithmatex">\(\mu_0\)</span> is the initial distribution as a row vector.</p>
+<h3 id="worked-example-62-gamblers-ruin-absorbing-chain">Worked example 6.2 — gambler's ruin (absorbing chain)<a class="headerlink" href="#worked-example-62-gamblers-ruin-absorbing-chain" title="Permanent link">&para;</a></h3>
+<p>A gambler starts with <span class="arithmatex">\(k \in \{1, 2, 3\}\)</span> birr. Each round, with probability <span class="arithmatex">\(p\)</span> he wins one birr; with probability <span class="arithmatex">\(1 - p\)</span> he loses one. He stops when he reaches <span class="arithmatex">\(\{0, 4\}\)</span> (ruin or goal).</p>
+<p>State space <span class="arithmatex">\(\mathcal S = \{0, 1, 2, 3, 4\}\)</span> with <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(4\)</span> <strong>absorbing</strong> (<span class="arithmatex">\(P_{00} = P_{44} = 1\)</span>). Transition matrix:</p>
+<div class="arithmatex">\[
+P = \begin{bmatrix}
+1 &amp; 0   &amp; 0   &amp; 0   &amp; 0 \\
+1-p &amp; 0 &amp; p &amp; 0 &amp; 0 \\
+0 &amp; 1-p &amp; 0 &amp; p &amp; 0 \\
+0 &amp; 0 &amp; 1-p &amp; 0 &amp; p \\
+0 &amp; 0   &amp; 0   &amp; 0   &amp; 1
+\end{bmatrix}.
+\]</div>
+<p><strong>Absorption probabilities.</strong> Let <span class="arithmatex">\(u_k = \Pr\{\text{reach } 4 \text{ before } 0 \mid X_0 = k\}\)</span>. Condition on the first step (first-step analysis):</p>
+<div class="arithmatex">\[
+u_k = p\, u_{k+1} + (1-p)\, u_{k-1},\quad 1 \le k \le 3,\qquad u_0 = 0,\ u_4 = 1.
+\]</div>
+<p>This is a linear second-order difference equation. Rearranged:</p>
+<div class="arithmatex">\[
+p\, u_{k+1} - u_k + (1-p)\, u_{k-1} = 0.
+\]</div>
+<p>The characteristic equation is <span class="arithmatex">\(p r^2 - r + (1-p) = 0\)</span>, whose roots are <span class="arithmatex">\(r = 1\)</span> and <span class="arithmatex">\(r = (1-p)/p\)</span>. For <span class="arithmatex">\(p \ne 1/2\)</span>,</p>
+<div class="arithmatex">\[
+u_k = A + B\left(\frac{1-p}{p}\right)^{k}.
+\]</div>
+<p>Boundary conditions give</p>
+<div class="arithmatex">\[
+u_k = \frac{1 - \left(\frac{1-p}{p}\right)^{k}}{1 - \left(\frac{1-p}{p}\right)^{4}}.
+\]</div>
+<p>For <span class="arithmatex">\(p = 1/2\)</span> (fair game), the double root at <span class="arithmatex">\(r = 1\)</span> gives <span class="arithmatex">\(u_k = k/4\)</span>.</p>
+<p><strong>Sanity check.</strong> For a fair game and <span class="arithmatex">\(k = 2\)</span>: <span class="arithmatex">\(u_2 = 2/4 = 0.5\)</span> — starting from the middle, ruin and success are equally likely. ✓</p>
+<p><strong>Numerical evaluation</strong> for <span class="arithmatex">\(p = 0.4\)</span> (unfair against the gambler):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(k\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(u_k\)</span></th>
+<th style="text-align: center;">Probability of ruin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.1525</td>
+<td style="text-align: center;">0.8475</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.3295</td>
+<td style="text-align: center;">0.6705</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.5368</td>
+<td style="text-align: center;">0.4632</td>
+</tr>
+</tbody>
+</table>
+<p>Even with a small disadvantage (<span class="arithmatex">\(p = 0.4\)</span> vs. <span class="arithmatex">\(0.5\)</span>), the gambler's chance of reaching the goal drops dramatically.</p>
+<h3 id="worked-example-63-ehrenfest-urn-periodic-chain">Worked example 6.3 — Ehrenfest urn (periodic chain)<a class="headerlink" href="#worked-example-63-ehrenfest-urn-periodic-chain" title="Permanent link">&para;</a></h3>
+<p>Two urns contain a total of <span class="arithmatex">\(N\)</span> balls. At each step, pick a ball uniformly at random and move it to the other urn. Let <span class="arithmatex">\(X_n\)</span> be the number of balls in urn 1.</p>
+<p><strong>Transition probabilities.</strong> From state <span class="arithmatex">\(k\)</span> (urn 1 has <span class="arithmatex">\(k\)</span> balls, urn 2 has <span class="arithmatex">\(N - k\)</span>):</p>
+<ul>
+<li>Move to <span class="arithmatex">\(k - 1\)</span>: pick a ball from urn 1, probability <span class="arithmatex">\(k/N\)</span>.</li>
+<li>Move to <span class="arithmatex">\(k + 1\)</span>: pick a ball from urn 2, probability <span class="arithmatex">\((N - k)/N\)</span>.</li>
+<li>All other transitions have probability zero.</li>
+</ul>
+<p>So <span class="arithmatex">\(P_{k, k-1} = k/N\)</span>, <span class="arithmatex">\(P_{k, k+1} = (N-k)/N\)</span>.</p>
+<p><strong>Periodicity.</strong> Every transition changes <span class="arithmatex">\(k\)</span> by exactly <span class="arithmatex">\(\pm 1\)</span>, so the parity of <span class="arithmatex">\(k\)</span> alternates each step. Hence the chain is <strong>periodic with period 2</strong>.</p>
+<p><strong>Stationary distribution.</strong> Try the binomial <span class="arithmatex">\(\pi(k) = \binom{N}{k} 2^{-N}\)</span>. Check detailed balance:</p>
+<div class="arithmatex">\[
+\pi(k) P_{k, k+1} = \binom{N}{k}2^{-N} \cdot \frac{N - k}{N}.
+\]</div>
+<div class="arithmatex">\[
+\pi(k+1) P_{k+1, k} = \binom{N}{k+1}2^{-N} \cdot \frac{k+1}{N}.
+\]</div>
+<p>Using <span class="arithmatex">\(\binom{N}{k+1}\cdot(k+1) = \binom{N}{k}\cdot(N-k)\)</span>:</p>
+<div class="arithmatex">\[
+\pi(k+1) P_{k+1, k} = \binom{N}{k}2^{-N}\cdot\frac{N-k}{N} = \pi(k) P_{k, k+1}. \;\checkmark
+\]</div>
+<p>So <span class="arithmatex">\(\pi(k) = \binom{N}{k}/2^N\)</span> is the stationary distribution. It is also the <strong>limiting time-average</strong>: the long-run fraction of time spent at state <span class="arithmatex">\(k\)</span> is <span class="arithmatex">\(\binom{N}{k}/2^N\)</span>, which is <span class="arithmatex">\(\mathrm{Binomial}(N, 1/2)\)</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Periodicity and the limit</p>
+<p>For the Ehrenfest chain, <span class="arithmatex">\(P^n\)</span> does <strong>not</strong> converge as <span class="arithmatex">\(n \to \infty\)</span> — even and odd <span class="arithmatex">\(n\)</span>
+give different distributions (from parity). But the <strong>Cesàro average</strong>
+<span class="arithmatex">\(\frac{1}{n}\sum_{k=0}^{n-1} P^k\)</span> <strong>does</strong> converge to the stationary distribution.
+This is why the ergodic theorem for periodic chains refers to <em>time averages</em>,
+not to <span class="arithmatex">\(\lim P^n\)</span> — a distinction Example 6.4 develops.</p>
+</div>
+<hr />
+<h2 id="63-classification-of-states">6.3 Classification of states<a class="headerlink" href="#63-classification-of-states" title="Permanent link">&para;</a></h2>
+<h3 id="631-communication-and-irreducibility">6.3.1 Communication and irreducibility<a class="headerlink" href="#631-communication-and-irreducibility" title="Permanent link">&para;</a></h3>
+<p>State <span class="arithmatex">\(j\)</span> is <strong>accessible</strong> from <span class="arithmatex">\(i\)</span> (written <span class="arithmatex">\(i \to j\)</span>) if <span class="arithmatex">\(P^n_{ij} &gt; 0\)</span> for some <span class="arithmatex">\(n \ge 0\)</span>. States <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span> <strong>communicate</strong> (written <span class="arithmatex">\(i \leftrightarrow j\)</span>) if <span class="arithmatex">\(i \to j\)</span> and <span class="arithmatex">\(j \to i\)</span>. Communication is an equivalence relation; its equivalence classes are the <strong>communicating classes</strong>.</p>
+<p>A chain is <strong>irreducible</strong> if it has a single communicating class (all states communicate).</p>
+<h3 id="632-recurrence-and-transience">6.3.2 Recurrence and transience<a class="headerlink" href="#632-recurrence-and-transience" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(f_i = \Pr\{\text{return to } i \text{ at some } n \ge 1 \mid X_0 = i\}\)</span> be the <strong>return probability</strong>. Then:</p>
+<ul>
+<li><strong>Recurrent</strong> state: <span class="arithmatex">\(f_i = 1\)</span> (returns almost surely).</li>
+<li><strong>Transient</strong> state: <span class="arithmatex">\(f_i &lt; 1\)</span> (positive probability of never returning).</li>
+</ul>
+<p>For a recurrent state, the <strong>mean return time</strong> is <span class="arithmatex">\(m_i = \mathbb E[T_i \mid X_0 = i]\)</span> where <span class="arithmatex">\(T_i\)</span> is the first return time. If <span class="arithmatex">\(m_i &lt; \infty\)</span>, the state is <strong>positive recurrent</strong>; if <span class="arithmatex">\(m_i = \infty\)</span>, it is <strong>null recurrent</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Finite-state fact</p>
+<p>In a <strong>finite</strong> state space, every recurrent state is positive recurrent, and
+there are no null-recurrent states.</p>
+</div>
+<h3 id="633-periodicity">6.3.3 Periodicity<a class="headerlink" href="#633-periodicity" title="Permanent link">&para;</a></h3>
+<p>The <strong>period</strong> of state <span class="arithmatex">\(i\)</span> is <span class="arithmatex">\(d(i) = \gcd\{n \ge 1 : P^n_{ii} &gt; 0\}\)</span>. If <span class="arithmatex">\(d(i) = 1\)</span>, the state is <strong>aperiodic</strong>. In an irreducible chain all states have the same period, so we can speak of "the period of the chain".</p>
+<h3 id="worked-example-64-a-finite-irreducible-chain-with-no-absorbing-states">Worked example 6.4 — a finite irreducible chain with no absorbing states<a class="headerlink" href="#worked-example-64-a-finite-irreducible-chain-with-no-absorbing-states" title="Permanent link">&para;</a></h3>
+<p>A chain on <span class="arithmatex">\(\{1,2,3\}\)</span> with</p>
+<div class="arithmatex">\[
+P = \begin{bmatrix} 0.5 &amp; 0.5 &amp; 0 \\ 0.3 &amp; 0.4 &amp; 0.3 \\ 0 &amp; 0.5 &amp; 0.5\end{bmatrix}.
+\]</div>
+<p><strong>Irreducibility.</strong> All entries reachable in <span class="arithmatex">\(\le 2\)</span> steps; all states communicate. Irreducible. ✓</p>
+<p><strong>Periodicity.</strong> <span class="arithmatex">\(P_{11} = 0.5 &gt; 0\)</span>, so <span class="arithmatex">\(d(1) = 1\)</span>. Aperiodic.</p>
+<p><strong>Stationary distribution.</strong> Solve <span class="arithmatex">\(\pi P = \pi\)</span>, <span class="arithmatex">\(\sum \pi_i = 1\)</span>:</p>
+<div class="arithmatex">\[
+\pi_1 = 0.5\pi_1 + 0.3\pi_2,\quad
+\pi_2 = 0.5\pi_1 + 0.4\pi_2 + 0.5\pi_3,\quad
+\pi_3 = 0.3\pi_2 + 0.5\pi_3.
+\]</div>
+<p>From the first: <span class="arithmatex">\(0.5\pi_1 = 0.3\pi_2\)</span>, so <span class="arithmatex">\(\pi_2 = \tfrac{5}{3}\pi_1\)</span>. From the third: <span class="arithmatex">\(0.5\pi_3 = 0.3\pi_2\)</span>, so <span class="arithmatex">\(\pi_3 = 0.6\pi_2 = \pi_1\)</span>. Normalizing: <span class="arithmatex">\(\pi_1(1 + 5/3 + 1) = 1\)</span>, so <span class="arithmatex">\(\pi_1 = 3/11\)</span> and</p>
+<div class="arithmatex">\[
+\pi = \left(\tfrac{3}{11},\ \tfrac{5}{11},\ \tfrac{3}{11}\right) \approx (0.2727,\ 0.4545,\ 0.2727).
+\]</div>
+<p><strong>Long-run behaviour.</strong> Because the chain is irreducible, aperiodic, and finite, <span class="arithmatex">\(P^n \to \mathbf 1\pi\)</span> as <span class="arithmatex">\(n \to \infty\)</span> — every row of <span class="arithmatex">\(P^\infty\)</span> equals <span class="arithmatex">\(\pi\)</span>.</p>
+<h3 id="worked-example-65-periodicity-in-the-two-state-chain">Worked example 6.5 — periodicity in the two-state chain<a class="headerlink" href="#worked-example-65-periodicity-in-the-two-state-chain" title="Permanent link">&para;</a></h3>
+<p>A two-state chain with</p>
+<div class="arithmatex">\[
+P = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}
+\]</div>
+<p>has <span class="arithmatex">\(P^n = P\)</span> if <span class="arithmatex">\(n\)</span> is odd, <span class="arithmatex">\(P^n = I\)</span> if <span class="arithmatex">\(n\)</span> is even. Clearly <span class="arithmatex">\(P^n\)</span> does not converge. This chain has period <span class="arithmatex">\(2\)</span>. The <strong>Cesàro average</strong> converges:</p>
+<div class="arithmatex">\[
+\frac{1}{n}\sum_{k=0}^{n-1} P^k \to \begin{bmatrix}0.5 &amp; 0.5\\0.5 &amp; 0.5\end{bmatrix}
+\]</div>
+<p>which is <span class="arithmatex">\(\mathbf 1\pi\)</span> with <span class="arithmatex">\(\pi = (0.5, 0.5)\)</span>.</p>
+<h3 id="summary-table-of-classification">Summary table of classification<a class="headerlink" href="#summary-table-of-classification" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Definition</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Irreducible</td>
+<td>One communicating class</td>
+<td>Convergence to a unique stationary distribution</td>
+</tr>
+<tr>
+<td>Positive recurrent</td>
+<td>Returns a.s., finite mean return time</td>
+<td>Stationary exists with <span class="arithmatex">\(\pi_i = 1/m_i\)</span></td>
+</tr>
+<tr>
+<td>Aperiodic</td>
+<td>Period 1</td>
+<td><span class="arithmatex">\(\lim P^n = \mathbf 1\pi\)</span></td>
+</tr>
+<tr>
+<td>Ergodic</td>
+<td>Irreducible + positive recurrent + aperiodic</td>
+<td>Long-run time average = ensemble average</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="64-stationary-distributions-and-ergodicity">6.4 Stationary distributions and ergodicity<a class="headerlink" href="#64-stationary-distributions-and-ergodicity" title="Permanent link">&para;</a></h2>
+<h3 id="641-stationary-distribution">6.4.1 Stationary distribution<a class="headerlink" href="#641-stationary-distribution" title="Permanent link">&para;</a></h3>
+<p>A probability vector <span class="arithmatex">\(\pi\)</span> is a <strong>stationary distribution</strong> of the chain if</p>
+<div class="arithmatex">\[
+\pi P = \pi,\qquad \pi_i \ge 0,\qquad \sum_i \pi_i = 1.
+\]</div>
+<p>This is the left eigenvector of <span class="arithmatex">\(P\)</span> at eigenvalue 1. If <span class="arithmatex">\(\mu_0 = \pi\)</span>, then <span class="arithmatex">\(\mu_n = \pi\)</span> for all <span class="arithmatex">\(n\)</span> — the chain is stationary in the sense of §4.1.</p>
+<h3 id="642-ergodicity-theorem">6.4.2 Ergodicity theorem<a class="headerlink" href="#642-ergodicity-theorem" title="Permanent link">&para;</a></h3>
+<div class="admonition abstract">
+<p class="admonition-title">Ergodic theorem for DTMC</p>
+<p>Let <span class="arithmatex">\(\{X_n\}\)</span> be an irreducible, positive recurrent, aperiodic chain on a
+countable state space with stationary distribution <span class="arithmatex">\(\pi\)</span>. Then:</p>
+<ol>
+<li><strong>Convergence to stationarity:</strong> <span class="arithmatex">\(P^n \to \mathbf 1\pi\)</span> as <span class="arithmatex">\(n \to \infty\)</span>,
+   i.e. <span class="arithmatex">\(\Pr\{X_n = j \mid X_0 = i\} \to \pi_j\)</span> for all <span class="arithmatex">\(i, j\)</span>, independent of the initial state.</li>
+<li><strong>Time average = ensemble average:</strong> for any bounded function <span class="arithmatex">\(f\)</span> on the state space,</li>
+</ol>
+<div class="arithmatex">\[
+\frac{1}{N}\sum_{n=1}^{N} f(X_n) \xrightarrow{\text{a.s.}} \sum_j \pi_j f(j) \quad \text{as } N \to \infty.
+\]</div>
+</div>
+<p>This is the <strong>strong law of large numbers for Markov chains</strong> — the analogue of the ergodic theorem of Chapter 5 in discrete state space, and the theoretical basis for simulating Markov chains (MCMC).</p>
+<p>For <strong>periodic</strong> chains, statement 1 fails but statement 2 still holds with <span class="arithmatex">\(\lim_{N} \frac{1}{N}\sum f(X_n) \to \sum \pi_j f(j)\)</span> — the time average converges, even though the distribution does not.</p>
+<h3 id="643-detailed-balance-reversibility">6.4.3 Detailed balance (reversibility)<a class="headerlink" href="#643-detailed-balance-reversibility" title="Permanent link">&para;</a></h3>
+<p>A probability vector <span class="arithmatex">\(\pi\)</span> satisfies <strong>detailed balance</strong> (equivalently, the chain is <strong>time-reversible</strong> with respect to <span class="arithmatex">\(\pi\)</span>) if</p>
+<div class="arithmatex">\[
+\boxed{\;\pi_i P_{ij} = \pi_j P_{ji} \quad \text{for all } i, j.\;}
+\]</div>
+<p>Detailed balance implies <span class="arithmatex">\(\pi P = \pi\)</span> (sum over <span class="arithmatex">\(i\)</span>: <span class="arithmatex">\(\sum_i \pi_i P_{ij} = \pi_j \sum_i P_{ji} = \pi_j\)</span>). It is <strong>stronger</strong> than stationarity — many chains have a stationary distribution but are <em>not</em> reversible. When it holds, it provides the easiest way to compute <span class="arithmatex">\(\pi\)</span>: just find any positive vector satisfying detailed balance, then normalize.</p>
+<h3 id="worked-example-66-detailed-balance-for-a-birthdeath-chain">Worked example 6.6 — detailed balance for a birth–death chain<a class="headerlink" href="#worked-example-66-detailed-balance-for-a-birthdeath-chain" title="Permanent link">&para;</a></h3>
+<p>Consider a chain on <span class="arithmatex">\(\{0, 1, 2, \dots\}\)</span> with <span class="arithmatex">\(P_{k, k+1} = p_k\)</span>, <span class="arithmatex">\(P_{k, k-1} = q_k\)</span> (<span class="arithmatex">\(p_k + q_k = 1\)</span>, <span class="arithmatex">\(p_k, q_k &gt; 0\)</span>). This is a <strong>birth–death chain</strong> — the discrete-time analogue of the M/M/1 queue of Chapter 7.</p>
+<p><strong>Detailed balance.</strong> For a birth–death chain, transitions can only happen between adjacent states, so detailed balance is a <em>local</em> condition between <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(k+1\)</span>:</p>
+<div class="arithmatex">\[
+\pi_k\, p_k = \pi_{k+1}\, q_{k+1} \;\Longrightarrow\; \pi_{k+1} = \pi_k\, \frac{p_k}{q_{k+1}}.
+\]</div>
+<p>By induction from <span class="arithmatex">\(\pi_0\)</span>:</p>
+<div class="arithmatex">\[
+\pi_k = \pi_0 \prod_{j=0}^{k-1} \frac{p_j}{q_{j+1}}.
+\]</div>
+<p>Normalizing, <span class="arithmatex">\(\pi_0 = \Bigl(1 + \sum_{k=1}^\infty \prod_{j=0}^{k-1} \frac{p_j}{q_{j+1}}\Bigr)^{-1}\)</span> — the chain is positive recurrent iff this sum converges.</p>
+<p><strong>Special case: reflecting random walk on <span class="arithmatex">\(\{0, 1, \dots, N\}\)</span></strong> with <span class="arithmatex">\(p_k = p\)</span>, <span class="arithmatex">\(q_k = 1-p\)</span> for <span class="arithmatex">\(1 \le k \le N-1\)</span>:</p>
+<div class="arithmatex">\[
+\pi_k = \pi_0\, \left(\frac{p}{1-p}\right)^{k}.
+\]</div>
+<p>This is a truncated geometric distribution. If <span class="arithmatex">\(p &lt; 1/2\)</span> (drift toward 0), <span class="arithmatex">\(\pi\)</span> concentrates on small <span class="arithmatex">\(k\)</span>; if <span class="arithmatex">\(p &gt; 1/2\)</span> (drift toward <span class="arithmatex">\(N\)</span>), <span class="arithmatex">\(\pi\)</span> concentrates on large <span class="arithmatex">\(k\)</span>.</p>
+<hr />
+<h2 id="65-continuous-time-markov-chains">6.5 Continuous-time Markov chains<a class="headerlink" href="#65-continuous-time-markov-chains" title="Permanent link">&para;</a></h2>
+<h3 id="651-definition-and-generator">6.5.1 Definition and generator<a class="headerlink" href="#651-definition-and-generator" title="Permanent link">&para;</a></h3>
+<p>A <strong>CTMC</strong> <span class="arithmatex">\(\{X(t)\}_{t \ge 0}\)</span> on a countable state space satisfies the continuous-time analogue of the Markov property: for any <span class="arithmatex">\(0 \le t_1 &lt; \dots &lt; t_n &lt; t\)</span>,</p>
+<div class="arithmatex">\[
+\Pr\{X(t) = j \mid X(t_n) = i_n, \dots, X(t_1) = i_1\} = \Pr\{X(t) = j \mid X(t_n) = i_n\}.
+\]</div>
+<p>The chain is <strong>time-homogeneous</strong> if the right side depends only on <span class="arithmatex">\(t - t_n\)</span>. The transition probabilities</p>
+<div class="arithmatex">\[
+P_{ij}(t) = \Pr\{X(t+s) = j \mid X(s) = i\}
+\]</div>
+<p>form the <strong>transition matrix</strong> <span class="arithmatex">\(P(t) = (P_{ij}(t))\)</span>. It satisfies:</p>
+<ul>
+<li><span class="arithmatex">\(P(0) = I\)</span> (identity),</li>
+<li><span class="arithmatex">\(P(s + t) = P(s)P(t)\)</span> (semigroup property — the continuous analogue of Chapman–Kolmogorov),</li>
+<li><span class="arithmatex">\(P(t)\)</span> is stochastic for each <span class="arithmatex">\(t\)</span>.</li>
+</ul>
+<p>The <strong>generator (infinitesimal generator) matrix</strong> is</p>
+<div class="arithmatex">\[
+\boxed{\;Q = \lim_{h \to 0^+} \frac{P(h) - I}{h} = P'(0)\;}
+\]</div>
+<p>with entries</p>
+<div class="arithmatex">\[
+Q_{ij} = \begin{cases} q_{ij} \ge 0 &amp; \text{(rate of transition } i \to j, \; i \ne j), \\ -\sum_{j \ne i} q_{ij} &amp; \text{(i.e. } Q_{ii} = -q_i \text{, where } q_i \text{ is the total exit rate from } i\text{)}. \end{cases}
+\]</div>
+<p>Each row of <span class="arithmatex">\(Q\)</span> sums to zero: <span class="arithmatex">\(\sum_j Q_{ij} = 0\)</span>.</p>
+<p><strong>Relationship to <span class="arithmatex">\(P(t)\)</span>.</strong> The <strong>Kolmogorov forward equation</strong> is</p>
+<div class="arithmatex">\[
+\frac{d}{dt} P(t) = P(t)\, Q \qquad (\text{forward}),
+\]</div>
+<p>and the <strong>Kolmogorov backward equation</strong> is</p>
+<div class="arithmatex">\[
+\frac{d}{dt} P(t) = Q\, P(t) \qquad (\text{backward}).
+\]</div>
+<p>Both have the same solution: <span class="arithmatex">\(P(t) = e^{Qt}\)</span> (matrix exponential). In practice you rarely compute <span class="arithmatex">\(e^{Qt}\)</span>; you solve for the stationary distribution or for specific time-dependent quantities.</p>
+<h3 id="652-holding-times-and-jumps">6.5.2 Holding times and jumps<a class="headerlink" href="#652-holding-times-and-jumps" title="Permanent link">&para;</a></h3>
+<p>In a CTMC, once in state <span class="arithmatex">\(i\)</span>, the process stays there for a random time <span class="arithmatex">\(\tau_i\)</span> that is <strong>exponentially distributed</strong> with rate <span class="arithmatex">\(q_i = -Q_{ii}\)</span>:</p>
+<div class="arithmatex">\[
+\Pr\{\tau_i &gt; t\} = e^{-q_i t}.
+\]</div>
+<p>At the end of the holding time, the process <strong>jumps</strong> to state <span class="arithmatex">\(j \ne i\)</span> with probability <span class="arithmatex">\(q_{ij}/q_i\)</span>, independent of the holding time and of the past. This <em>exponential-holding-time + jump-chain</em> description is the <strong>uniformization / embedded chain</strong> representation, and it is the basis for simulation algorithms.</p>
+<h3 id="653-stationary-distribution">6.5.3 Stationary distribution<a class="headerlink" href="#653-stationary-distribution" title="Permanent link">&para;</a></h3>
+<p>A probability vector <span class="arithmatex">\(\pi\)</span> is stationary if <span class="arithmatex">\(\pi P(t) = \pi\)</span> for all <span class="arithmatex">\(t \ge 0\)</span>, which is equivalent to</p>
+<div class="arithmatex">\[
+\boxed{\;\pi Q = 0 \quad \text{with } \sum_j \pi_j = 1\;}
+\]</div>
+<p>Note <span class="arithmatex">\(\pi Q = 0\)</span> is <strong>not</strong> a linear system in <span class="arithmatex">\(\pi\)</span> — its rank is <span class="arithmatex">\(n - 1\)</span> (because the rows of <span class="arithmatex">\(Q\)</span> sum to zero), so you supplement it with the normalization <span class="arithmatex">\(\sum \pi_j = 1\)</span>.</p>
+<h3 id="worked-example-67-two-state-ctmc">Worked example 6.7 — two-state CTMC<a class="headerlink" href="#worked-example-67-two-state-ctmc" title="Permanent link">&para;</a></h3>
+<p>Model a communication link as up/down:</p>
+<ul>
+<li>Up state (0): fails at rate <span class="arithmatex">\(\alpha\)</span> (goes to Down).</li>
+<li>Down state (1): repairs at rate <span class="arithmatex">\(\beta\)</span> (goes to Up).</li>
+</ul>
+<p>Generator:</p>
+<div class="arithmatex">\[
+Q = \begin{bmatrix} -\alpha &amp; \alpha \\ \beta &amp; -\beta \end{bmatrix}.
+\]</div>
+<p><strong>Stationary distribution.</strong> Solve <span class="arithmatex">\(\pi Q = 0\)</span>:</p>
+<div class="arithmatex">\[
+-\alpha \pi_0 + \beta \pi_1 = 0 \;\Longrightarrow\; \pi_1 = \frac{\alpha}{\beta}\,\pi_0.
+\]</div>
+<p>With normalization:</p>
+<div class="arithmatex">\[
+\pi_0 = \frac{\beta}{\alpha + \beta},\qquad \pi_1 = \frac{\alpha}{\alpha + \beta}.
+\]</div>
+<p><strong>Interpretation.</strong> The <strong>availability</strong> of the link is <span class="arithmatex">\(\pi_0 = \beta/(\alpha+\beta)\)</span> — the ratio of repair rate to total rate. If <span class="arithmatex">\(\beta \gg \alpha\)</span> (fast repair), the link is up almost all the time.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(\alpha\)</span> (MTTF⁻¹)</th>
+<th style="text-align: center;"><span class="arithmatex">\(\beta\)</span> (MTTR⁻¹)</th>
+<th style="text-align: center;"><span class="arithmatex">\(\pi_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0.01</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.990</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.909</td>
+</tr>
+<tr>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.500</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embedded chain.</strong> The jump chain has transitions <span class="arithmatex">\(0 \to 1\)</span> with probability 1 and <span class="arithmatex">\(1 \to 0\)</span> with probability 1 — it alternates deterministically. All randomness in the CTMC is in the <em>timing</em>, not the <em>sequence</em> of states.</p>
+<h3 id="worked-example-68-birthdeath-ctmc-and-mm1-preview">Worked example 6.8 — birth–death CTMC and M/M/1 preview<a class="headerlink" href="#worked-example-68-birthdeath-ctmc-and-mm1-preview" title="Permanent link">&para;</a></h3>
+<p>The <strong>M/M/1 queue</strong> is a CTMC on <span class="arithmatex">\(\{0, 1, 2, \dots\}\)</span> with arrival rate <span class="arithmatex">\(\lambda\)</span> and service rate <span class="arithmatex">\(\mu\)</span>:</p>
+<ul>
+<li>From state <span class="arithmatex">\(k\)</span>: arrivals at rate <span class="arithmatex">\(\lambda\)</span> (jump to <span class="arithmatex">\(k+1\)</span>), services at rate <span class="arithmatex">\(\mu\)</span> (jump to <span class="arithmatex">\(k-1\)</span> if <span class="arithmatex">\(k \ge 1\)</span>).</li>
+<li>From state 0: only arrivals.</li>
+</ul>
+<p>Generator rows:</p>
+<div class="arithmatex">\[
+Q_{k, k+1} = \lambda,\quad Q_{k, k-1} = \mu \ (k \ge 1),\quad Q_{kk} = -(\lambda + \mu).
+\]</div>
+<p><strong>Detailed balance</strong> (which holds for any birth–death chain):</p>
+<div class="arithmatex">\[
+\pi_k \lambda = \pi_{k+1} \mu \;\Longrightarrow\; \pi_k = \pi_0\, \rho^k,\quad \rho = \frac{\lambda}{\mu}.
+\]</div>
+<p>Normalizing: if <span class="arithmatex">\(\rho &lt; 1\)</span>,</p>
+<div class="arithmatex">\[
+\boxed{\;\pi_k = (1-\rho)\,\rho^k,\quad k = 0, 1, 2, \dots\;}
+\]</div>
+<p>the stationary distribution of an M/M/1 queue is <strong>geometric</strong> with parameter <span class="arithmatex">\(1-\rho\)</span>. If <span class="arithmatex">\(\rho \ge 1\)</span> the queue is <strong>not positive recurrent</strong> — the stationary distribution does not exist (queue grows unboundedly).</p>
+<p><strong>Mean queue length.</strong></p>
+<div class="arithmatex">\[
+\mathbb E[K] = \sum_{k=0}^\infty k (1-\rho)\rho^k = \frac{\rho}{1-\rho}.
+\]</div>
+<p>This is the fundamental <strong>M/M/1 waiting-time formula</strong> and is the starting point for all queueing analysis of Chapter 7.</p>
+<hr />
+<h2 id="66-comparison-dtmc-vs-ctmc">6.6 Comparison: DTMC vs. CTMC<a class="headerlink" href="#66-comparison-dtmc-vs-ctmc" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>DTMC</th>
+<th>CTMC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time parameter</td>
+<td><span class="arithmatex">\(n \in \mathbb Z_{\ge 0}\)</span></td>
+<td><span class="arithmatex">\(t \in \mathbb R_{\ge 0}\)</span></td>
+</tr>
+<tr>
+<td>Transition rule</td>
+<td><span class="arithmatex">\(P_{ij}\)</span> (probability)</td>
+<td><span class="arithmatex">\(Q_{ij}\)</span> (rate)</td>
+</tr>
+<tr>
+<td>Rows sum</td>
+<td><span class="arithmatex">\(P\)</span>: rows sum to 1</td>
+<td><span class="arithmatex">\(Q\)</span>: rows sum to 0</td>
+</tr>
+<tr>
+<td>Self-transition</td>
+<td><span class="arithmatex">\(P_{ii} &gt; 0\)</span> allowed</td>
+<td><span class="arithmatex">\(Q_{ii} = -q_i\)</span> (exit rate)</td>
+</tr>
+<tr>
+<td>Holding time</td>
+<td>One unit (deterministic)</td>
+<td><span class="arithmatex">\(\text{Exp}(q_i)\)</span> (random)</td>
+</tr>
+<tr>
+<td>Evolution</td>
+<td><span class="arithmatex">\(\mu_n = \mu_0 P^n\)</span></td>
+<td><span class="arithmatex">\(\mu(t) = \mu_0 e^{Qt}\)</span></td>
+</tr>
+<tr>
+<td>Stationary condition</td>
+<td><span class="arithmatex">\(\pi P = \pi\)</span></td>
+<td><span class="arithmatex">\(\pi Q = 0\)</span></td>
+</tr>
+<tr>
+<td>Ergodic theorem</td>
+<td><span class="arithmatex">\(P^n \to \mathbf 1\pi\)</span> if aperiodic</td>
+<td><span class="arithmatex">\(P(t) \to \mathbf 1\pi\)</span> always (if ergodic)</td>
+</tr>
+</tbody>
+</table>
+<p>Note: <strong>CTMCs have no periodicity</strong> — the exponential holding times smooth out any parity effects, so aperiodicity is automatic.</p>
+<hr />
+<h2 id="67-computational-implementation">6.7 Computational implementation<a class="headerlink" href="#67-computational-implementation" title="Permanent link">&para;</a></h2>
+<h3 id="python-dtmc-classification-ctmc">Python — DTMC, classification, CTMC<a class="headerlink" href="#python-dtmc-classification-ctmc" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">numpy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">eig</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># ---- (i) two-state weather chain ----------------------------------------</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># n-step distribution from a fixed start</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">mu0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>  <span class="c1"># start sunny</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">mu_n</span> <span class="o">=</span> <span class="n">mu0</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"n=</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">: μ_n = </span><span class="si">{</span><span class="n">mu_n</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># stationary by iterative application</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">mu</span> <span class="o">=</span> <span class="n">mu0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">@</span> <span class="n">P</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"stationary (iterated): </span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="c1"># stationary by eigenvector of Pᵀ</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">eigvals</span><span class="p">,</span> <span class="n">eigvecs</span> <span class="o">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigvals</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">pi</span> <span class="o">=</span> <span class="n">eigvecs</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">pi</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">/</span> <span class="n">pi</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"stationary (eigen):    </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1"># ---- (ii) solve π P = π by linear system -------------------------------</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">n</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">A</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>                     <span class="c1"># replace last row with normalization</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="n">pi_ls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"stationary (linear):   </span><span class="si">{</span><span class="n">pi_ls</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="c1"># ---- (iii) classification: irreducibility check --------------------------</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">communicating_classes</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">):</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="sd">"""Return list of communicating classes by reaching relation."""</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">n</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    <span class="c1"># reachable[i] = set of j reachable from i (using BFS on adjacency)</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="n">reachable</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">seen</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">}</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>            <span class="n">u</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>                <span class="k">if</span> <span class="n">P</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tol</span> <span class="ow">and</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>                    <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">);</span> <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>        <span class="n">reachable</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">seen</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>    <span class="c1"># i ~ j iff j in reachable[i] and i in reachable[j]</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="n">classes</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="n">assigned</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>        <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">assigned</span><span class="p">:</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>            <span class="k">continue</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>        <span class="bp">cls</span> <span class="o">=</span> <span class="p">{</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>               <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">reachable</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">reachable</span><span class="p">[</span><span class="n">j</span><span class="p">]}</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>        <span class="n">classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>        <span class="n">assigned</span> <span class="o">|=</span> <span class="bp">cls</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="k">return</span> <span class="n">classes</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="n">P_irred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>                    <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>                    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">classes: </span><span class="si">{</span><span class="n">communicating_classes</span><span class="p">(</span><span class="n">P_irred</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="n">P_reduc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>                    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>                    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"classes: </span><span class="si">{</span><span class="n">communicating_classes</span><span class="p">(</span><span class="n">P_reduc</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>   <span class="c1"># absorbing 0 and 2; {1}</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="c1"># ---- (iv) CTMC: two-state up/down --------------------------------------</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">alpha</span><span class="p">,</span> <span class="n">alpha</span><span class="p">],</span> <span class="p">[</span><span class="n">beta</span><span class="p">,</span> <span class="o">-</span><span class="n">beta</span><span class="p">]])</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">stationary CTMC by π Q = 0:"</span><span class="p">)</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="c1"># replace last row of Q with ones</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="n">A</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="n">pi_ct</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  π = </span><span class="si">{</span><span class="n">pi_ct</span><span class="si">}</span><span class="s2">  (theory: β/(α+β), α/(α+β))"</span><span class="p">)</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="c1"># time-dependent P(t) via matrix exponential (scipy)</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">expm</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="n">t</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="n">Pt</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="n">Q</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"P(1) =</span><span class="se">\n</span><span class="si">{</span><span class="n">Pt</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="c1"># ---- (v) M/M/1 stationary distribution ---------------------------------</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="n">rho</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">/</span> <span class="n">mu</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="n">pi_MM1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">rho</span><span class="p">)</span> <span class="o">*</span> <span class="n">rho</span><span class="o">**</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)])</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">M/M/1: ρ = </span><span class="si">{</span><span class="n">rho</span><span class="si">}</span><span class="s2">, E[K] = </span><span class="si">{</span><span class="n">rho</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">rho</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  π[0:5] = </span><span class="si">{</span><span class="n">pi_MM1</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="java-iterative-stationary-distribution-classification">Java — iterative stationary distribution + classification<a class="headerlink" href="#java-iterative-stationary-distribution-classification" title="Permanent link">&para;</a></h3>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MarkovChains</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="c1">// Power iteration to compute stationary distribution: π_{k+1} = π_k P</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="nf">stationaryIter</span><span class="p">(</span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxIter</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">pi</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w">                                </span><span class="c1">// start at state 0</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxIter</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">                    </span><span class="n">next</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">pi</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">P</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">next</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pi</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">));</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pi</span><span class="p">;</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="c1">// Irreducibility: single communicating class iff BFS from any i reaches all</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">irreducible</span><span class="p">(</span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">start</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">            </span><span class="kt">boolean</span><span class="o">[]</span><span class="w"> </span><span class="n">seen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">            </span><span class="n">ArrayDeque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">            </span><span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">start</span><span class="p">);</span><span class="w"> </span><span class="n">seen</span><span class="o">[</span><span class="n">start</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">stack</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">P</span><span class="o">[</span><span class="n">u</span><span class="o">][</span><span class="n">v</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">tol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">seen</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">                        </span><span class="n">seen</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">                    </span><span class="p">}</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">seen</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">        </span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">        </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stationaryIter</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-12</span><span class="p">);</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"weather stationary: [%.6f, %.6f]%n"</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">pi</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"irreducible: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">irreducible</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-12</span><span class="p">));</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">        </span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="n">P3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">                          </span><span class="p">{</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">},</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">                          </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">        </span><span class="kt">double</span><span class="o">[]</span><span class="w"> </span><span class="n">pi3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stationaryIter</span><span class="p">(</span><span class="n">P3</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-12</span><span class="p">);</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"3-state stationary: [%.6f, %.6f, %.6f]%n"</span><span class="p">,</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">                          </span><span class="n">pi3</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">pi3</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">pi3</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"irreducible: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">irreducible</span><span class="p">(</span><span class="n">P3</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-12</span><span class="p">));</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">        </span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="n">P_absorbing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">                                    </span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">},</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">                                    </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"absorbing irreducible: "</span>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">irreducible</span><span class="p">(</span><span class="n">P_absorbing</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-12</span><span class="p">));</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="c-dtmc-simulation-ctmc-stationary-by-q-0">C# — DTMC simulation + CTMC stationary by πQ = 0<a class="headerlink" href="#c-dtmc-simulation-ctmc-stationary-by-q-0" title="Permanent link">&para;</a></h3>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">MarkovChains</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="c1">// Simulate DTMC: draw n steps, return empirical frequencies</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="nf">Simulate</span><span class="p">(</span><span class="kt">double</span><span class="p">[,]</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">initialState</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nSteps</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">seed</span><span class="p">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">.</span><span class="n">GetLength</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">rng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initialState</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nSteps</span><span class="p">;</span><span class="w"> </span><span class="n">step</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rng</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">(),</span><span class="w"> </span><span class="n">cum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">                </span><span class="n">cum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">P</span><span class="p">[</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">];</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">u</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">cum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">            </span><span class="n">counts</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">counts</span><span class="p">.</span><span class="n">Sum</span><span class="p">();</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">counts</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">total</span><span class="p">).</span><span class="n">ToArray</span><span class="p">();</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="c1">// Solve πQ = 0 with normalization by Gaussian elimination</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="nf">StationaryCTMC</span><span class="p">(</span><span class="kt">double</span><span class="p">[,]</span><span class="w"> </span><span class="n">Q</span><span class="p">)</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Q</span><span class="p">.</span><span class="n">GetLength</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">[,])</span><span class="n">Q</span><span class="p">.</span><span class="n">Clone</span><span class="p">();</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="c1">// replace last row with ones</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="n">n</span><span class="p">];</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">        </span><span class="c1">// Gauss-Jordan</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">piv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">;</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">])</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">piv</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">]))</span><span class="w"> </span><span class="n">piv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">                </span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">piv</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">piv</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]);</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">            </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">col</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">piv</span><span class="p">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">piv</span><span class="p">],</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">col</span><span class="p">]);</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">];</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">            </span><span class="n">b</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">                </span><span class="kt">double</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">];</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">];</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">                </span><span class="n">b</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">col</span><span class="p">];</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">()</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">        </span><span class="c1">// Simulate weather chain</span>
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[,]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Simulate</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">[]{</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="mi">1</span><span class="n">_000_000</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"simulated freq: [{emp[0]:F4}, {emp[1]:F4}]  (theory: [0.8333, 0.1667])"</span><span class="p">);</span>
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a>
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="w">        </span><span class="c1">// Two-state CTMC</span>
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[,]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">beta</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">beta</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StationaryCTMC</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"CTMC stationary: [{pi[0]:F4}, {pi[1]:F4}]  "</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="w">                          </span><span class="s">$"(theory: [{beta/(alpha+beta):F4}, {alpha/(alpha+beta):F4}])"</span><span class="p">);</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tooling</p>
+<ul>
+<li><strong>Python:</strong> <code>numpy.linalg</code> for linear systems and matrix powers, <code>scipy.linalg.expm</code>
+  for CTMC transition matrices, <code>numpy.random</code> for simulation. <code>markovchain</code> and
+  <code>PyDTMC</code> provide higher-level APIs.</li>
+<li><strong>Java:</strong> no special library needed for small problems; Apache Commons Math
+  provides <code>RealMatrix</code> + <code>DecompositionSolver</code> for larger ones.</li>
+<li><strong>C#:</strong> Math.NET Numerics provides <code>Matrix&lt;double&gt;.Solve</code> and <code>Matrix.Exp</code>.</li>
+<li><strong>MATLAB:</strong> <code>dtmc</code>, <code>mc</code> (econometrics toolbox), <code>ctmc</code> for building chains; <code>simulate</code>.</li>
+</ul>
+</div>
+<hr />
+<h2 id="68-chapter-summary">6.8 Chapter summary<a class="headerlink" href="#68-chapter-summary" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Markov property:</strong> the future depends on the past only through the present. This is what makes Markov chains tractable.</li>
+<li><strong>Transition matrix <span class="arithmatex">\(P\)</span></strong> encodes the entire DTMC. Rows sum to 1. Multi-step probabilities come from <span class="arithmatex">\(P^n\)</span> via the Chapman–Kolmogorov equation.</li>
+<li><strong>Classification</strong> — irreducible, aperiodic, positive recurrent — determines the long-run behaviour: an irreducible, positive-recurrent, aperiodic finite chain converges to a unique stationary distribution.</li>
+<li><strong>Stationary distribution <span class="arithmatex">\(\pi\)</span></strong> solves <span class="arithmatex">\(\pi P = \pi\)</span>. <strong>Detailed balance</strong> <span class="arithmatex">\(\pi_i P_{ij} = \pi_j P_{ji}\)</span> is a stronger condition (reversibility) that makes <span class="arithmatex">\(\pi\)</span> easy to find, especially for birth–death chains.</li>
+<li><strong>Ergodic theorem:</strong> for ergodic chains, time averages equal ensemble averages with respect to <span class="arithmatex">\(\pi\)</span> — the basis of MCMC and simulation.</li>
+<li><strong>Continuous-time chains</strong> use the <strong>generator <span class="arithmatex">\(Q\)</span></strong> instead of <span class="arithmatex">\(P\)</span>; the stationary distribution solves <span class="arithmatex">\(\pi Q = 0\)</span>. Holding times are exponentially distributed, and the chain's randomness is in the timing plus the jump chain.</li>
+<li><strong>Birth–death CTMCs</strong> give the M/M/1 queue: geometric stationary distribution <span class="arithmatex">\(\pi_k = (1-\rho)\rho^k\)</span>, mean queue length <span class="arithmatex">\(\rho/(1-\rho)\)</span>, the gateway to Chapter 7.</li>
+</ol>
+<hr />
+<h2 id="69-quiz">6.9 Quiz<a class="headerlink" href="#69-quiz" title="Permanent link">&para;</a></h2>
+<h3 id="a-multiple-choice-choose-the-single-best-answer">A. Multiple choice (choose the single best answer)<a class="headerlink" href="#a-multiple-choice-choose-the-single-best-answer" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>The <strong>Markov property</strong> says that:
+   (a) the process has no memory (b) the future depends on the past only through the present (c) the state space is finite (d) the transition matrix is symmetric</p>
+</li>
+<li>
+<p>For a DTMC with transition matrix <span class="arithmatex">\(P\)</span>, the <span class="arithmatex">\(n\)</span>-step transition probabilities are:
+   (a) <span class="arithmatex">\(nP\)</span> (b) <span class="arithmatex">\(P^n\)</span> (c) <span class="arithmatex">\(P/n\)</span> (d) the stationary distribution of <span class="arithmatex">\(P\)</span></p>
+</li>
+<li>
+<p>A probability vector <span class="arithmatex">\(\pi\)</span> is <strong>stationary</strong> if:
+   (a) <span class="arithmatex">\(\pi P = \pi\)</span> (b) <span class="arithmatex">\(P \pi = \pi\)</span> (c) <span class="arithmatex">\(\pi^\top P = \mathbf 1\)</span> (d) <span class="arithmatex">\(P = \pi\pi^\top\)</span></p>
+</li>
+<li>
+<p>Which condition is <strong>not</strong> required for a chain to be ergodic?
+   (a) irreducible (b) positive recurrent (c) aperiodic (d) symmetric transition matrix</p>
+</li>
+<li>
+<p>In an <strong>irreducible, positive-recurrent, aperiodic</strong> finite chain, <span class="arithmatex">\(\lim_{n\to\infty} P^n\)</span> equals:
+   (a) <span class="arithmatex">\(I\)</span> (b) <span class="arithmatex">\(0\)</span> (c) <span class="arithmatex">\(\mathbf 1\pi\)</span> (d) <span class="arithmatex">\(P\)</span></p>
+</li>
+<li>
+<p><strong>Detailed balance</strong> holds when:
+   (a) <span class="arithmatex">\(\pi_i P_{ij} = \pi_j P_{ji}\)</span> for all <span class="arithmatex">\(i,j\)</span> (b) <span class="arithmatex">\(P\)</span> is symmetric (c) the chain is periodic (d) <span class="arithmatex">\(P^n\)</span> converges</p>
+</li>
+<li>
+<p>For a two-state CTMC with generator <span class="arithmatex">\(Q = \begin{bmatrix} -\alpha &amp; \alpha \\ \beta &amp; -\beta \end{bmatrix}\)</span>, the stationary distribution is:
+   (a) <span class="arithmatex">\((\alpha/(\alpha+\beta),\ \beta/(\alpha+\beta))\)</span> (b) <span class="arithmatex">\((\beta/(\alpha+\beta),\ \alpha/(\alpha+\beta))\)</span> (c) <span class="arithmatex">\((1/2, 1/2)\)</span> (d) <span class="arithmatex">\((1, 0)\)</span></p>
+</li>
+<li>
+<p>In a CTMC, the <strong>holding time</strong> in state <span class="arithmatex">\(i\)</span> is:
+   (a) deterministic (b) uniform (c) exponentially distributed with rate <span class="arithmatex">\(-Q_{ii}\)</span> (d) geometric</p>
+</li>
+<li>
+<p>The Kolmogorov <strong>forward</strong> equation is:
+   (a) <span class="arithmatex">\(\dot P(t) = Q P(t)\)</span> (b) <span class="arithmatex">\(\dot P(t) = P(t) Q\)</span> (c) <span class="arithmatex">\(\dot P(t) = P(t) + Q\)</span> (d) <span class="arithmatex">\(P(t) = Q t\)</span></p>
+</li>
+<li>
+<p>For an M/M/1 queue with arrival rate <span class="arithmatex">\(\lambda\)</span> and service rate <span class="arithmatex">\(\mu\)</span>, the stationary distribution of queue length is:
+    (a) uniform (b) geometric with parameter <span class="arithmatex">\(1-\rho\)</span> where <span class="arithmatex">\(\rho = \lambda/\mu\)</span> (c) Poisson with mean <span class="arithmatex">\(\rho\)</span> (d) normal</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(\rho \ge 1\)</span> in an M/M/1 queue, then:
+    (a) the queue is positive recurrent (b) the stationary distribution does not exist and the queue grows unboundedly (c) the stationary distribution is uniform (d) the queue empties instantly</p>
+</li>
+<li>
+<p>Which statement about CTMCs is <strong>true</strong>?
+    (a) they always have a period (b) <span class="arithmatex">\(Q\)</span> is a stochastic matrix (c) exponential holding times make aperiodicity automatic (d) stationary distribution is <span class="arithmatex">\(\pi = Q\)</span></p>
+</li>
+</ol>
+<h3 id="b-fill-in-the-blank">B. Fill in the blank<a class="headerlink" href="#b-fill-in-the-blank" title="Permanent link">&para;</a></h3>
+<ol>
+<li>The Markov property: <span class="arithmatex">\(\Pr\{X_{n+1}=j \mid X_0,\dots,X_n\} = \Pr\{X_{n+1}=j \mid \_\_\_\_\}\)</span>.</li>
+<li>Each row of a DTMC transition matrix <span class="arithmatex">\(P\)</span> sums to ____.</li>
+<li>Each row of a CTMC generator <span class="arithmatex">\(Q\)</span> sums to ____.</li>
+<li>The Chapman–Kolmogorov equation says <span class="arithmatex">\(P^{m+n} = \_\_\_\_\)</span>.</li>
+<li>A state <span class="arithmatex">\(i\)</span> is <strong>recurrent</strong> if the probability of returning to <span class="arithmatex">\(i\)</span> eventually is ____.</li>
+<li>The stationary distribution of a DTMC satisfies <span class="arithmatex">\(\pi P = \_\_\_\_\)</span> and <span class="arithmatex">\(\sum \pi_i = \_\_\_\_\)</span>.</li>
+<li>The <strong>period</strong> of an aperiodic state is ____.</li>
+<li>Detailed balance: <span class="arithmatex">\(\pi_i P_{ij} = \_\_\_\_\)</span>.</li>
+<li>The CTMC stationary distribution solves <span class="arithmatex">\(\pi \_\_\_\_ = 0\)</span>.</li>
+<li>In an M/M/1 queue, the mean number in the system is ____.</li>
+</ol>
+<h3 id="c-define-explain">C. Define / explain<a class="headerlink" href="#c-define-explain" title="Permanent link">&para;</a></h3>
+<ol>
+<li>State the <strong>Markov property</strong> for a discrete-time process. Give one example of a process that satisfies it and one that does <em>not</em>, and explain why.</li>
+<li>State the <strong>Chapman–Kolmogorov equation</strong> and prove it using the law of total probability and the Markov property.</li>
+<li>Define <strong>recurrence</strong>, <strong>transience</strong>, and <strong>positive recurrence</strong>. Give an example of each (or explain why an example of the third is hard to construct for finite state spaces).</li>
+<li>State and prove the <strong>ergodic theorem</strong> for finite irreducible aperiodic DTMCs. What changes if the chain is periodic?</li>
+<li>State <strong>detailed balance</strong>. Explain why it is a <em>sufficient</em> condition for stationarity, but not a necessary one, and give an example of a chain that has a stationary distribution but does not satisfy detailed balance.</li>
+<li>Write down the <strong>generator matrix</strong> of a birth–death CTMC with arrival rates <span class="arithmatex">\(\lambda_k\)</span> and departure rates <span class="arithmatex">\(\mu_k\)</span>. Derive the stationary distribution via detailed balance, and state the positive-recurrence condition.</li>
+<li>Derive the <strong>M/M/1 stationary distribution</strong> and the mean queue length. What happens when <span class="arithmatex">\(\rho = \lambda/\mu \ge 1\)</span>?</li>
+<li>Compare <strong>DTMCs and CTMCs</strong> in three respects: rows of the transition/generator matrix, holding-time distribution, and existence of periodicity.</li>
+</ol>
+<hr />
+<h2 id="610-answer-key">6.10 Answer key<a class="headerlink" href="#610-answer-key" title="Permanent link">&para;</a></h2>
+<details class="success">
+<summary>A. Multiple choice</summary>
+<ol>
+<li><strong>(b)</strong> — future depends on past only through present.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\(P^n\)</span> gives <span class="arithmatex">\(n\)</span>-step probabilities.</li>
+<li><strong>(a)</strong> — <span class="arithmatex">\(\pi P = \pi\)</span> and <span class="arithmatex">\(\sum \pi_i = 1\)</span>.</li>
+<li><strong>(d)</strong> — symmetric <span class="arithmatex">\(P\)</span> is not required for ergodicity (and symmetric <span class="arithmatex">\(P\)</span> would make <span class="arithmatex">\(\pi\)</span> uniform, but that is a consequence, not a requirement).</li>
+<li><strong>(c)</strong> — <span class="arithmatex">\(\mathbf 1\pi\)</span>, every row equal to <span class="arithmatex">\(\pi\)</span>.</li>
+<li><strong>(a)</strong> — <span class="arithmatex">\(\pi_i P_{ij} = \pi_j P_{ji}\)</span>.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\((\beta/(\alpha+\beta),\ \alpha/(\alpha+\beta))\)</span>.</li>
+<li><strong>(c)</strong> — exponential with rate <span class="arithmatex">\(-Q_{ii}\)</span>.</li>
+<li><strong>(b)</strong> — <span class="arithmatex">\(\dot P = PQ\)</span> (forward); <span class="arithmatex">\(\dot P = QP\)</span> is backward.</li>
+<li><strong>(b)</strong> — geometric with parameter <span class="arithmatex">\(1-\rho\)</span>.</li>
+<li><strong>(b)</strong> — not positive recurrent; unbounded growth.</li>
+<li><strong>(c)</strong> — exponential holding times ⇒ aperiodicity automatic.</li>
+</ol>
+</details>
+<details class="success">
+<summary>B. Fill in the blank</summary>
+<ol>
+<li><span class="arithmatex">\(X_n\)</span></li>
+<li><span class="arithmatex">\(1\)</span></li>
+<li><span class="arithmatex">\(0\)</span></li>
+<li><span class="arithmatex">\(P^m P^n\)</span></li>
+<li><span class="arithmatex">\(1\)</span> (returns almost surely)</li>
+<li><span class="arithmatex">\(\pi\)</span>; <span class="arithmatex">\(1\)</span></li>
+<li><span class="arithmatex">\(1\)</span></li>
+<li><span class="arithmatex">\(\pi_j P_{ji}\)</span></li>
+<li><span class="arithmatex">\(Q\)</span></li>
+<li><span class="arithmatex">\(\rho/(1-\rho)\)</span></li>
+</ol>
+</details>
+<details class="success">
+<summary>C. Define / explain — model answers</summary>
+<ol>
+<li><em>Markov property:</em> for every <span class="arithmatex">\(n\)</span> and states <span class="arithmatex">\(i_0,\dots,i_n,j\)</span>, <span class="arithmatex">\(\Pr\{X_{n+1}=j \mid X_0=i_0,\dots,X_n=i_n\} = \Pr\{X_{n+1}=j \mid X_n=i_n\}\)</span> — the future depends on the past only through the present. <em>Example that satisfies it:</em> a queue-length process at packet-arrival epochs (state = current queue length, transition = arrival/service). <em>Example that does not:</em> the position of a moving object with inertia (velocity is not in the state, so knowing current position is insufficient to predict the next position — you also need the recent past). Adding velocity to the state restores the Markov property. Another non-example: an autoregressive process <span class="arithmatex">\(X_{n+1} = \sum_{k=1}^{p} \phi_k X_{n-k+1} + W_n\)</span> is not Markov in <span class="arithmatex">\(X_n\)</span> alone, but the vector <span class="arithmatex">\((X_n, X_{n-1}, \dots, X_{n-p+1})\)</span> is.</li>
+<li><em>CK equation:</em> <span class="arithmatex">\(P^{m+n} = P^m P^n\)</span>, i.e. <span class="arithmatex">\(\Pr\{X_{m+n}=j \mid X_0=i\} = \sum_k \Pr\{X_{m+n}=j \mid X_m=k\}\Pr\{X_m=k \mid X_0=i\}\)</span>. <em>Proof:</em> by the law of total probability, <span class="arithmatex">\(\Pr\{X_{m+n}=j \mid X_0=i\} = \sum_k \Pr\{X_{m+n}=j \mid X_m=k, X_0=i\}\Pr\{X_m=k \mid X_0=i\}\)</span>. By the Markov property (conditioned on <span class="arithmatex">\(X_m=k\)</span>, the future does not depend on <span class="arithmatex">\(X_0\)</span>), <span class="arithmatex">\(\Pr\{X_{m+n}=j \mid X_m=k, X_0=i\} = \Pr\{X_{m+n}=j \mid X_m=k\} = (P^n)_{kj}\)</span>. Hence the equation.</li>
+<li><em>Recurrent:</em> <span class="arithmatex">\(f_i = 1\)</span>; the chain returns to <span class="arithmatex">\(i\)</span> almost surely. <em>Transient:</em> <span class="arithmatex">\(f_i &lt; 1\)</span>; positive probability of never returning. <em>Positive recurrent:</em> recurrent <strong>and</strong> finite mean return time <span class="arithmatex">\(m_i &lt; \infty\)</span>. <em>Examples:</em> (a) <strong>Recurrent:</strong> simple symmetric random walk on <span class="arithmatex">\(\mathbb{Z}\)</span>; two-state alternating chain; any finite irreducible chain. (b) <strong>Transient:</strong> simple symmetric random walk on <span class="arithmatex">\(\mathbb{Z}^3\)</span>; biased random walk on <span class="arithmatex">\(\mathbb{Z}\)</span> with drift; gambler's ruin with state 0 absorbing (states <span class="arithmatex">\(1,2,3\)</span> are transient). (c) <strong>Null recurrent (positive-recurrence failure):</strong> simple symmetric random walk on <span class="arithmatex">\(\mathbb{Z}\)</span> is recurrent but <strong>null recurrent</strong> — <span class="arithmatex">\(m_i = \infty\)</span>. In <strong>finite</strong> state spaces every recurrent state is positive recurrent, so null recurrence requires an infinite state space; this is why example (c) is impossible for a finite chain.</li>
+<li><em>Ergodic theorem:</em> for a finite irreducible aperiodic DTMC with stationary <span class="arithmatex">\(\pi\)</span>, <span class="arithmatex">\(P^n \to \mathbf 1\pi\)</span> and <span class="arithmatex">\(\frac{1}{N}\sum_{n=1}^N f(X_n) \to \sum \pi_j f(j)\)</span> a.s. for bounded <span class="arithmatex">\(f\)</span>. <em>Proof sketch:</em> Irreducibility gives a unique stationary distribution. Aperiodicity ensures that <span class="arithmatex">\(P\)</span> has only one eigenvalue of modulus 1 (the Perron eigenvalue 1), and all other eigenvalues have magnitude <span class="arithmatex">\(&lt; 1\)</span>. Jordan decomposition of <span class="arithmatex">\(P = \mathbf 1\pi + R\)</span> with <span class="arithmatex">\(\rho(R) &lt; 1\)</span> gives <span class="arithmatex">\(P^n = \mathbf 1\pi + R^n \to \mathbf 1\pi\)</span>. The time-average convergence follows from the Birkhoff ergodic theorem or by the same eigenvalue argument on <span class="arithmatex">\(P\)</span> applied to <span class="arithmatex">\(f\)</span>. <em>If periodic:</em> <span class="arithmatex">\(P^n\)</span> does not converge, but the Cesàro average <span class="arithmatex">\(\frac{1}{N}\sum P^k \to \mathbf 1\pi\)</span> still does — periodicity affects pointwise-in-<span class="arithmatex">\(n\)</span> limits, not Cesàro limits.</li>
+<li><em>Detailed balance:</em> <span class="arithmatex">\(\pi_i P_{ij} = \pi_j P_{ji}\)</span> for all <span class="arithmatex">\(i, j\)</span> — the chain looks the same forward and backward in time when started from <span class="arithmatex">\(\pi\)</span>. <em>Sufficiency:</em> summing over <span class="arithmatex">\(i\)</span> gives <span class="arithmatex">\(\sum_i \pi_i P_{ij} = \pi_j \sum_i P_{ji} = \pi_j\)</span> (since rows sum to 1), i.e. <span class="arithmatex">\(\pi P = \pi\)</span>. <em>Non-necessity example:</em> Consider the three-state directed cycle <span class="arithmatex">\(P_{12}=P_{23}=P_{31}=1\)</span>, all other entries 0. This chain has stationary <span class="arithmatex">\(\pi = (1/3, 1/3, 1/3)\)</span> but <span class="arithmatex">\(\pi_1 P_{12} = 1/3 \ne \pi_2 P_{21} = 0\)</span>, so detailed balance fails. The chain is not time-reversible — every step goes <span class="arithmatex">\(1 \to 2 \to 3 \to 1\)</span>, and reversing time gives <span class="arithmatex">\(1 \to 3 \to 2 \to 1\)</span>, a different chain.</li>
+<li><em>Birth–death generator:</em> <span class="arithmatex">\(Q_{k,k+1} = \lambda_k\)</span>, <span class="arithmatex">\(Q_{k,k-1} = \mu_k\)</span> (for <span class="arithmatex">\(k \ge 1\)</span>), <span class="arithmatex">\(Q_{kk} = -(\lambda_k + \mu_k)\)</span>. <em>Detailed balance:</em> <span class="arithmatex">\(\pi_k \lambda_k = \pi_{k+1} \mu_{k+1}\)</span>, so <span class="arithmatex">\(\pi_k = \pi_0 \prod_{j=0}^{k-1} \lambda_j/\mu_{j+1}\)</span>. <em>Normalization:</em> <span class="arithmatex">\(\pi_0 = \left(1 + \sum_{k=1}^\infty \prod_{j=0}^{k-1} \lambda_j/\mu_{j+1}\right)^{-1}\)</span>. <em>Positive recurrence condition:</em> the infinite sum converges. If it diverges, the chain is transient or null recurrent.</li>
+<li><em>M/M/1 derivation:</em> state $k = $ number in system; births at rate <span class="arithmatex">\(\lambda\)</span>, deaths at rate <span class="arithmatex">\(\mu\)</span> (only from <span class="arithmatex">\(k \ge 1\)</span>). Detailed balance gives <span class="arithmatex">\(\pi_k \lambda = \pi_{k+1} \mu\)</span>, so <span class="arithmatex">\(\pi_k = \pi_0 \rho^k\)</span> with <span class="arithmatex">\(\rho = \lambda/\mu\)</span>. Normalizing <span class="arithmatex">\(\sum_k \pi_k = 1\)</span> requires <span class="arithmatex">\(\rho &lt; 1\)</span>, giving <span class="arithmatex">\(\pi_0 = 1 - \rho\)</span> and <span class="arithmatex">\(\pi_k = (1-\rho)\rho^k\)</span>. <em>Mean queue length:</em> <span class="arithmatex">\(E[K] = \rho/(1-\rho)\)</span>. <em>If <span class="arithmatex">\(\rho \ge 1\)</span>:</em> the normalization sum diverges — no stationary distribution exists. The queue grows unboundedly at average rate <span class="arithmatex">\(\lambda - \mu &gt; 0\)</span>, and its expected length is infinite.</li>
+<li><em>Comparison:</em> (i) <em>Row sums:</em> <span class="arithmatex">\(P\)</span> rows sum to 1 (probability); <span class="arithmatex">\(Q\)</span> rows sum to 0 (rates). (ii) <em>Holding times:</em> deterministic unit time in DTMC; <span class="arithmatex">\(\text{Exp}(-Q_{ii})\)</span> in CTMC. (iii) <em>Periodicity:</em> DTMCs can be periodic (e.g., two-state alternating chain has period 2); CTMCs are always aperiodic because exponential holding times smear out any parity structure.</li>
+</ol>
+</details>
+<hr />
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Norris, <em>Markov Chains</em>, Cambridge University Press, 1997 — the standard reference on discrete- and continuous-time chains.</li>
+<li>Karlin &amp; Taylor, <em>A First Course in Stochastic Processes</em>, 2nd ed., Academic Press — the classical textbook with excellent coverage of classification and limiting behaviour.</li>
+<li>Ross, <em>Introduction to Probability Models</em>, 11th ed., Academic Press — Chapters 4–6 cover DTMC, exponential distributions, and CTMC.</li>
+<li>Kemeny &amp; Snell, <em>Finite Markov Chains</em>, Springer — the definitive reference for finite-state chains and matrix methods.</li>
+<li>Levin, Peres &amp; Wilmer, <em>Markov Chains and Mixing Times</em>, AMS, 2009 — modern treatment with applications to MCMC and mixing bounds.</li>
+<li>Stewart, <em>Introduction to the Numerical Solution of Markov Chains</em>, Princeton University Press, 1994 — the reference for computational methods (power iteration, GTH algorithm, block methods).</li>
+<li>Häggström, <em>Finite Markov Chains and Algorithmic Applications</em>, Cambridge University Press, 2002 — concise, with MCMC applications.</li>
+<li>Robert &amp; Casella, <em>Monte Carlo Statistical Methods</em>, Springer — Markov chain theory in the service of simulation.</li>
+<li>Python <code>markovchain</code>, <code>PyDTMC</code>, <code>networkx</code> (for graph/transition diagrams), <code>scipy.linalg.expm</code>.</li>
+</ul>
+<hr />
+<h2 id="suggested-tutorial-problems-for-this-chapter">Suggested tutorial problems for this chapter<a class="headerlink" href="#suggested-tutorial-problems-for-this-chapter" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Two-state chain.</strong> For the weather chain of Example 6.1, compute <span class="arithmatex">\(P^n\)</span> in closed form using the eigen-decomposition of <span class="arithmatex">\(P\)</span>. Verify that <span class="arithmatex">\(P^n \to \mathbf 1\pi\)</span> and that the convergence rate is governed by the subdominant eigenvalue <span class="arithmatex">\(0.4\)</span>. What is the mixing time to reach <span class="arithmatex">\(\|P^n - \mathbf 1\pi\|_\infty &lt; 10^{-3}\)</span>?</li>
+<li><strong>Gambler's ruin.</strong> For the chain of Example 6.2 with <span class="arithmatex">\(p = 0.45\)</span>, compute the absorption probabilities and the expected absorption time for <span class="arithmatex">\(k = 1, 2, 3\)</span>. Verify against a simulation of 10,000 independent runs.</li>
+<li><strong>Ehrenfest urn.</strong> Simulate the Ehrenfest chain for <span class="arithmatex">\(N = 20\)</span> and confirm that the empirical frequencies of <span class="arithmatex">\(k\)</span> converge to the binomial <span class="arithmatex">\(\binom{20}{k}/2^{20}\)</span>, <strong>averaged over even and odd steps separately</strong>. Why is the parity effect visible in the raw empirical histogram?</li>
+<li><strong>Classification.</strong> For the transition matrices
+   <span class="arithmatex">\(P_1 = \begin{bmatrix}1&amp;0\\0&amp;1\end{bmatrix}\)</span>,
+   <span class="arithmatex">\(P_2 = \begin{bmatrix}0&amp;1\\1&amp;0\end{bmatrix}\)</span>,
+   <span class="arithmatex">\(P_3 = \begin{bmatrix}0.5&amp;0.5\\0.5&amp;0.5\end{bmatrix}\)</span>,
+   determine for each: communicating classes, recurrence/transience, period, stationary distribution, and whether <span class="arithmatex">\(P^n\)</span> converges.</li>
+<li><strong>Positive recurrence from scratch.</strong> Show that a simple symmetric random walk on <span class="arithmatex">\(\mathbb{Z}\)</span> is null recurrent (not positive recurrent) — i.e., <span class="arithmatex">\(f_0 = 1\)</span> but <span class="arithmatex">\(E[T_0] = \infty\)</span>.</li>
+<li><strong>Birth–death CTMC.</strong> For the birth–death chain with <span class="arithmatex">\(\lambda_k = \lambda\)</span> for all <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(\mu_k = \mu\)</span> for all <span class="arithmatex">\(k \ge 1\)</span> (M/M/1), derive <span class="arithmatex">\(\pi\)</span>. Then take <span class="arithmatex">\(\lambda_k = \lambda/(k+1)\)</span> and <span class="arithmatex">\(\mu_k = \mu\)</span> (an M/M/∞ queue — unlimited servers) and derive the stationary distribution. Verify it is Poisson.</li>
+<li><strong>Detailed balance check.</strong> Show that the two-state chain of Example 6.4 satisfies detailed balance with respect to its stationary distribution. Then construct a 3-state chain with stationary <span class="arithmatex">\(\pi = (1/3, 1/3, 1/3)\)</span> that does <em>not</em> satisfy detailed balance (a directed cycle).</li>
+<li><strong>M/M/1 simulation.</strong> Simulate an M/M/1 queue with <span class="arithmatex">\(\lambda = 0.8\)</span>, <span class="arithmatex">\(\mu = 1.0\)</span> for <span class="arithmatex">\(T = 10^5\)</span> time units. Plot the queue-length trajectory and the empirical distribution. Compare with <span class="arithmatex">\((1-\rho)\rho^k\)</span>. Repeat with <span class="arithmatex">\(\lambda = 1.1\)</span> and observe the divergence.</li>
+<li><strong>PageRank preview.</strong> The Google PageRank algorithm models web navigation as a DTMC on the graph of pages, with transition <span class="arithmatex">\(P_{ij} = (1-d)/N + d\, a_{ij}/L_i\)</span> for damping <span class="arithmatex">\(d \in (0,1)\)</span>. Show that the PageRank vector is the stationary distribution of this chain. For a 4-page graph, compute it numerically.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
